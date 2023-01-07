@@ -1,7 +1,7 @@
 import './template.pug';
 
 import './index.scss';
-import menu3 from './img/menu-3.svg'
+
 import { mult, sum } from './modules/calc';
 
 

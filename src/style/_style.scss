@@ -14,3 +14,16 @@
 //     background-size: cover;
 //     background-image: url('img/menu-1.svg');
 // }
+
+
+html{
+    font-size: 14px;
+    font-family: $font-family;
+    
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}

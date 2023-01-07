@@ -1,10 +1,9 @@
-//- include ../modules/header.pug
-doctype html
-html(lang= 'ru')
-  head
-    meta(charset='utf-8')
-    title= 'Toxin'
-  body
-    //- +header 
-      
-  
+
+extends base
+
+
+block header 
+  .header-wrapper 
+    include modules/header
+    include modules/main
+    
