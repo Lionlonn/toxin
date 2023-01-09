@@ -27,6 +27,7 @@
     "postcss-preset-env": "^7.8.3",
     "pug": "^2.0.4",
     "pug-loader": "^2.4.0",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "air-datepicker": "^3.3.3",
     "script-runner": "^0.1.8"
   }
 }
