@@ -30,7 +30,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'template.pug'),
+            template: path.join(__dirname, 'src', 'views/layout/main-page.pug'),
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({

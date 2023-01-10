@@ -1,5 +1,5 @@
-import './template.pug';
-import './air-datapicker/datapicker'
+import './views/layout/main-page.pug';
+import './libs/air-datapicker/datapicker'
 
 import './index.scss';
 

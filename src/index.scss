@@ -1,7 +1,6 @@
 @import 'libs/normalize.css';
 @import 'fonts/fonts.css';
-@import 'style/var';
-@import 'style/style';
-@import './style/header';
-@import './style/reset.scss';
-@import './style/main.scss';
+@import 'assets/style/var';
+@import 'assets/style/style';
+@import './views/componets/header/header';
+@import './assets/style/reset.scss';
