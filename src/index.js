@@ -1,5 +1,7 @@
+
 import './views/layout/main-page.pug';
-import './libs/air-datapicker/datapicker'
+import './libs/air-datapicker/datapicker';
+
 
 import './index.scss';
 
