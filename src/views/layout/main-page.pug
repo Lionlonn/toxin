@@ -1,4 +1,9 @@
-include ../components/header/header.pug
+//- include ../components/header/header.pug
+//- include ../components/datapicker/air-datapicker
+
+-
+    var siteTitle = 'toxin'
+    var lang = ru
 
 doctype html
 html(lang=lang)
@@ -9,6 +14,6 @@ html(lang=lang)
         title #{siteTitle}
         
     body
-        block header
-        
-        
+        //- block header
+        block email 
+            include ../components/email/email.pug
