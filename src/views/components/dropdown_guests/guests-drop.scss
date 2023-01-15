@@ -1,0 +1,31 @@
+.dropdown-block{
+  width: 320px;
+  height: 44px;
+
+    
+  margin-left: 100px;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+}
+
+.dropdown {
+    position: relative;
+  }
+  
+  .dropdown select {
+    width: 100%;
+  }
+  
+  .dropdown > * {
+    box-sizing: border-box;
+    height: 1.5em;
+  }
+  
+  .dropdown input {
+    position: absolute;
+    width: calc(100% - 20px);
+  }
+  
+.select-middle{
+    
+}

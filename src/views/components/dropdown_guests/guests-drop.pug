@@ -1,0 +1,8 @@
+.dropdown-block
+    .dropdown
+    input(type='text' placeholder="Сколько гостей")
+    .select-middle
+        select(onchange='this.previousElementSibling.value=this.value; this.previousElementSibling.focus()')
+            option взрослые
+            Option дети
+            Option младенцы
