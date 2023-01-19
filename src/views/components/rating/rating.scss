@@ -1,0 +1,51 @@
+
+.star-rating {
+	display: flex;
+	align-items: center;
+	width: 120px;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	margin: 20px 100px;
+	position: relative;
+  }
+
+  .star-rating input {
+	display: none;
+  }
+
+  .star-rating > label {
+	width: 24px;
+	height: 24px;
+	font-family: Arial;
+	font-size: 30px;
+	transition: 0.2s ease;
+	color: #BC9CFF;
+  }
+
+  .star-rating label:hover {
+	color: #BC9CFF;
+	transition: 0.2s ease;
+  }
+  .star-rating label:active::before {
+	transform:scale(1.1);
+  }
+  
+
+  .star-rating label::before {
+	content: '\2606';
+	position: absolute;
+	top: 0px;
+	line-height: 26px;
+  }
+
+  .star-rating input:checked ~ label:before {
+	content:'\2605';
+  }
+  
+  @-moz-document url-prefix() {
+	.star-rating input:checked ~ label:before {
+	font-size: 36px;
+	line-height: 21px;
+	}
+  }  
+  
