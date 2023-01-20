@@ -42,10 +42,3 @@
 	content:'\2605';
   }
   
-  @-moz-document url-prefix() {
-	.star-rating input:checked ~ label:before {
-	font-size: 36px;
-	line-height: 21px;
-	}
-  }  
-  
