@@ -1,33 +1,36 @@
-.button-click__min{
+.button-click__max{
     margin: 20px 100px;
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-    width: 87px;
-    height: 34px;
+    width: 320px;
+    height: 44px;
     border-radius: 22px;
 }
-.button-click__mini{
+
+
+.button-click__title{
     color: #FFFFFF;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    width: 87px;
-    height: 34px;
+    width: 320px;
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: uppercase;
 }
 
-.button-click__min:hover{
+.button-click__max:hover{
     background: #c6b3f0;
 }
 
 
-.button-click__min:active{
+.button-click__max:active{
     transform: scale(0.9);
     
 }
 
-.button-click__mini:active{
+.button-click__title:active{
     color: #BC9CFF;
     background: #FFF;
     border: 1px solid #BC9CFF;
