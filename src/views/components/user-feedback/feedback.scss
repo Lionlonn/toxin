@@ -1,0 +1,44 @@
+.feedback {
+    margin: 20px 100px;
+    display: flex;
+    width: 711px;
+    grid-gap: 10px;
+}
+
+.feedback img{
+    margin-bottom: 12px;
+    border: 2px solid #fff;
+    filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
+    border-radius: 32px;
+}
+
+.feedback-avatar{
+    width: 52px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.user-feedback__title{
+    color: rgba(31, 32, 65, 0.75);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+.user-span{
+    color: rgba(31, 32, 65, 0.75);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+
+.user-feedback span{
+    width: 653px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.75);
+}
+
