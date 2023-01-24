@@ -1,8 +1,29 @@
-.dropdown-block
-    .dropdown
-    input(type='text' placeholder="Сколько гостей")
-    .select-middle
-        select(onchange='this.previousElementSibling.value=this.value; this.previousElementSibling.focus()')
-            option взрослые
-            Option дети
-            Option младенцы
+.guests
+    button.dropbutton Сколько гостей 
+        .caret
+    .drop-down
+        .drop-text Взрослые
+            .counter-people
+                .drop-minus 
+                    .minus
+                .drop-counter 2
+                .drop-plus 
+                    .plus1
+                    .plus2
+        .drop-text Подростки
+            .counter-people
+                .drop-minus 
+                    .minus
+                .drop-counter 0
+                .drop-plus 
+                    .plus1
+                    .plus2
+        .drop-text Младенцы
+            .counter-people
+                .drop-minus 
+                    .minus
+                .drop-counter 0
+                .drop-plus 
+                    .plus1
+                    .plus2
+        

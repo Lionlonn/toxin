@@ -14,31 +14,32 @@ html(lang=lang)
         title #{siteTitle}
         
     body
-        //- block header
-        block email 
-            include ../components/email/email.pug
-        block guests-drop
-            include ../components/dropdown_guests/guests-drop.pug
-        block checkbox 
-            include ../components/checkbox/checkbox
-        block checkbox 
-            include ../components/checkbox-buttons/checkbox-buttons
-        block radio-checkbox 
-            include ../components/radio-checkbox/radio-checkbox
-        block toggle-button
-            include ../components/toggle-button/toggle-button
-        block like-button 
-            include ../components/like-button/like-button
-        block like-button 
-            include ../components/rating/rating
-        block buttons min/max
-        include ../components/buttons/button-min/button-min
-        include ../components/buttons/button-max/button-max
-        block rich-checkbox 
-            include ../components/rich-checkbox/rich-checkbox
-        block bullet-list 
-            include ../components/bullet-list/bullet-list
-        block comfort 
-            include ../components/comfort/comfort
-        block feedback-user
-            include ../components/user-feedback/feedback
+        .container(max-width:1200px; margin: 0 auto;)
+            //- block header
+            block email 
+                include ../components/email/email.pug
+            block guests-drop
+                include ../components/dropdown_guests/guests-drop.pug
+            block checkbox 
+                include ../components/checkbox/checkbox
+            block checkbox 
+                include ../components/checkbox-buttons/checkbox-buttons
+            block radio-checkbox 
+                include ../components/radio-checkbox/radio-checkbox
+            block toggle-button
+                include ../components/toggle-button/toggle-button
+            block like-button 
+                include ../components/like-button/like-button
+            block like-button 
+                include ../components/rating/rating
+            block buttons min/max
+            include ../components/buttons/button-min/button-min
+            include ../components/buttons/button-max/button-max
+            block rich-checkbox 
+                include ../components/rich-checkbox/rich-checkbox
+            block bullet-list 
+                include ../components/bullet-list/bullet-list
+            block comfort 
+                include ../components/comfort/comfort
+            block feedback-user
+                include ../components/user-feedback/feedback
