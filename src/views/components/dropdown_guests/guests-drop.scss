@@ -204,7 +204,15 @@
   background-image: none;
   margin: 0;
   padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   
+}
+
+.details-counter {
+  display: flex;
+  align-items: center;
 }
 
 .dropdown__list--visible{
@@ -212,5 +220,7 @@
 }
 
 .dropdown__input-hidden{
-  // display: none;
+  display: none;
 }
+
+

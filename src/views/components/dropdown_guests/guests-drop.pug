@@ -34,8 +34,12 @@
         button.dropdown__button Сколько гостей 
         ul.dropdown__list
             li.dropdown__list-item(data-value="adult")  Взрослый 
+                .details-counter 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-counter) 1
+                    .items__control(data-action="plus") +
+                    //- счетчик
             li.dropdown__list-item(data-value="children")  Дети
             li.dropdown__list-item(data-value="infants")  Младенцы
         input.dropdown__input-hidden(type="text" name="select-category" value="")
-
-
