@@ -31,15 +31,27 @@
 
 .form-group 
     .dropdown
-        button.dropdown__button Сколько гостей 
+        .dropdown__content Сколько гостей 
         ul.dropdown__list
             li.dropdown__list-item(data-value="adult")  Взрослый 
-                .details-counter 
+                .details-counter.counter-wrapper
                     //- счетчик
                     .items__control(data-action="minus") -
-                    .items__control(data-counter) 1
+                    .items__control(data-counter) 0
                     .items__control(data-action="plus") +
                     //- счетчик
             li.dropdown__list-item(data-value="children")  Дети
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-counter) 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
             li.dropdown__list-item(data-value="infants")  Младенцы
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-counter) 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
         input.dropdown__input-hidden(type="text" name="select-category" value="")
