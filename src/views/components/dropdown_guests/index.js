@@ -32,7 +32,7 @@ import Dropdown from './Dropdown'
     // document.addEventListener('click', function (e) {
     //     if (e.target !== dropDownBtn) {
     //         dropDownList.classList.remove('dropdown__list--visible');
-    //         console.log('blyat')
+    //         
     //     }
     // })})
 

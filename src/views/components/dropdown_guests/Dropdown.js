@@ -1,3 +1,5 @@
+// import plural from './plural';
+
 //класс дропдауна
 class Dropdown {
 
@@ -17,8 +19,8 @@ class Dropdown {
     this.setField()
     this.attachControlListeners()
     this.setDropdown()
-    this.outsideDropdownClick()
-   
+    this.textValue()
+    this.dataTextValue()
   }
   
   setDropdown() {
@@ -27,10 +29,16 @@ class Dropdown {
       const dropDownList = dropDownWrapper.querySelector('.dropdown__list');
       const dropDownListItems = dropDownList.querySelectorAll('.dropdown__list-item');
 
+
+      //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
         dropDownList.classList.toggle('dropdown__list--visible');
       })
 
+
+      
+
+      // Клик снаружи дропдауна
       const outsideClick = document.addEventListener('click', (event) => {
         if (event.target !== dropDownBtn) {
           dropDownList.classList.remove('dropdown__list--visible')
@@ -41,9 +49,7 @@ class Dropdown {
     
     
   }
-  outsideDropdownClick() {
-    
-  }
+  
   
 
   
@@ -65,6 +71,8 @@ class Dropdown {
   //меняем текст поля
   changeFieldContent(initialContent = 'Сколько гостей') {
     this.field.innerText = this.totalCount > 0 ? this.totalCount : initialContent
+
+    
   }
 
   //обработчик для плюсов и минусов
@@ -92,8 +100,41 @@ class Dropdown {
   attachControlListeners(){
     this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
     this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
+    
+  }
+
+  textValue(){
+    //подстановка текста по клику плюс, минус
+    
+    const dataText = document.querySelector('[data-action="plus"]');
+    const DropdownText = document.querySelector('.dropdown__content');
+    const textCounter = document.querySelector('[data-counter]')
+
+
+    dataText.addEventListener('click', () => {
+      DropdownText.innerText = 'd';
+      console.log('Ckick')
+      
+      
+      
+      
+    })
+    // dropDownListItems.forEach(function(listItem) {
+    //   listItem.addEventListener('click', (event) => {
+        
+    //   })
+    // }) 
+  }
+  dataTextValue(){
+    // this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
+    // this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
   }
 
 }
+
+  
+
+
+
 
 export default Dropdown
