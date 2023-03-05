@@ -1,4 +1,3 @@
-// import plural from './plural';
 
 //класс дропдауна
 class Dropdown {
@@ -109,7 +108,9 @@ class Dropdown {
     const dataText = document.querySelector('[data-action="plus"]');
     const DropdownText = document.querySelector('.dropdown__content');
     const textCounter = document.querySelector('[data-counter]')
-
+    const textDrop = [
+      
+    ]
 
     dataText.addEventListener('click', () => {
       DropdownText.innerText = 'd';

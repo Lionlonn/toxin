@@ -6,6 +6,7 @@
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     margin: 100px auto;
+    position: relative;
 }
 
 .number-search {
@@ -36,6 +37,7 @@
     border-radius: 4px;
     width: 150px;
     height: 44px;
+    cursor: pointer;
 }
 
 .datapicker__arrival{
@@ -44,6 +46,7 @@
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
+    
 }
 
 .datapicker__exit{
@@ -57,4 +60,37 @@
 .datepicker-here::placeholder{
     padding: 11px 32px 8px 15px;
     text-transform: uppercase;
+}
+
+
+
+
+
+.dateTest {
+    position: absolute;
+    display: none;
+    // bottom: 0;
+    height: 100%;
+    left: 50%;
+    max-width: 318px;
+    width: 100%;
+    z-index: 100;
+    transform: translate(-50%);
+    top: 241px;
+}
+
+.dateTest--opened {
+    display: block;
+    
+}
+
+
+.air-datepicker.-inline- {
+    position: absolute;
+    // bottom: 0;
+    max-width: 318px;
+    width: 100%;
+    overflow: hidden;
+    // height: 100%;
+    
 }
