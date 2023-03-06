@@ -1,5 +1,6 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import { Input } from 'postcss';
 
 
 // const minData = document.querySelector('#startDate');
@@ -37,12 +38,12 @@ dropDatapicker.addEventListener('click', () => {
         const lastDate = document.querySelector('#endDate');
         const {formattedDate} = date;
         const [start, end] = formattedDate;
-        firstDate.value = start;
-        lastDate.value = end;
+        if(start && end) {
+            firstDate.value = start;
+            lastDate.value = end;
+        }
         
 
-
-        
         
         
         
