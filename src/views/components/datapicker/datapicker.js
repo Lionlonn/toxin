@@ -3,8 +3,6 @@ import 'air-datepicker/air-datepicker.css';
 import { Input } from 'postcss';
 
 
-// const minData = document.querySelector('#startDate');
-// const maxData = document.querySelector('#endDate');
 
 
 //Открытие календаря
@@ -12,17 +10,18 @@ import { Input } from 'postcss';
 const dropDatapicker = document.querySelector('.datepicker');
 const dataHere = document.querySelector('.dateTest');
 
-dropDatapicker.addEventListener('click', () => {
+
+
+const openDatepicker = () => {
+    
     dataHere.classList.toggle('dateTest--opened');
-})
+}
+
+
 
 //клик снаружи 
 
-// const outclick = document.addEventListener('click', (event) => {
-//     if(event.target !== dropDatapicker) {
-//         dataHere.classList.remove('.dateTest--opened');
-//     }
-// })
+
 
 
  const datepick = new AirDatepicker('.dateTest',  {
@@ -41,7 +40,10 @@ dropDatapicker.addEventListener('click', () => {
         if(start && end) {
             firstDate.value = start;
             lastDate.value = end;
+            // dataHere.classList.remove('dateTest--opened');
+            
         }
+    
         
 
         
@@ -50,17 +52,30 @@ dropDatapicker.addEventListener('click', () => {
         
         
     }
+    
    
     
         
 })
 
-// new AirDatepicker('#endDate', {
-//     value:"inputValue.end",
-//     autoClose:true,
-//     range: true,
-//     multipleDatesSeparator: ' - ',
-//     buttons: ['clear', 'apply']
+// const outCLick =  document.querySelector('.datepicker-here');
+//     document.addEventListener('click', (e) => {
+//         if (e.target !== outCLick) {
+//             dataHere.classList.remove('dateTest--opened');
+//         }
+//     })
+
+const fields = document.querySelectorAll('.datepicker-here');
+fields.forEach(field => field.addEventListener('click', openDatepicker));
+
+
+
+const outClick = document.querySelectorAll('.datepicker-here');
+document.addEventListener('click', (e) => {
+    if(e.target !== outClick) {
         
-// })
+        dataHere.classList.remove('dateTest--opened');
+    }
+})
+
 
