@@ -29,11 +29,17 @@ class Dropdown {
       const dropDownListItems = dropDownList.querySelectorAll('.dropdown__list-item');
 
 
+      dropDownList.addEventListener('click', (e) => {
+        e.stopPropagation();
+      })
+
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
         dropDownList.classList.toggle('dropdown__list--visible');
       })
 
+
+      
 
       
 
@@ -78,7 +84,7 @@ class Dropdown {
   //HOC - High Order Component или замыкание
   handelChangeCounter (delta) { 
     return (event) => {
-      event.stopPropagation()
+      
     //родительский элемент
     const parent = event.target.parentElement;
 

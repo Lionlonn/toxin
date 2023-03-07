@@ -12,14 +12,30 @@ const dataHere = document.querySelector('.dateTest');
 
 
 
-const openDatepicker = () => {
-    
+
+
+
+const openDatepicker = (e) => {
     dataHere.classList.toggle('dateTest--opened');
 }
 
 
 
-//клик снаружи 
+
+
+dropDatapicker.addEventListener('click', (e) => {
+    e.stopPropagation();
+})
+
+// клик снаружи
+const outClick = document.querySelectorAll('.datepicker-here');
+document.addEventListener('click', (e) => {
+    if(e.target !== outClick) {
+        
+        dataHere.classList.remove('dateTest--opened');
+    }
+})
+
 
 
 
@@ -40,7 +56,7 @@ const openDatepicker = () => {
         if(start && end) {
             firstDate.value = start;
             lastDate.value = end;
-            // dataHere.classList.remove('dateTest--opened');
+            
             
         }
     
@@ -58,24 +74,9 @@ const openDatepicker = () => {
         
 })
 
-// const outCLick =  document.querySelector('.datepicker-here');
-//     document.addEventListener('click', (e) => {
-//         if (e.target !== outCLick) {
-//             dataHere.classList.remove('dateTest--opened');
-//         }
-//     })
+
 
 const fields = document.querySelectorAll('.datepicker-here');
 fields.forEach(field => field.addEventListener('click', openDatepicker));
-
-
-
-const outClick = document.querySelectorAll('.datepicker-here');
-document.addEventListener('click', (e) => {
-    if(e.target !== outClick) {
-        
-        dataHere.classList.remove('dateTest--opened');
-    }
-})
 
 

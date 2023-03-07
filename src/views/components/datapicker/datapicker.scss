@@ -69,7 +69,6 @@
 .dateTest {
     position: absolute;
     display: none;
-    // bottom: 0;
     height: 100%;
     left: 50%;
     max-width: 318px;
@@ -87,10 +86,21 @@
 
 .air-datepicker.-inline- {
     position: absolute;
-    // bottom: 0;
     max-width: 318px;
     width: 100%;
     overflow: hidden;
-    // height: 100%;
-    
+}
+
+
+
+// Repaint style
+
+.air-datepicker-body--day-name {
+    color:#BC9CFF;
+}
+
+
+// Arrow
+.air-datepicker-nav--action path {
+
 }
