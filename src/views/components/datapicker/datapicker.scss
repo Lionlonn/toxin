@@ -38,7 +38,15 @@
     width: 150px;
     height: 44px;
     cursor: pointer;
+    text-indent: 15px
 }
+
+input::placeholder{
+    text-indent: 0;
+}
+
+
+
 
 .datapicker__arrival{
     margin-bottom: 5px;
@@ -94,13 +102,82 @@
 
 
 // Repaint style
+.air-datepicker-body--cells.-days-{
+    grid-auto-rows: 40px;
+}
 
+
+
+.air-datepicker-nav--title {
+    color: black;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
+}
+
+.air-datepicker-nav--title i{
+    color: black;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
+}
 .air-datepicker-body--day-name {
     color:#BC9CFF;
+    
 }
 
 
 // Arrow
-.air-datepicker-nav--action path {
 
+.air-datepicker-cell.-selected-{
+    color: white;
+    border: none; 
+    width: 40px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
 }
+
+
+
+
+.air-datepicker-cell:hover {
+    border: none;
+    width: 40px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+}
+
+.air-datepicker-cell.-selected-.-focus- {
+    border-radius: 22px;
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+}
+
+
+
+.air-datepicker-cell.-in-range- {
+    background-color: rgba(188, 156, 255, 0.25);
+    
+
+    
+}
+
+.air-datepicker-cell.-in-range-:hover{
+    background: rgba(188, 156, 255, 0.25);
+}
+
+//Buttons 
+.air-datepicker-button{
+    color: #BC9CFF;
+}
+
+.air-datepicker-cell.-range-from-:after {
+    background: -webkit-gradient(linear,left top,left bottom,from(rgba(188,156,255,.25)),to(rgba(139,164,249,.25)));
+    background: linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25));
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 20px;
+    z-index: -5;
+}
+
