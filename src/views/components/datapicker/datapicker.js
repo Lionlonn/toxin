@@ -45,10 +45,9 @@ document.addEventListener('click', (e) => {
 
 
 
-
  const datepick = new AirDatepicker('.dateTest',  {
     
-    
+    minDate: new Date(),
     inline: true,
     range: true,
     multipleDatesSeparator: ' - ',

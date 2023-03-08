@@ -99,7 +99,10 @@ input::placeholder{
     overflow: hidden;
 }
 
-
+//Arrow style 
+.air-datepicker-nav--action path {
+    stroke: #BC9CFF;
+}
 
 // Repaint style
 .air-datepicker-body--cells.-days-{
@@ -142,6 +145,11 @@ input::placeholder{
 
 
 .air-datepicker-cell.-current-{
+    color: #FFF;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
+.air-datepicker-cell.-selected-.-current- {
     color: #FFF;
     border-radius: 22px;
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
@@ -225,4 +233,9 @@ input::placeholder{
 .air-datepicker-cell .-month-:hover{
     border-radius: 0;
     background: black;
+}
+
+
+.air-datepicker-button:hover {
+    background: rgba(188, 156, 255, 0.25);
 }
