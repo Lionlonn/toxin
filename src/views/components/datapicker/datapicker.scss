@@ -104,9 +104,23 @@ input::placeholder{
 // Repaint style
 .air-datepicker-body--cells.-days-{
     grid-auto-rows: 40px;
+    
+}
+
+.air-datepicker-nav {
+    padding: 20px;
+    border-bottom: none;
 }
 
 
+.air-datepicker--content {
+    padding: 0 20px 0 20px;
+}
+
+
+.air-datepicker--buttons, .air-datepicker--time{
+    border-top: none;
+}
 
 .air-datepicker-nav--title {
     color: black;
@@ -127,7 +141,11 @@ input::placeholder{
 }
 
 
-// Arrow
+.air-datepicker-cell.-current-{
+    color: #FFF;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
 
 .air-datepicker-cell.-selected-{
     color: white;
@@ -147,6 +165,8 @@ input::placeholder{
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
 }
 
+
+
 .air-datepicker-cell.-selected-.-focus- {
     border-radius: 22px;
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
@@ -156,13 +176,20 @@ input::placeholder{
 
 .air-datepicker-cell.-in-range- {
     background-color: rgba(188, 156, 255, 0.25);
-    
+    border-radius: 0;
 
     
 }
 
+
+
 .air-datepicker-cell.-in-range-:hover{
     background: rgba(188, 156, 255, 0.25);
+    
+}
+
+.air-datepicker-cell .-weekend- .-day- .focus.-in-range-:hover{
+    border-radius: 0;
 }
 
 //Buttons 
@@ -181,3 +208,21 @@ input::placeholder{
     z-index: -5;
 }
 
+.air-datepicker-cell.-range-to-:before{
+    background: -webkit-gradient(linear,left top,left bottom,from(rgba(188,156,255,.25)),to(rgba(139,164,249,.25)));
+    background: linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25));
+    content: "";
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 20px;
+    z-index: -5;
+}
+
+
+// mouth
+
+.air-datepicker-cell .-month-:hover{
+    border-radius: 0;
+    background: black;
+}

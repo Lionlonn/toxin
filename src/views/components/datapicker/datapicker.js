@@ -15,7 +15,7 @@ const dataHere = document.querySelector('.dateTest');
 
 
 
-const openDatepicker = (e) => {
+const openDatepicker = () => {
     dataHere.classList.toggle('dateTest--opened');
 }
 
@@ -26,6 +26,12 @@ const openDatepicker = (e) => {
 dropDatapicker.addEventListener('click', (e) => {
     e.stopPropagation();
 })
+
+
+// Открытие через 2 input
+const fields = document.querySelectorAll('.datepicker-here');
+fields.forEach(field => field.addEventListener('click', openDatepicker));
+
 
 // клик снаружи
 const outClick = document.querySelectorAll('.datepicker-here');
@@ -44,10 +50,21 @@ document.addEventListener('click', (e) => {
     
     
     inline: true,
-    autoClose:true,
     range: true,
     multipleDatesSeparator: ' - ',
-    buttons: ['clear', 'apply'],
+    buttons: ['clear', {
+        
+        content: "Применить",
+        
+        onClick: openDatepicker,
+        
+
+
+        
+
+    }],
+    
+    
     onSelect(date)  {
         const firstDate = document.querySelector('#startDate');
         const lastDate = document.querySelector('#endDate');
@@ -76,7 +93,5 @@ document.addEventListener('click', (e) => {
 
 
 
-const fields = document.querySelectorAll('.datepicker-here');
-fields.forEach(field => field.addEventListener('click', openDatepicker));
 
 
