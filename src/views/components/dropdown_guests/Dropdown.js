@@ -113,14 +113,16 @@ class Dropdown {
     
     const dataText = document.querySelector('[data-action="plus"]');
     const DropdownText = document.querySelector('.dropdown__content');
-    const textCounter = document.querySelector('[data-counter]')
-    const textDrop = [
-      
-    ]
+    const textDrop = ['Гость', 'Гостей', 'Гостя'];
+    let counter = 0;
 
     dataText.addEventListener('click', () => {
-      DropdownText.innerText = 'd';
-      console.log('Ckick')
+      DropdownText.innerHTML = textDrop[counter];
+      counter++;
+      if (counter >= textDrop.length) {
+        counter = 0;
+        
+      }
       
       
       
