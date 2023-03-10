@@ -1,7 +1,7 @@
-
+const textDrop = require('plural-ru');
 //класс дропдауна
 class Dropdown {
-
+  
   constructor() {
     this.dicrements = []
     this.increments = []
@@ -74,11 +74,12 @@ class Dropdown {
   }
 
   //меняем текст поля
-  changeFieldContent(initialContent = 'Сколько гостей') {
-    this.field.innerText = this.totalCount > 0 ? this.totalCount : initialContent
-
+  changeFieldContent(content) {
+    this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько Гостей"
+    // field.innerText = textDrop(totalCount, '%d Гость', '%d Гостя', '%d Гостей');
     
   }
+  
 
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
@@ -108,33 +109,13 @@ class Dropdown {
     
   }
 
-  textValue(){
-    //подстановка текста по клику плюс, минус
-    
-    const dataText = document.querySelector('[data-action="plus"]');
-    const DropdownText = document.querySelector('.dropdown__content');
-    const textDrop = ['Гость', 'Гостей', 'Гостя'];
-    let counter = 0;
+  
 
-    dataText.addEventListener('click', () => {
-      DropdownText.innerHTML = textDrop[counter];
-      counter++;
-      if (counter >= textDrop.length) {
-        counter = 0;
-        
-      }
-      
-      
-      
-      
-    })
-    // dropDownListItems.forEach(function(listItem) {
-    //   listItem.addEventListener('click', (event) => {
-        
-    //   })
-    // }) 
+  textValue(){
+    
   }
   dataTextValue(){
+    
     // this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
     // this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
   }

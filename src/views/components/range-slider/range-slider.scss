@@ -1,3 +1,19 @@
-.range-body {
-    margin: 20px 100px;
+.range-slider {
+    // margin: 20px 100px;
+    width: 266px;
+    height: 50px;
+    margin: 50px;
+}
+
+.valueRange {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.valueRange input[type="number"]::-webkit-outer-spin-button,
+.valueRange input[type="number"]::-webkit-inner-spin-button {
+    -webpkit-appearance: none;
+    
 }

@@ -107,6 +107,12 @@
   justify-content: center;
   cursor: pointer;
   user-select: none;
+  &.minusDisabled {
+    border:1px solid #c4c4c4;
+    color: #c4c4c4;
+    cursor: default;
+    background-color: rgba(31, 32, 65, 0.05);
+  }
 }
 
 [data-action="plus"] {

@@ -38,6 +38,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "air-datepicker": "^3.3.3",
+    "plural-ru": "^2.0.2",
     "script-runner": "^0.1.8"
   }
 }
