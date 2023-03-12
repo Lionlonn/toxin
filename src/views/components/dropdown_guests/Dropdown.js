@@ -1,12 +1,18 @@
 const textDrop = require('plural-ru');
+
+const MAX_VALUE = 5
+const MIN_VALUE = 0
+
+const DECREMENT_SELECTOR = '[data-action="minus"]';
+
 //класс дропдауна
 class Dropdown {
   
   constructor() {
-    this.dicrements = []
-    this.increments = []
-    this.counters = []
-    this.totalCount = 0
+    this.dicrements = [];
+    this.increments = [];
+    this.counters = [];
+    this.totalCount = 0;
 
     this.init()
   }
@@ -18,8 +24,8 @@ class Dropdown {
     this.setField()
     this.attachControlListeners()
     this.setDropdown()
-    this.textValue()
-    this.dataTextValue()
+    this.checkCounters()
+    
   }
   
   setDropdown() {
@@ -38,11 +44,6 @@ class Dropdown {
         dropDownList.classList.toggle('dropdown__list--visible');
       })
 
-
-      
-
-      
-
       // Клик снаружи дропдауна
       const outsideClick = document.addEventListener('click', (event) => {
         if (event.target !== dropDownBtn) {
@@ -56,14 +57,10 @@ class Dropdown {
   }
   
   
-
-  
-  
-  
   //берем все минусы и плюсы
   setControls(){
 
-    this.dicrements = document.querySelectorAll('[data-action="minus"]')
+    this.dicrements = document.querySelectorAll(DECREMENT_SELECTOR)
     this.increments = document.querySelectorAll('[data-action="plus"]')
     this.counters = document.querySelectorAll('[data-counter]')
   }
@@ -74,12 +71,22 @@ class Dropdown {
   }
 
   //меняем текст поля
-  changeFieldContent(content) {
+  changeFieldContent() {
     this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько Гостей"
     
-    
   }
-  
+
+  checkCounters(){
+    this.counters.forEach((counter) =>{
+      if(counter.innerText == MIN_VALUE) {
+        const parent = counter.parentElement
+        const decrement = parent.querySelector(DECREMENT_SELECTOR)
+        this.disableElement(decrement)
+        
+      }
+    })
+  }
+
 
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
@@ -88,19 +95,41 @@ class Dropdown {
       
     //родительский элемент
     const parent = event.target.parentElement;
+    const decrement = parent.querySelector(DECREMENT_SELECTOR)
+    const increment = parent.querySelector('[data-action="plus"]')
+    this.enableElement(decrement)
+    this.enableElement(increment)
 
     //текущий каунтер и значение
     const currentCounter = parent.querySelector('[data-counter]')
-    const currentValue  = Number(currentCounter.innerText)
+    this.currentValue  = Number(currentCounter.innerText)
 
     //решаем прибавлять или убавлять значение
-    if (delta > 0 && currentValue < 5 || delta < 0 && currentValue !== 0) {
-        currentCounter.innerText = delta + currentValue;
+    if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
+        currentCounter.innerText = delta + this.currentValue;
+        this.currentValue = delta + this.currentValue
         this.totalCount += delta
+        this.changeFieldContent()
+    } 
+
+    if (this.currentValue === MAX_VALUE) {
+      this.disableElement(increment)
     }
 
-    this.changeFieldContent()
+    if (this.currentValue === MIN_VALUE) {
+      this.disableElement(decrement)
+    }
+
+    
   }}
+
+  disableElement(element){
+    element.classList.add('disabled')
+  }
+  
+  enableElement(element){
+    element.classList.remove('disabled')
+  }
 
 
   attachControlListeners(){
@@ -109,21 +138,9 @@ class Dropdown {
     
   }
 
-  
-
-  textValue(){
-    
-  }
-  dataTextValue(){
-    
-    
-  }
 
 }
 
   
-
-
-
 
 export default Dropdown
