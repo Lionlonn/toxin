@@ -76,7 +76,7 @@ class Dropdown {
   //меняем текст поля
   changeFieldContent(content) {
     this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько Гостей"
-    // field.innerText = textDrop(totalCount, '%d Гость', '%d Гостя', '%d Гостей');
+    
     
   }
   
@@ -116,8 +116,7 @@ class Dropdown {
   }
   dataTextValue(){
     
-    // this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
-    // this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
+    
   }
 
 }
