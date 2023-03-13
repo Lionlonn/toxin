@@ -4,6 +4,14 @@ const MAX_VALUE = 5
 const MIN_VALUE = 0
 
 const DECREMENT_SELECTOR = '[data-action="minus"]';
+const INCREMENT_SELECTOR = '[data-action="plus"]';
+const COUNTERS_SELECTOR = '[data-counter]'; 
+
+//Константы dropdown
+const DROPDOwN_CONTENT = '.dropdown__content';
+const DROPDOWN_LIST = '.dropdown__list';
+const DROPDOWN_LIST_ITEM = '.dropdown__list-item';
+const DROPDOWN_LIST_VISIBLE = 'dropdown__list--visible';
 
 //класс дропдауна
 class Dropdown {
@@ -30,9 +38,9 @@ class Dropdown {
   
   setDropdown() {
     this.dropdown = document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
-      const dropDownBtn = dropDownWrapper.querySelector('.dropdown__content');
-      const dropDownList = dropDownWrapper.querySelector('.dropdown__list');
-      const dropDownListItems = dropDownList.querySelectorAll('.dropdown__list-item');
+      const dropDownBtn = dropDownWrapper.querySelector(DROPDOwN_CONTENT);
+      const dropDownList = dropDownWrapper.querySelector(DROPDOWN_LIST);
+      const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM);
 
 
       dropDownList.addEventListener('click', (e) => {
@@ -41,13 +49,13 @@ class Dropdown {
 
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
-        dropDownList.classList.toggle('dropdown__list--visible');
+        dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE);
       })
 
       // Клик снаружи дропдауна
       const outsideClick = document.addEventListener('click', (event) => {
         if (event.target !== dropDownBtn) {
-          dropDownList.classList.remove('dropdown__list--visible')
+          dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE)
         }
       })
 
@@ -61,13 +69,13 @@ class Dropdown {
   setControls(){
 
     this.dicrements = document.querySelectorAll(DECREMENT_SELECTOR)
-    this.increments = document.querySelectorAll('[data-action="plus"]')
-    this.counters = document.querySelectorAll('[data-counter]')
+    this.increments = document.querySelectorAll(INCREMENT_SELECTOR)
+    this.counters = document.querySelectorAll(COUNTERS_SELECTOR)
   }
 
   //берем текст поля
   setField() {
-    this.field = document.querySelector('.dropdown__content')
+    this.field = document.querySelector(DROPDOwN_CONTENT);
   }
 
   //меняем текст поля
@@ -80,8 +88,8 @@ class Dropdown {
     this.counters.forEach((counter) =>{
       if(counter.innerText == MIN_VALUE) {
         const parent = counter.parentElement
-        const decrement = parent.querySelector(DECREMENT_SELECTOR)
-        this.disableElement(decrement)
+        const dicrement = parent.querySelector(DECREMENT_SELECTOR)
+        this.disableElement(dicrement)
         
       }
     })
@@ -95,13 +103,13 @@ class Dropdown {
       
     //родительский элемент
     const parent = event.target.parentElement;
-    const decrement = parent.querySelector(DECREMENT_SELECTOR)
-    const increment = parent.querySelector('[data-action="plus"]')
-    this.enableElement(decrement)
+    const dicrement = parent.querySelector(DECREMENT_SELECTOR)
+    const increment = parent.querySelector(INCREMENT_SELECTOR)
+    this.enableElement(dicrement)
     this.enableElement(increment)
 
     //текущий каунтер и значение
-    const currentCounter = parent.querySelector('[data-counter]')
+    const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
     this.currentValue  = Number(currentCounter.innerText)
 
     //решаем прибавлять или убавлять значение
@@ -117,7 +125,7 @@ class Dropdown {
     }
 
     if (this.currentValue === MIN_VALUE) {
-      this.disableElement(decrement)
+      this.disableElement(dicrement)
     }
 
     
