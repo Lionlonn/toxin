@@ -39,7 +39,7 @@ class Dropdown {
     this.setDropdown()
     this.checkCounters()
     this.applyButtons()
-    this.closeButtons()
+    
   }
   
   setDropdown() {
@@ -125,14 +125,17 @@ class Dropdown {
         this.currentValue = delta + this.currentValue
         this.totalCount += delta
         this.changeFieldContent()
+        this.closeButton()
     } 
 
     if (this.currentValue === MAX_VALUE) {
       this.disableElement(increment)
+      
     }
 
     if (this.currentValue === MIN_VALUE) {
       this.disableElement(dicrement)
+      this.closeRemoveButton(dicrement)
     }
 
     
@@ -159,6 +162,14 @@ class Dropdown {
     closeApply.addEventListener('click', () => {
       applyRemove.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR);
     })
+  }
+  closeButton() {
+    const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
+    buttonClear.classList.add('button-clear--visible');
+  }
+  closeRemoveButton() {
+    const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
+    buttonClear.classList.remove('button-clear--visible');
   }
 
 

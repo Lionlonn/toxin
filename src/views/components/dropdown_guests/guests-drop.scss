@@ -163,6 +163,12 @@
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+  display: none;
+}
+
+.button-clear--visible {
+  display: block;
+  
 }
 
 .button-apply {
@@ -172,7 +178,11 @@
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+  margin-left: auto;
 }
+
+
+
 
 
 //button End
