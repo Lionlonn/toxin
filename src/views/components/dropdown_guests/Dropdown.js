@@ -7,11 +7,16 @@ const DECREMENT_SELECTOR = '[data-action="minus"]';
 const INCREMENT_SELECTOR = '[data-action="plus"]';
 const COUNTERS_SELECTOR = '[data-counter]'; 
 
-//Константы dropdown
-const DROPDOwN_CONTENT = '.dropdown__content';
-const DROPDOWN_LIST = '.dropdown__list';
-const DROPDOWN_LIST_ITEM = '.dropdown__list-item';
-const DROPDOWN_LIST_VISIBLE = 'dropdown__list--visible';
+// dropdown constants
+const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
+const DROPDOWN_LIST_SELECTOR = '.dropdown__list';
+const DROPDOWN_LIST_ITEM_SELECTOR = '.dropdown__list-item';
+const DROPDOWN_LIST_VISIBLE_SELECTOR = 'dropdown__list--visible';
+
+
+//Buttons constants
+const BUTTONS_CLEAR_SELECTOR = '.button-clear';
+const BUTTONS_APPLY_SELECTOR = '.button-apply';
 
 //класс дропдауна
 class Dropdown {
@@ -33,14 +38,15 @@ class Dropdown {
     this.attachControlListeners()
     this.setDropdown()
     this.checkCounters()
-    
+    this.applyButtons()
+    this.closeButtons()
   }
   
   setDropdown() {
     this.dropdown = document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
-      const dropDownBtn = dropDownWrapper.querySelector(DROPDOwN_CONTENT);
-      const dropDownList = dropDownWrapper.querySelector(DROPDOWN_LIST);
-      const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM);
+      const dropDownBtn = dropDownWrapper.querySelector(DROPDOwN_CONTENT_SELECTOR);
+      const dropDownList = dropDownWrapper.querySelector(DROPDOWN_LIST_SELECTOR);
+      const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM_SELECTOR);
 
 
       dropDownList.addEventListener('click', (e) => {
@@ -49,13 +55,13 @@ class Dropdown {
 
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
-        dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE);
+        dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
       })
 
       // Клик снаружи дропдауна
       const outsideClick = document.addEventListener('click', (event) => {
         if (event.target !== dropDownBtn) {
-          dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE)
+          dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
         }
       })
 
@@ -75,7 +81,7 @@ class Dropdown {
 
   //берем текст поля
   setField() {
-    this.field = document.querySelector(DROPDOwN_CONTENT);
+    this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
   }
 
   //меняем текст поля
@@ -84,6 +90,7 @@ class Dropdown {
     
   }
 
+  //disabled counters
   checkCounters(){
     this.counters.forEach((counter) =>{
       if(counter.innerText == MIN_VALUE) {
@@ -144,6 +151,14 @@ class Dropdown {
     this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
     this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
     
+  }
+
+  applyButtons() {
+    const closeApply = document.querySelector(BUTTONS_APPLY_SELECTOR);
+    const applyRemove = document.querySelector(DROPDOWN_LIST_SELECTOR);
+    closeApply.addEventListener('click', () => {
+      applyRemove.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR);
+    })
   }
 
 

@@ -97,7 +97,7 @@
 
 
 [data-action="minus"] {
-  color: rgba(31, 32, 65, 0.25);
+  color: rgba(31, 32, 65, 0.5);
   width: 30px;
   height: 30px;
   outline: 1px solid rgba(31, 32, 65, 0.25);
@@ -111,15 +111,14 @@
 }
 
 .disabled{
-  border:1px solid #c4c4c4;
-  color: #c4c4c4;
+  border: 1px solid rgba(31, 32, 65, 0.25);
   pointer-events: none;
   cursor: default;
-  background-color: rgba(31, 32, 65, 0.05);
+  
 }
 
 [data-action="plus"] {
-  color: rgba(31, 32, 65, 0.25);
+  color: rgba(31, 32, 65, 0.5);
   width: 30px;
   height: 30px;
   outline: 1px solid rgba(31, 32, 65, 0.25);
@@ -146,3 +145,34 @@
 [data-action="plus"]:active {
   background-color: rgba(31, 32, 65, 0.25);
 }
+
+
+// Buttons start
+
+.dropdown__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px; 
+}
+
+.button-clear {
+  background: none;
+  color: #BC9CFF;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+.button-apply {
+  background: none;
+  color: #BC9CFF;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+
+//button End

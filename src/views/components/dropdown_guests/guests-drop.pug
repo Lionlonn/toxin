@@ -1,13 +1,3 @@
-mixin dropdown(props = {})
-  -
-    const {
-      label = '',
-      subLabel = '',
-      size = 'lg',
-      type = 'guest',
-      data = {}, 
-      state = ''
-    } = props
 
 
 .form-group 
@@ -35,6 +25,9 @@ mixin dropdown(props = {})
                     .items__control(data-counter) 0
                     .items__control(data-action="plus") +
                     //- счетчик
+            .dropdown__buttons 
+                button.button-clear Очистить 
+                button.button-apply Применить
         input.dropdown__input-hidden(type="text" name="select-category" value="")
 
 
