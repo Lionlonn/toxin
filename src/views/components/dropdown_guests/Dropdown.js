@@ -136,8 +136,11 @@ class Dropdown {
     if (this.currentValue === MIN_VALUE) {
       this.disableElement(dicrement)
       this.closeRemoveButton(dicrement)
+      
+      
     }
 
+    
     
   }}
 
@@ -163,13 +166,32 @@ class Dropdown {
       applyRemove.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR);
     })
   }
+
+  resetContent() {
+    
+    
+    const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
+    const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
+      this.totalCount = 0;
+      zeroText.innerText = 0;
+    })
+    
+  }
+
   closeButton() {
     const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
+    
     buttonClear.classList.add('button-clear--visible');
+    buttonClear.addEventListener('click', () => {
+      
+      this.resetContent()
+      
+    })
   }
   closeRemoveButton() {
     const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
     buttonClear.classList.remove('button-clear--visible');
+
   }
 
 
