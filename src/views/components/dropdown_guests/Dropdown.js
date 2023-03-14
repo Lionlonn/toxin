@@ -39,7 +39,7 @@ class Dropdown {
     this.setDropdown()
     this.checkCounters()
     this.applyButtons()
-    
+    this.closeButton()
   }
   
   setDropdown() {
@@ -108,7 +108,7 @@ class Dropdown {
   handelChangeCounter (delta) { 
     return (event) => {
       
-    //родительский элемент
+    
     const parent = event.target.parentElement;
     const dicrement = parent.querySelector(DECREMENT_SELECTOR)
     const increment = parent.querySelector(INCREMENT_SELECTOR)
@@ -130,18 +130,12 @@ class Dropdown {
 
     if (this.currentValue === MAX_VALUE) {
       this.disableElement(increment)
-      
-    }
+    } 
 
     if (this.currentValue === MIN_VALUE) {
       this.disableElement(dicrement)
-      this.closeRemoveButton(dicrement)
       
-      
-    }
-
-    
-    
+    }  
   }}
 
   disableElement(element){
@@ -168,14 +162,17 @@ class Dropdown {
   }
 
   resetContent() {
-    
-    
     const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
     const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
       this.totalCount = 0;
       zeroText.innerText = 0;
     })
-    
+    const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
+      disableMinus.classList.add('disabled')
+    });
+    const resetDisablePlus = document.querySelectorAll(INCREMENT_SELECTOR).forEach((enablePlus) => {
+      enablePlus.classList.remove('disabled');
+    });
   }
 
   closeButton() {
@@ -183,7 +180,6 @@ class Dropdown {
     
     buttonClear.classList.add('button-clear--visible');
     buttonClear.addEventListener('click', () => {
-      
       this.resetContent()
       
     })
