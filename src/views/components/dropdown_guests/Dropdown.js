@@ -26,6 +26,7 @@ class Dropdown {
     this.increments = [];
     this.counters = [];
     this.totalCount = 0;
+    this.babyCount = 0;
 
     this.init()
   }
@@ -37,7 +38,7 @@ class Dropdown {
     this.setField()
     this.attachControlListeners()
     this.setDropdown()
-    this.checkCounters()
+    this.babyText()
     this.applyButtons()
     // this.closeButton()
   }
@@ -90,19 +91,26 @@ class Dropdown {
     
   }
 
-  //disabled counters
-  checkCounters(){
-    this.counters.forEach((counter) =>{
-      if(counter.innerText == MIN_VALUE) {
-        const parent = counter.parentElement
-        const dicrement = parent.querySelector(DECREMENT_SELECTOR)
-        this.disableElement(dicrement)
-        
-      }
+  //click baby text
+  babyText() {
+    const babyChild = document.querySelector('[data-value="infants"]')
+    const babyElementChild = babyChild.lastChild;
+    
+    const babyClick = babyElementChild.querySelector(INCREMENT_SELECTOR);
+    babyClick.addEventListener('click', () => { 
+      console.log('Baby click');
+      this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Младенец', '%d Младенца', '%d Младенцев') : "Сколько гостей"
     })
+    
+    
+    
+    
+    
+
+    
+    
   }
-
-
+  
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
   handelChangeCounter (delta) { 
