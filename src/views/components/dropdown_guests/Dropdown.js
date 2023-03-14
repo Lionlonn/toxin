@@ -39,7 +39,7 @@ class Dropdown {
     this.setDropdown()
     this.checkCounters()
     this.applyButtons()
-    this.closeButton()
+    // this.closeButton()
   }
   
   setDropdown() {
@@ -134,6 +134,7 @@ class Dropdown {
 
     if (this.currentValue === MIN_VALUE) {
       this.disableElement(dicrement)
+      this.closeRemoveButton()
       
     }  
   }}
@@ -173,6 +174,8 @@ class Dropdown {
     const resetDisablePlus = document.querySelectorAll(INCREMENT_SELECTOR).forEach((enablePlus) => {
       enablePlus.classList.remove('disabled');
     });
+    this.closeRemoveButton();
+    
   }
 
   closeButton() {
@@ -185,8 +188,8 @@ class Dropdown {
     })
   }
   closeRemoveButton() {
-    const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
-    buttonClear.classList.remove('button-clear--visible');
+    const buttonClearRemove = document.querySelector(BUTTONS_CLEAR_SELECTOR);
+    buttonClearRemove.classList.remove('button-clear--visible');
 
   }
 
