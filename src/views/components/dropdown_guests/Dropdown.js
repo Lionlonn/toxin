@@ -38,7 +38,7 @@ class Dropdown {
     this.setField()
     this.attachControlListeners()
     this.setDropdown()
-    this.babyText()
+    // this.babyText()
     this.applyButtons()
     // this.closeButton()
   }
@@ -91,25 +91,36 @@ class Dropdown {
     
   }
 
+
+  changeFieldBaby() {
+    this.field.innerText = this.babyCount ? textDrop(this.babyCount, '%d Младенец', '%d Младенца', '%d Младенцев') : "Сколько гостей"
+  }
+
+  sumText() {
+    
+    // this.field.innerText = this.changeFieldContent() + ", " + this.changeFieldBaby();
+    this.field.innerText = this.totalCount + ", " + this.babyCount;
+  }
+
   //click baby text
   babyText() {
     const babyChild = document.querySelector('[data-value="infants"]')
     const babyElementChild = babyChild.lastChild;
     
-    const babyClick = babyElementChild.querySelector(INCREMENT_SELECTOR);
-    babyClick.addEventListener('click', () => { 
-      console.log('Baby click');
-      this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Младенец', '%d Младенца', '%d Младенцев') : "Сколько гостей"
+    const babyIncrement = babyElementChild.querySelector(INCREMENT_SELECTOR);
+    const babyDicrement = babyElementChild.querySelector(DECREMENT_SELECTOR);
+    babyIncrement.addEventListener('click', () => {
+      this.sumText()
+      
     })
-    
-    
-    
-    
-    
-
-    
-    
+    babyDicrement.addEventListener('click', () => {
+      this.sumText()
+    })
+     
+   
   }
+
+  
   
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
@@ -126,25 +137,38 @@ class Dropdown {
     //текущий каунтер и значение
     const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
     this.currentValue  = Number(currentCounter.innerText)
+    
+    // this.babyValue = Number(currentCounter.innerText)
 
     //решаем прибавлять или убавлять значение
     if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
         currentCounter.innerText = delta + this.currentValue;
-        this.currentValue = delta + this.currentValue
-        this.totalCount += delta
-        this.changeFieldContent()
+        this.currentValue = delta + this.currentValue;
+        this.totalCount += delta;
+        this.babyCount += delta;
+
+        
         this.closeButton()
+        this.babyText() 
+        this.changeFieldBaby()
+        this.changeFieldContent();
     } 
 
     if (this.currentValue === MAX_VALUE) {
       this.disableElement(increment)
+      
     } 
 
     if (this.currentValue === MIN_VALUE) {
       this.disableElement(dicrement)
       this.closeRemoveButton()
       
-    }  
+      
+    } 
+
+    
+     
+    
   }}
 
   disableElement(element){
@@ -162,6 +186,8 @@ class Dropdown {
     
   }
 
+  //BUTONS
+
   applyButtons() {
     const closeApply = document.querySelector(BUTTONS_APPLY_SELECTOR);
     const applyRemove = document.querySelector(DROPDOWN_LIST_SELECTOR);
@@ -174,6 +200,7 @@ class Dropdown {
     const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
     const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
       this.totalCount = 0;
+      this.babyCount = 0;
       zeroText.innerText = 0;
     })
     const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
@@ -182,8 +209,6 @@ class Dropdown {
     const resetDisablePlus = document.querySelectorAll(INCREMENT_SELECTOR).forEach((enablePlus) => {
       enablePlus.classList.remove('disabled');
     });
-    this.closeRemoveButton();
-    
   }
 
   closeButton() {
@@ -192,7 +217,7 @@ class Dropdown {
     buttonClear.classList.add('button-clear--visible');
     buttonClear.addEventListener('click', () => {
       this.resetContent()
-      
+      this.closeRemoveButton();
     })
   }
   closeRemoveButton() {
