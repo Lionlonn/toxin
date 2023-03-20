@@ -45,9 +45,7 @@ class Dropdown {
     this.setField()
     this.attachControlListeners()
     this.setDropdown()
-    // this.babyText()
     this.applyButtons()
-    // this.closeButton()
   }
   
   setDropdown() {
@@ -103,20 +101,6 @@ class Dropdown {
     // this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько гостей"
     
   }
-
-
-  changeFieldBaby() {
-    this.field.innerText = this.babyCount ? textDrop(this.babyCount, '%d Младенец', '%d Младенца', '%d Младенцев') : "Сколько гостей"
-  }
-
-  sumText() {
-    
-    // this.field.innerText = this.changeFieldContent() + ", " + this.changeFieldBaby();
-    this.field.innerText = this.totalCount + ", " + this.babyCount;
-    
-    
-  }
-
   //click baby text
   babyText() {
     const babyChild = document.querySelector('[data-value="infants"]')
@@ -150,10 +134,6 @@ class Dropdown {
     const type = currentCounter.dataset.type;
     
     this.currentValue  = Number(currentCounter.innerText)
-    console.log(this.countersArray.baby);
-    console.log(type);
-    
-    
     // this.babyValue = Number(currentCounter.innerText)
     
     //решаем прибавлять или убавлять значение
@@ -214,9 +194,12 @@ class Dropdown {
   resetContent() {
     const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
     const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
+      
       this.totalCount = 0;
-      this.countersArray[type] = 0;
       zeroText.innerText = 0;
+      this.counters = 0;
+      this.countersArray.baby = 0;
+      
     })
     const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
       disableMinus.classList.add('disabled')
