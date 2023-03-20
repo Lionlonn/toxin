@@ -1,6 +1,6 @@
 import Dropdown from './Dropdown'
 
-
+// import DropdownTest from './DropdownTest'
 //index.js
 
 // document.querySelectorAll('.dropdown').forEach(function (dropDownWrapper) {
@@ -52,5 +52,9 @@ import Dropdown from './Dropdown'
 //shared dropdown 
 new Dropdown()
 
+// function handleButtonClick(index) {
+//   counters[index].count++;
+//   console.log(`${counters[index].name} count: ${counters[index].count}`);
+// }
 
 

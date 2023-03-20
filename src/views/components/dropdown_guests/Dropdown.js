@@ -5,7 +5,9 @@ const MIN_VALUE = 0
 
 const DECREMENT_SELECTOR = '[data-action="minus"]';
 const INCREMENT_SELECTOR = '[data-action="plus"]';
-const COUNTERS_SELECTOR = '[data-counter]'; 
+const COUNTERS_SELECTOR = '[data-type]'; 
+
+
 
 // dropdown constants
 const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
@@ -24,9 +26,14 @@ class Dropdown {
   constructor() {
     this.dicrements = [];
     this.increments = [];
-    this.counters = [];
+    this.countersArray = {
+      adult:0,
+      children:0,
+      baby:0,
+    }
+    
     this.totalCount = 0;
-    this.babyCount = 0;
+    
 
     this.init()
   }
@@ -78,6 +85,8 @@ class Dropdown {
     this.dicrements = document.querySelectorAll(DECREMENT_SELECTOR)
     this.increments = document.querySelectorAll(INCREMENT_SELECTOR)
     this.counters = document.querySelectorAll(COUNTERS_SELECTOR)
+    
+
   }
 
   //берем текст поля
@@ -87,7 +96,11 @@ class Dropdown {
 
   //меняем текст поля
   changeFieldContent() {
-    this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько Гостей"
+    const text = `${textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей')} ${this.countersArray.baby > 0 ? textDrop(this.countersArray.baby , '%d Младенец', '%d Младенца', '%d Младенцев'): ""}`
+    this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
+
+    
+    // this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько гостей"
     
   }
 
@@ -100,30 +113,28 @@ class Dropdown {
     
     // this.field.innerText = this.changeFieldContent() + ", " + this.changeFieldBaby();
     this.field.innerText = this.totalCount + ", " + this.babyCount;
+    
+    
   }
 
   //click baby text
   babyText() {
     const babyChild = document.querySelector('[data-value="infants"]')
     const babyElementChild = babyChild.lastChild;
+    const lastCounter = babyElementChild.querySelector(COUNTERS_SELECTOR)
+
+    
     
     const babyIncrement = babyElementChild.querySelector(INCREMENT_SELECTOR);
     const babyDicrement = babyElementChild.querySelector(DECREMENT_SELECTOR);
-    babyIncrement.addEventListener('click', () => {
-      this.sumText()
-      
-    })
-    babyDicrement.addEventListener('click', () => {
-      this.sumText()
-    })
-     
-   
   }
 
   
   
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
+ 
+
   handelChangeCounter (delta) { 
     return (event) => {
       
@@ -136,22 +147,27 @@ class Dropdown {
 
     //текущий каунтер и значение
     const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
+    const type = currentCounter.dataset.type;
+    
     this.currentValue  = Number(currentCounter.innerText)
+    console.log(this.countersArray.baby);
+    console.log(type);
+    
     
     // this.babyValue = Number(currentCounter.innerText)
-
+    
     //решаем прибавлять или убавлять значение
     if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
         currentCounter.innerText = delta + this.currentValue;
         this.currentValue = delta + this.currentValue;
+        this.countersArray[type] += delta;
         this.totalCount += delta;
-        this.babyCount += delta;
-
         
-        this.closeButton()
-        this.babyText() 
-        this.changeFieldBaby()
+        
+       
+        // this.babyText() 
         this.changeFieldContent();
+        this.closeButton()
     } 
 
     if (this.currentValue === MAX_VALUE) {
@@ -164,10 +180,7 @@ class Dropdown {
       this.closeRemoveButton()
       
       
-    } 
-
-    
-     
+    }
     
   }}
 
@@ -183,6 +196,8 @@ class Dropdown {
   attachControlListeners(){
     this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
     this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
+
+    
     
   }
 
@@ -200,7 +215,7 @@ class Dropdown {
     const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
     const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
       this.totalCount = 0;
-      this.babyCount = 0;
+      this.countersArray[type] = 0;
       zeroText.innerText = 0;
     })
     const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
