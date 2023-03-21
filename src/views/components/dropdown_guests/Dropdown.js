@@ -31,7 +31,6 @@ class Dropdown {
       children:0,
       baby:0,
     }
-    
     this.totalCount = 0;
     
 
@@ -62,6 +61,9 @@ class Dropdown {
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
         dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
+        
+        this.resetContent()
+        // console.log(this.currentValue);
       })
 
       // Клик снаружи дропдауна
@@ -96,29 +98,11 @@ class Dropdown {
   changeFieldContent() {
     const text = `${textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей')} ${this.countersArray.baby > 0 ? textDrop(this.countersArray.baby , '%d Младенец', '%d Младенца', '%d Младенцев'): ""}`
     this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
-
-    
-    // this.field.innerText = this.totalCount ? textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей' ) : "Сколько гостей"
-    
   }
-  //click baby text
-  babyText() {
-    const babyChild = document.querySelector('[data-value="infants"]')
-    const babyElementChild = babyChild.lastChild;
-    const lastCounter = babyElementChild.querySelector(COUNTERS_SELECTOR)
-
-    
-    
-    const babyIncrement = babyElementChild.querySelector(INCREMENT_SELECTOR);
-    const babyDicrement = babyElementChild.querySelector(DECREMENT_SELECTOR);
-  }
-
-  
-  
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
  
-
+  
   handelChangeCounter (delta) { 
     return (event) => {
       
@@ -128,13 +112,14 @@ class Dropdown {
     const increment = parent.querySelector(INCREMENT_SELECTOR)
     this.enableElement(dicrement)
     this.enableElement(increment)
-
+    
+    
     //текущий каунтер и значение
     const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
+    this.currentValue  = Number(currentCounter.innerText)
     const type = currentCounter.dataset.type;
     
-    this.currentValue  = Number(currentCounter.innerText)
-    // this.babyValue = Number(currentCounter.innerText)
+    
     
     //решаем прибавлять или убавлять значение
     if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
@@ -143,11 +128,10 @@ class Dropdown {
         this.countersArray[type] += delta;
         this.totalCount += delta;
         
-        
-       
-        // this.babyText() 
+        console.log(this.currentValue);
         this.changeFieldContent();
-        this.closeButton()
+        this.ClearButton()
+        
     } 
 
     if (this.currentValue === MAX_VALUE) {
@@ -159,7 +143,7 @@ class Dropdown {
       this.disableElement(dicrement)
       this.closeRemoveButton()
       
-      
+      // console.log(this.currentValue);
     }
     
   }}
@@ -194,26 +178,36 @@ class Dropdown {
   resetContent() {
     const zeroText = document.querySelector(DROPDOwN_CONTENT_SELECTOR).innerText = "Сколько гостей";
     const zeroNumber = document.querySelectorAll(COUNTERS_SELECTOR).forEach((zeroText) => {
-      
+      this.currentValue = 0;
       this.totalCount = 0;
       zeroText.innerText = 0;
       this.counters = 0;
       this.countersArray.baby = 0;
+     
       
     })
-    const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
-      disableMinus.classList.add('disabled')
-    });
-    const resetDisablePlus = document.querySelectorAll(INCREMENT_SELECTOR).forEach((enablePlus) => {
-      enablePlus.classList.remove('disabled');
-    });
+
+    if (this.currentValue === MIN_VALUE) {
+      const resetDisableMinus = document.querySelectorAll(DECREMENT_SELECTOR).forEach((disableMinus) => {
+        disableMinus.classList.add('disabled')
+      });
+    }
+    if (this.currentValue < MAX_VALUE) {
+      const resetDisablePlus = document.querySelectorAll(INCREMENT_SELECTOR).forEach((enablePlus) => {
+        enablePlus.classList.remove('disabled');
+      });
+    }
+    
   }
 
-  closeButton() {
+  
+
+  ClearButton() {
     const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
     
     buttonClear.classList.add('button-clear--visible');
     buttonClear.addEventListener('click', () => {
+      
       this.resetContent()
       this.closeRemoveButton();
     })
