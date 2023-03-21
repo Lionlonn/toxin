@@ -32,7 +32,7 @@
 
 
 
-.datepicker-here{
+.datepicker-input{
     border: 1px solid rgba(31, 32, 65, 0.25);
     border-radius: 4px;
     width: 150px;
@@ -69,7 +69,7 @@ input::placeholder{
     text-transform: uppercase;
 }
 
-.datepicker-here::placeholder{
+.datepicker-input::placeholder{
     padding: 11px 32px 8px 15px;
     text-transform: uppercase;
 }
@@ -90,7 +90,7 @@ input::placeholder{
     top: 269px;
 }
 
-.dateTest--opened {
+.air-datepicker--opened {
     display: block;
     
 }

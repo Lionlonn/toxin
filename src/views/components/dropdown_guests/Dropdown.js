@@ -63,7 +63,7 @@ class Dropdown {
         dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
         
         this.resetContent()
-        // console.log(this.currentValue);
+        
       })
 
       // Клик снаружи дропдауна
@@ -143,7 +143,7 @@ class Dropdown {
       this.disableElement(dicrement)
       this.closeRemoveButton()
       
-      // console.log(this.currentValue);
+      
     }
     
   }}
