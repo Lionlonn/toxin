@@ -1,12 +1,17 @@
+
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { Input } from 'postcss';
 
 
+
 const DATEPICKER_INPUT_SELECTOR = ".datepicker-input";
 const DROP_DATAPICKER_SELECTOR = ".datepicker";
-const AIR_DATEPICKER_SELECTOR = '.dateTest';
+const AIR_DATEPICKER_SELECTOR = '.datepicker-wrapper';
 const AIR_DATEPICKER_VISIBLE_SELECTOR = "air-datepicker--opened";
+
+
+
 
 
 //Открытие календаря
@@ -41,16 +46,14 @@ document.addEventListener('click', (e) => {
     }
 })
 
+
  const datepick = new AirDatepicker(AIR_DATEPICKER_SELECTOR,  {
     
     minDate: new Date(),
     inline: true,
     range: true,
     multipleDatesSeparator: ' - ',
-    buttons: [{
-        content: "Очистить",
-
-    }, {
+    buttons: [ 'clear', {
         content: "Применить",
         onClick: openDatepicker,
     }],
@@ -66,12 +69,8 @@ document.addEventListener('click', (e) => {
             lastDate.value = end;
             
             
-        }
+        } 
     }
     
 })
-
-
-
-
 

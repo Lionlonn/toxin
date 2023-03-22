@@ -78,7 +78,7 @@ input::placeholder{
 
 
 
-.dateTest {
+.datepicker-wrapper {
     position: absolute;
     display: none;
     height: 100%;
@@ -206,10 +206,7 @@ input::placeholder{
     border-radius: 0;
 }
 
-//Buttons 
-.air-datepicker-button{
-    color: #BC9CFF;
-}
+
 
 .air-datepicker-cell.-range-from-:after {
     background: -webkit-gradient(linear,left top,left bottom,from(rgba(188,156,255,.25)),to(rgba(139,164,249,.25)));
@@ -236,12 +233,22 @@ input::placeholder{
 
 // mouth
 
-.air-datepicker-cell .-month-:hover{
-    border-radius: 0;
-    background: black;
+.air-datepicker-body--cells.-months-{
+    justify-items: center;
 }
 
+.air-datepicker-cell.-month-, .air-datepicker-cell.-year- {
+    height: 40px;
+    width: 40px;
+    
+}
 
 .air-datepicker-button:hover {
     background: rgba(188, 156, 255, 0.25);
+}
+
+
+//Buttons 
+.air-datepicker-button{
+    color: #BC9CFF;
 }
