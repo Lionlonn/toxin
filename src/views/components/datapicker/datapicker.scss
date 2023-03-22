@@ -243,6 +243,20 @@ input::placeholder{
     
 }
 
+.air-datepicker-cell.-range-to-.-range-from-{
+    border-radius: 50%;
+    
+}
+
+.air-datepicker-cell.-range-to-.-range-from-::after{
+    content: none;
+}
+
+.air-datepicker-cell.-range-to-.-range-from-::before{
+    content: none;
+}
+
+
 .air-datepicker-button:hover {
     background: rgba(188, 156, 255, 0.25);
 }
