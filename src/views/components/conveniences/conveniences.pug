@@ -1,0 +1,29 @@
+.form-group
+    .dropdown
+        .dropdown__content Удобства 
+        ul.dropdown__list
+            li.dropdown__list-item(data-value="bedroom")  СПАЛЬНИ 
+                .details-counter.counter-wrapper
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="bedrooms") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            li.dropdown__list-item(data-value="bed")  КРОВАТИ
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="beds") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            li.dropdown__list-item(data-value="bath")  ВАННЫЕ КОМНАТЫ
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="baths") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            .dropdown__buttons 
+                button.button-clear Очистить 
+                button.button-apply Применить
+        input.dropdown__input-hidden(type="text" name="select-category" value="")
