@@ -14,6 +14,7 @@ const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
 const DROPDOWN_LIST_SELECTOR = '.dropdown__list';
 const DROPDOWN_LIST_ITEM_SELECTOR = '.dropdown__list-item';
 const DROPDOWN_LIST_VISIBLE_SELECTOR = 'dropdown__list--visible';
+const DROPDOWN_CONTENT_ANIMATION_ARROW = 'animation-arrow'
 
 
 //Buttons constants
@@ -61,15 +62,17 @@ class Dropdown {
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
         dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
-        
         this.resetContent()
-        
-      })
+
+        dropDownBtn.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
+      }
+      )
 
       // Клик снаружи дропдауна
       const outsideClick = document.addEventListener('click', (event) => {
         if (event.target !== dropDownBtn) {
           dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
+          dropDownBtn.classList.remove(DROPDOWN_CONTENT_ANIMATION_ARROW)
         }
       })
 
