@@ -4,6 +4,8 @@ import './views/layout/main-page.pug';
 import './views/components/datapicker/datapicker';
 import './views/components/like-button/like';
 import './views/components/dropdown_guests';
+import './views/components/conveniences';
+
 // import './views/components/conveniences/conveniences'
 
 

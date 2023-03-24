@@ -1,4 +1,4 @@
-const textDrop = require('plural-ru');
+const plural = require('plural-ru');
 
 const MAX_VALUE = 5
 const MIN_VALUE = 0
@@ -21,21 +21,32 @@ const DROPDOWN_CONTENT_ANIMATION_ARROW = 'animation-arrow'
 const BUTTONS_CLEAR_SELECTOR = '.button-clear';
 const BUTTONS_APPLY_SELECTOR = '.button-apply';
 
+function pluralValue(count, values){
+  const [value1, value2, value3] = values
+
+  return plural(count, `%d ${value1}`, `%d ${value2}`, `%d ${value3}`)
+}
+
 //класс дропдауна
 class Dropdown {
   
-  constructor() {
+  constructor(props) {
+    const test = Object.entries(props.fields).map(test1 => {
+      const [key, value] = test1;
+      return [key, {...value, count: 0}]
+    })
+    this.props = {shared_value: props.shared_value, fields:{...Object.fromEntries(test)}}
+    console.log(this.props);
     this.dicrements = [];
     this.increments = [];
-    this.countersArray = {
-      adult:0,
-      children:0,
-      baby:0,
-    }
+    // this.countersArray = Object.keys((key)=>({[key]: 0}))
+    // console.log(this.countersArray);
+
     this.totalCount = 0;
     
 
     this.init()
+
   }
 
   //инициализация всех элементов
@@ -97,9 +108,20 @@ class Dropdown {
     this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
   }
 
+
   //меняем текст поля
-  changeFieldContent() {
-    const text = `${textDrop(this.totalCount, '%d Гость', '%d Гостя', '%d Гостей')} ${this.countersArray.baby > 0 ? textDrop(this.countersArray.baby , '%d Младенец', '%d Младенца', '%d Младенцев'): ""}`
+  changeFieldContent(type) {
+    const field = this.props.fields[type]
+    const {shared_value} = this.props
+    const {separated_value} = field 
+
+    const separated_elements = Object.values(this.props.fields).filter((field)=>field.separated_values)
+
+    const separated_text = separated_elements.map((element)=> element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join('')
+
+    const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
+    
+    // const text =  ${this.countersArray.baby > 0 ? plural(this.countersArray.baby , '%d Младенец', '%d Младенца', '%d Младенцев'): ""}`
     this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
   }
   //обработчик для плюсов и минусов
@@ -128,12 +150,12 @@ class Dropdown {
     if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
         currentCounter.innerText = delta + this.currentValue;
         this.currentValue = delta + this.currentValue;
-        this.countersArray[type] += delta;
+        this.props.fields[type].count += delta;
         this.totalCount += delta;
         
-        console.log(this.currentValue);
-        this.changeFieldContent();
-        this.ClearButton()
+        
+        this.changeFieldContent(type);
+        this.clearButton()
         
     } 
 
@@ -142,11 +164,9 @@ class Dropdown {
       
     } 
 
-    if (this.currentValue === MIN_VALUE) {
+    if (this.totalCount === MIN_VALUE) {
       this.disableElement(dicrement)
       this.closeRemoveButton()
-      
-      
     }
     
   }}
@@ -185,7 +205,7 @@ class Dropdown {
       this.totalCount = 0;
       zeroText.innerText = 0;
       this.counters = 0;
-      this.countersArray.baby = 0;
+      // this.countersArray.baby = 0;
      
       
     })
@@ -205,7 +225,7 @@ class Dropdown {
 
   
 
-  ClearButton() {
+  clearButton() {
     const buttonClear = document.querySelector(BUTTONS_CLEAR_SELECTOR);
     
     buttonClear.classList.add('button-clear--visible');
@@ -227,3 +247,9 @@ class Dropdown {
   
 
 export default Dropdown
+
+
+// const entries = Object.entries(fields).map(([key,value])=>
+//       [key, {...value, count: 0}]
+//     )
+//     this.fields = Object.fromEntries(entries)
