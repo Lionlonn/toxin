@@ -6,7 +6,7 @@ const props = {
         adults: {},
         children: {},
         babies: {
-           separated_values: ['Младенец','Младанцев','Мледанцев'],
+           separated_values: ['Младенец','Младанца','Мледанцев'],
         }
     }
 }

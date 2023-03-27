@@ -26,6 +26,9 @@ function pluralValue(count, values){
 
   return plural(count, `%d ${value1}`, `%d ${value2}`, `%d ${value3}`)
 }
+function fieldSelector() {
+  this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
+}
 
 //класс дропдауна
 class Dropdown {
@@ -35,13 +38,12 @@ class Dropdown {
       const [key, value] = test1;
       return [key, {...value, count: 0}]
     })
+
     this.props = {shared_value: props.shared_value, fields:{...Object.fromEntries(test)}}
+    
     console.log(this.props);
     this.dicrements = [];
     this.increments = [];
-    // this.countersArray = Object.keys((key)=>({[key]: 0}))
-    // console.log(this.countersArray);
-
     this.totalCount = 0;
     
 
@@ -106,23 +108,26 @@ class Dropdown {
   //берем текст поля
   setField() {
     this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
+    
+    
   }
 
 
   //меняем текст поля
   changeFieldContent(type) {
+    
+
     const field = this.props.fields[type]
     const {shared_value} = this.props
-    const {separated_value} = field 
-
+    const {separated_values} = this.props
+    
     const separated_elements = Object.values(this.props.fields).filter((field)=>field.separated_values)
 
-    const separated_text = separated_elements.map((element)=> element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join('')
+    const separated_text = separated_elements.map((element) => element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join('')
 
     const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
-    
-    // const text =  ${this.countersArray.baby > 0 ? plural(this.countersArray.baby , '%d Младенец', '%d Младенца', '%d Младенцев'): ""}`
     this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
+    
   }
   //обработчик для плюсов и минусов
   //HOC - High Order Component или замыкание
@@ -205,8 +210,6 @@ class Dropdown {
       this.totalCount = 0;
       zeroText.innerText = 0;
       this.counters = 0;
-      // this.countersArray.baby = 0;
-     
       
     })
 
