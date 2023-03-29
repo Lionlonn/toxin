@@ -11,4 +11,5 @@ const props = {
     }
 }
 
-new Dropdown(props)
+
+const dropdownd1 = new Dropdown(props)

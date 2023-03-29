@@ -26,14 +26,15 @@ function pluralValue(count, values){
 
   return plural(count, `%d ${value1}`, `%d ${value2}`, `%d ${value3}`)
 }
-function fieldSelector() {
-  this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
-}
+
+
 
 //класс дропдауна
 class Dropdown {
   
-  constructor(props) {
+  constructor(props, field_selector) {  
+    this.field_selector = field_selector;
+    this.field = document.querySelector(field_selector);
     const test = Object.entries(props.fields).map(test1 => {
       const [key, value] = test1;
       return [key, {...value, count: 0}]
@@ -41,7 +42,9 @@ class Dropdown {
 
     this.props = {shared_value: props.shared_value, fields:{...Object.fromEntries(test)}}
     
-    console.log(this.props);
+    
+    console.log(this.field);
+    
     this.dicrements = [];
     this.increments = [];
     this.totalCount = 0;
@@ -55,7 +58,7 @@ class Dropdown {
   //и привязка слушателей
   init(){
     this.setControls()
-    this.setField()
+    // this.setField()
     this.attachControlListeners()
     this.setDropdown()
     this.applyButtons()
@@ -76,7 +79,7 @@ class Dropdown {
       dropDownBtn.addEventListener('click', () => {
         dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
         this.resetContent()
-
+        
         dropDownBtn.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
       }
       )
@@ -104,15 +107,11 @@ class Dropdown {
     
 
   }
-
   //берем текст поля
-  setField() {
-    this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
-    
-    
-  }
-
-
+  // setField() {
+  //   this.field = document.querySelector(DROPDOwN_CONTENT_SELECTOR);
+  
+  // }
   //меняем текст поля
   changeFieldContent(type) {
     
@@ -126,6 +125,7 @@ class Dropdown {
     const separated_text = separated_elements.map((element) => element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join('')
 
     const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
+
     this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
     
   }
@@ -256,3 +256,4 @@ export default Dropdown
 //       [key, {...value, count: 0}]
 //     )
 //     this.fields = Object.fromEntries(entries)
+

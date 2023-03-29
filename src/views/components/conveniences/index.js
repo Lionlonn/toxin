@@ -1,4 +1,4 @@
-import Dropdown from "../dropdown_guests/Dropdown";
+import Dropdown from '../dropdown_guests/Dropdown'
 
 const props = {
     fields:{
@@ -14,4 +14,17 @@ const props = {
     }
 }
 
-new Dropdown(props)
+const field_selector = '.dropdown__content';
+
+const dropdown2 = new Dropdown(props, field_selector)
+console.log(dropdown2.field_selector);
+
+
+
+// function TestF() {
+//     this.name = 'Aleck'
+// }
+
+// const testf = new TestF('Vibka')
+// console.log(testf.name);
+
