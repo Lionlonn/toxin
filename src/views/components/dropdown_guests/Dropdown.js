@@ -33,7 +33,7 @@ function pluralValue(count, values){
 class Dropdown {
   
   constructor(props, field_selector) {  
-    this.field_selector = field_selector;
+    
     this.field = document.querySelector(field_selector);
     const test = Object.entries(props.fields).map(test1 => {
       const [key, value] = test1;
@@ -63,6 +63,8 @@ class Dropdown {
     this.setDropdown()
     this.applyButtons()
   }
+
+  
   
   setDropdown() {
     this.dropdown = document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
@@ -77,9 +79,11 @@ class Dropdown {
 
       //Открытие дропдауна
       dropDownBtn.addEventListener('click', () => {
-        dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
-        this.resetContent()
         
+        dropDownList.classList.add(DROPDOWN_LIST_VISIBLE_SELECTOR);
+        this.field.classList.add(DROPDOWN_LIST_VISIBLE_SELECTOR)
+        this.resetContent()
+        console.log('ckick');
         dropDownBtn.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
       }
       )
@@ -89,6 +93,7 @@ class Dropdown {
         if (event.target !== dropDownBtn) {
           dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
           dropDownBtn.classList.remove(DROPDOWN_CONTENT_ANIMATION_ARROW)
+          
         }
       })
 
@@ -127,6 +132,7 @@ class Dropdown {
     const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
 
     this.field.innerText = this.totalCount > 0 ? text : "Сколько гостей"
+    
     
   }
   //обработчик для плюсов и минусов

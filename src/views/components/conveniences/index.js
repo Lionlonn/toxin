@@ -1,9 +1,10 @@
 import Dropdown from '../dropdown_guests/Dropdown'
 
 const props = {
+    
     fields:{
         bedrooms: {
-            separated_values: ['Спальня','Спальни','Спальн']
+            separated_values: ['Спальня','Спальни','Спальн'],
         },
         beds: {
             separated_values: ['Кровать','Кровати','Кроватей']
@@ -11,16 +12,18 @@ const props = {
         baths: {
            separated_values: ['Ванная','Ванные','Ванн'],
         }
+        
     }
+    
 }
 
-const field_selector = '.dropdown__content';
-
-const dropdown2 = new Dropdown(props, field_selector)
-console.log(dropdown2.field_selector);
+const field_selector = '#dropT';
 
 
+new Dropdown(props, field_selector)
 
+
+console.log('test');
 // function TestF() {
 //     this.name = 'Aleck'
 // }

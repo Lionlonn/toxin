@@ -1,8 +1,6 @@
 // import Dropdown from "../dropdown_guests/Dropdown";
 
 
-
-
 // class Conveniences extends Dropdown {
 //   constructor() {
 //     this.countersArray = {
