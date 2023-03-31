@@ -11,6 +11,8 @@ const COUNTERS_SELECTOR = '[data-type]';
 
 // dropdown constants
 const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
+const DROPDOWN_GUESTS_ID = '#dropdown-guests';
+const DROPDOWN_CONVENIENCES_ID = '#dropdown-conveniences'
 const DROPDOWN_LIST_SELECTOR = '.dropdown__list';
 const DROPDOWN_LIST_ITEM_SELECTOR = '.dropdown__list-item';
 const DROPDOWN_LIST_VISIBLE_SELECTOR = 'dropdown__list--visible';
@@ -34,7 +36,7 @@ class Dropdown {
   
   constructor(props, field_selector) {  
     
-    this.field = document.querySelector(field_selector);
+    // this.field = document.querySelector(field_selector);
     const test = Object.entries(props.fields).map(test1 => {
       const [key, value] = test1;
       return [key, {...value, count: 0}]
@@ -43,7 +45,7 @@ class Dropdown {
     this.props = {shared_value: props.shared_value, fields:{...Object.fromEntries(test)}}
     
     
-    console.log(this.field);
+    // console.log(this.field);
     
     this.dicrements = [];
     this.increments = [];
@@ -67,37 +69,87 @@ class Dropdown {
   
   
   setDropdown() {
-    this.dropdown = document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
-      const dropDownBtn = dropDownWrapper.querySelector(DROPDOwN_CONTENT_SELECTOR);
-      const dropDownList = dropDownWrapper.querySelector(DROPDOWN_LIST_SELECTOR);
-      const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM_SELECTOR);
+    const dropDownGuests = document.querySelector(DROPDOWN_GUESTS_ID);
+    const dropDownConven = document.querySelector(DROPDOWN_CONVENIENCES_ID);
+    const dropList1 = document.querySelector('#testlist1')
+    const dropList2 = document.querySelector('#testlist2')
+    console.log(dropDownGuests);
+    console.log(dropDownConven);
 
-
-      dropDownList.addEventListener('click', (e) => {
-        e.stopPropagation();
-      })
-
-      //Открытие дропдауна
-      dropDownBtn.addEventListener('click', () => {
-        
-        dropDownList.classList.add(DROPDOWN_LIST_VISIBLE_SELECTOR);
-        this.field.classList.add(DROPDOWN_LIST_VISIBLE_SELECTOR)
-        this.resetContent()
-        console.log('ckick');
-        dropDownBtn.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
-      }
-      )
-
-      // Клик снаружи дропдауна
-      const outsideClick = document.addEventListener('click', (event) => {
-        if (event.target !== dropDownBtn) {
-          dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
-          dropDownBtn.classList.remove(DROPDOWN_CONTENT_ANIMATION_ARROW)
-          
-        }
-      })
-
+    dropDownGuests.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropList1.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR)
+      console.log('click');
     })
+    dropDownConven.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropList2.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR)
+      console.log('click2');
+    })
+    // клик снаружи
+    document.addEventListener('click', (event) => {
+      if(event.target !== dropDownGuests) {
+        console.log('uot');
+      }
+    })
+
+    // this.dropdown = document.querySelectorAll('.dropdown')
+    // this.dropdown.forEach((dropWrapper) => {
+    //   const dropDownGuests = dropWrapper.querySelector(DROPDOWN_GUESTS_ID);
+    //   const dropDownConven = dropWrapper.querySelector(DROPDOWN_CONVENIENCES_ID);
+    //   console.log(dropDownGuests);
+    //   console.log(dropDownConven);
+    //   const dropDownList = dropWrapper.querySelector(DROPDOWN_LIST_SELECTOR)
+    //   const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM_SELECTOR)
+      
+
+
+    //   // //Открытие дропдауна с гостями
+    //   // dropDownGuests.addEventListener('click', () => {
+    //   //   dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR)
+    //   //   dropDownGuests.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
+    //   // })
+    //   // //Открытие дропдауна с удобствами 
+    //   // dropDownConven.addEventListener('click', () => {
+    //   //   dropDownConven.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
+    //   // })
+
+    // })
+
+
+
+    // this.dropdown = document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
+    //   const dropDownGuests = document.querySelector(DROPDOWN_GUESTS_ID);
+    //   const dropDownConven = document.querySelector(DROPDOWN_CONVENIENCES_ID);
+    //   const dropDownList = dropDownWrapper.querySelector(DROPDOWN_LIST_SELECTOR);
+    //   const dropDownListItems = dropDownList.querySelectorAll(DROPDOWN_LIST_ITEM_SELECTOR);
+    //   console.log(dropDownGuests);  
+    //   console.log(dropDownConven);  
+
+    //   dropDownList.addEventListener('click', (e) => {
+    //     e.stopPropagation();
+    //   })
+
+    //   //Открытие дропдауна
+    //   dropDownGuests.addEventListener('click', () => {
+    //     dropDownList.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR);
+    //     // this.field.classList.add(DROPDOWN_LIST_VISIBLE_SELECTOR)
+    //     this.resetContent()
+    //     console.log('ckick');
+    //     dropDownGuests.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW)
+    //   }
+    //   )
+
+    //   // Клик снаружи дропдауна
+    //   const outsideClick = document.addEventListener('click', (event) => {
+    //     if (event.target !== dropDownGuests) {
+    //       dropDownList.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
+    //       dropDownGuests.classList.remove(DROPDOWN_CONTENT_ANIMATION_ARROW)
+    //       console.log('click Outside');
+    //     }
+    //   })
+
+    // })
     
     
   }
