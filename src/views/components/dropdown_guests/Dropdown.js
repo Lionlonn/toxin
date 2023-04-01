@@ -76,19 +76,31 @@ class Dropdown {
     console.log(dropDownGuests);
     console.log(dropDownConven);
 
+
+    const listElements = document.querySelectorAll(DROPDOWN_LIST_SELECTOR)
+    listElements.forEach((listStop) => {
+      listStop.addEventListener('click', (e) => {
+        e.stopPropagation();
+      })
+    })
+
     dropDownGuests.addEventListener('click', (e) => {
       e.stopPropagation();
       dropList1.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR)
+      dropList2.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
       console.log('click');
     })
     dropDownConven.addEventListener('click', (e) => {
       e.stopPropagation();
       dropList2.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR)
+      dropList1.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
       console.log('click2');
     })
     // клик снаружи
     document.addEventListener('click', (event) => {
       if(event.target !== dropDownGuests) {
+        dropList1.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
+        dropList2.classList.remove(DROPDOWN_LIST_VISIBLE_SELECTOR)
         console.log('uot');
       }
     })
