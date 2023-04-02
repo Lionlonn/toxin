@@ -34,15 +34,15 @@ class Dropdown {
 
   constructor(options) {
     
+    
     this.field = document.querySelector(options.dropdownSelector)
     const dropdownEntries = Object.entries(options.fields).map(dropdownArray => {
       const [key, value] = dropdownArray;
       return [key, {...value, count: 0}]
-      
-      
     })
-    this.props = {shared_value: options.shared_value, fields:{...Object.fromEntries(dropdownEntries)}}
-    
+    this.props = {
+      shared_value: options.shared_value, 
+      fields:{...Object.fromEntries(dropdownEntries)}}
     this.options = options;
     this.dicrements = [];
     this.increments = [];
@@ -126,7 +126,7 @@ class Dropdown {
 
   }
 
-  handelChangeCounter(delta) {
+  handelChangeCounter(delta, type) {
     return(event) => {
       const parent = event.target.parentElement;
       // const dicrement = parent.querySelector(DECREMENT_SELECTOR)
@@ -137,21 +137,16 @@ class Dropdown {
       this.currentValue  = Number(currentCounter.innerText)
       const type = currentCounter.dataset.type;
       
+
       //решаем прибавлять или убавлять значение
-      if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
-        // currentCounter.innerText = this.currentValue + delta;
-        // this.currentValue = delta + this.currentValue;
+      if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)) {
         this.props.fields[type].count += delta;
-        
         this.totalCount += delta;
         currentCounter.innerText = this.props.fields[type].count;
-        
-        console.log(this.props.fields[type]);
-
         this.changeFieldContent(type);
         // this.clearButton()
-
       }
+      
     }
   }
 
