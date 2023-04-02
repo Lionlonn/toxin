@@ -33,11 +33,12 @@ function pluralValue(count, values){
 class Dropdown {
 
   constructor(options) {
+    
     this.field = document.querySelector(options.dropdownSelector)
     const dropdownEntries = Object.entries(options.fields).map(dropdownArray => {
       const [key, value] = dropdownArray;
-      const newObj = {...value, count: 0};
-      return [key, newObj]
+      return [key, {...value, count: 0}]
+      
       
     })
     this.props = {shared_value: options.shared_value, fields:{...Object.fromEntries(dropdownEntries)}}
@@ -115,7 +116,7 @@ class Dropdown {
     
     const separated_elements = Object.values(this.props.fields).filter((field)=>field.separated_values)
 
-    const separated_text = separated_elements.map((element) => element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join('')
+    const separated_text = separated_elements.map((element) => element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join(' ')
 
     const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
 
@@ -128,8 +129,8 @@ class Dropdown {
   handelChangeCounter(delta) {
     return(event) => {
       const parent = event.target.parentElement;
-      const dicrement = parent.querySelector(DECREMENT_SELECTOR)
-      const increment = parent.querySelector(INCREMENT_SELECTOR)
+      // const dicrement = parent.querySelector(DECREMENT_SELECTOR)
+      // const increment = parent.querySelector(INCREMENT_SELECTOR)
 
       //текущий каунтер и значение
       const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
@@ -138,10 +139,13 @@ class Dropdown {
       
       //решаем прибавлять или убавлять значение
       if (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE) {
-        currentCounter.innerText = delta + this.currentValue;
-        this.currentValue = delta + this.currentValue;
+        // currentCounter.innerText = this.currentValue + delta;
+        // this.currentValue = delta + this.currentValue;
         this.props.fields[type].count += delta;
+        
         this.totalCount += delta;
+        currentCounter.innerText = this.props.fields[type].count;
+        
         console.log(this.props.fields[type]);
 
         this.changeFieldContent(type);
@@ -150,6 +154,9 @@ class Dropdown {
       }
     }
   }
+
+
+
   attachControlListeners(){
     this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
     this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
