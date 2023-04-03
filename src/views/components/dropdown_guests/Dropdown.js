@@ -50,7 +50,6 @@ class Dropdown {
     this.increments = [];
     this.totalCount = 0;
     this.isOpen = false;
-    
     this.init();
   }
 
@@ -86,6 +85,8 @@ class Dropdown {
     this.dropdownListElement.addEventListener('click', (event) => { 
       event.stopPropagation()
     })
+    console.log(this.currentValue);
+    console.log(this.totalCount);
     
   }
   // закрытие дропдауна
@@ -133,13 +134,7 @@ class Dropdown {
     //Ограничение символов
     if(this.str.length > 22) {
       this.field.textContent = this.str.slice(0, 21) + '...';
-    }
-   
-
-    console.log(this.field);
-    
-    
-
+    } 
   }
 
   handelChangeCounter(delta) {
@@ -166,15 +161,15 @@ class Dropdown {
         this.clearButtonsVisible();
       }
       
+      
 
-
-      // if (this.currentValue === MAX_VALUE) {
+      // if (this.totalCount === MAX_VALUE) {
       //   this.disableElement(increment)
         
       // }
-      // if (this.totalCount === MIN_VALUE) {
+      // if (this.currentValue === MIN_VALUE) {
       //   this.disableElement(dicrement)
-      //   this.closeRemoveButton()
+      //   console.log(this.totalCount);
       // }
       
     }
@@ -219,7 +214,7 @@ class Dropdown {
     Object.values(this.props.fields).forEach((clearField) => {
       clearField.count = 0;
     })
-    
+    this.field.innerText = ''
     this.currentValue = 0;
     this.counters.innerHTML = 0;
     this.counters.forEach(DropdownsCounters => {
