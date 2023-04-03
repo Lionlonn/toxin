@@ -15,7 +15,8 @@ const dropdownOptions1 = {
         babies: {
             separated_values: ['Младенец','Младанца','Мледанцев'],
         }
-    }
+    },
+    buttonsClearSelector: '#btnClearGuestsId',
 }
 
 const dropdownOptions2 = {
@@ -29,10 +30,10 @@ const dropdownOptions2 = {
             separated_values: ['Кровать','Кровати','Кроватей']
         },
         baths: {
-           separated_values: ['Ванная','Ванные','Ванн'],
+           separated_values: ['Ванная комната','Ванные комнаты','Ванных комнат'],
         }
-        
-    }
+    },
+    buttonsClearSelector: '#btnClearConveniencesId',
 }
 
 const test1 = new Dropdown(dropdownOptions1)

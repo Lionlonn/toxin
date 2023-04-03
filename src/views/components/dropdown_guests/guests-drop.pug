@@ -1,6 +1,6 @@
 
 .dropdown
-    .dropdown__content#dropdown-guests Сколько гостей
+    .dropdown__content#dropdown-guests(data-text = "Сколько гостей") Сколько гостей
     ul.dropdown__list#dropdownList1
         li.dropdown__list-item(data-value="adults")  Взрослый 
             .details-counter.counter-wrapper
@@ -24,7 +24,7 @@
                 .items__control(data-action="plus") +
                 //- счетчик
         .dropdown__buttons 
-            button.button-clear Очистить 
+            button.button-clear#btnClearGuestsId Очистить 
             button.button-apply Применить
     input.dropdown__input-hidden(type="text" name="select-category" value="")
 

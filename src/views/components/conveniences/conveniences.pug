@@ -1,6 +1,6 @@
 .form-group
     .dropdown
-        .dropdown__content#dropdown-conveniences Удобства 
+        .dropdown__content#dropdown-conveniences(data-text = "Удобства") Удобства 
         ul.dropdown__list#testlist2
             li.dropdown__list-item(data-value="bedroom")  СПАЛЬНИ 
                 .details-counter.counter-wrapper
@@ -24,6 +24,6 @@
                     .items__control(data-action="plus") +
                     //- счетчик
             .dropdown__buttons 
-                button.button-clear Очистить 
+                button.button-clear#btnClearConveniencesId Очистить 
                 button.button-apply Применить
         input.dropdown__input-hidden(type="text" name="select-category" value="")
