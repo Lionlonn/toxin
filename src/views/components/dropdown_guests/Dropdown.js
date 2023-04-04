@@ -51,6 +51,7 @@ class Dropdown {
     this.totalCount = 0;
     this.isOpen = false;
     this.init();
+    
   }
 
   init() {
@@ -85,9 +86,7 @@ class Dropdown {
     this.dropdownListElement.addEventListener('click', (event) => { 
       event.stopPropagation()
     })
-    console.log(this.currentValue);
-    console.log(this.totalCount);
-    
+    this.testMe()
   }
   // закрытие дропдауна
   close() {
@@ -137,13 +136,16 @@ class Dropdown {
     } 
   }
 
+
+
   handelChangeCounter(delta) {
     return(event) => {
+      
       const parent = event.target.parentElement;
-      const dicrement = parent.querySelector(DECREMENT_SELECTOR)
+      const decrement = parent.querySelector(DECREMENT_SELECTOR)
       const increment = parent.querySelector(INCREMENT_SELECTOR)
-      // this.enableElement(dicrement)
-      // this.enableElement(increment)
+      this.enableElement(decrement)
+      this.enableElement(increment)
 
       //текущий каунтер и значение
       const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
@@ -156,27 +158,37 @@ class Dropdown {
         this.props.fields[type].count += delta;
         this.totalCount += delta;
         currentCounter.innerText = this.props.fields[type].count;
-        
         this.changeFieldContent(type);
-        this.clearButtonsVisible();
+        this.clearButtonsVisible();  
+        if (delta !== 0) { // Проверяем, было ли изменено значение счетчика
+          this.currentValue = Number(currentCounter.innerText); // Получаем текущее значение счетчика после изменения
+          console.log(this.currentValue);
+        }
       }
+      this.testMe()
       
       
+    }
+  }
 
-      // if (this.totalCount === MAX_VALUE) {
-      //   this.disableElement(increment)
-        
-      // }
-      // if (this.currentValue === MIN_VALUE) {
-      //   this.disableElement(dicrement)
-      //   console.log(this.totalCount);
-      // }
+  
+  testMe() {
+    
+    if (this.currentValue === MAX_VALUE) {
+      this.disableElement(increment)
+      console.log('inc');
+    }
+    if (this.currentValue === MIN_VALUE) {
+      this.disableElement(this.decrement)
+      console.log('dec');
       
     }
   }
 
   disableElement(element){
-    element.classList.add('disabled')
+    if(element) {
+      element.classList.add('disabled')
+    }
   }
   enableElement(element){
     element.classList.remove('disabled')
@@ -190,7 +202,7 @@ class Dropdown {
 
   }
 
-
+  
   //BUTONS
   applyButtons() {
     const applyBtns = document.querySelectorAll(BUTTONS_APPLY_SELECTOR);
