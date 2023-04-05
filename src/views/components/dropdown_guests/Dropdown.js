@@ -44,10 +44,12 @@ class Dropdown {
     })
     this.props = {
       shared_value: options.shared_value, 
-      fields:{...Object.fromEntries(dropdownEntries)}}
+      fields:{...Object.fromEntries(dropdownEntries)}
+    }
     this.options = options;
     this.dicrements = [];
     this.increments = [];
+    this.counters = [];
     this.totalCount = 0;
     this.isOpen = false;
     this.init();
@@ -62,7 +64,8 @@ class Dropdown {
     this.setControls();
     this.attachControlListeners();
     this.applyButtons();
-    this.clearDropdown()
+    this.clearDropdown();
+    this.countersControls()
   }
   //берет дропдаун и лист и каунт
   setDropdown() {
@@ -80,14 +83,18 @@ class Dropdown {
   }
   //открытие дропдауна
   toggle(event) {
+    
     event.stopPropagation()
     this.isOpen = !this.isOpen;
     this.dropdownListElement.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR, this.isOpen);
     this.dropdownListElement.addEventListener('click', (event) => { 
       event.stopPropagation()
     })
-    this.testMe()
+
+    
+    
   }
+  
   // закрытие дропдауна
   close() {
     this.isOpen = false;
@@ -107,9 +114,9 @@ class Dropdown {
     })
   }
   //получаем все плюсы, минусы, 
-  setControls() {
-    this.dicrements = document.querySelectorAll(DECREMENT_SELECTOR);
-    this.increments = document.querySelectorAll(INCREMENT_SELECTOR);
+  setControls(event) {
+    this.dicrements = this.fildListener.querySelectorAll(DECREMENT_SELECTOR);
+    this.increments = this.fildListener.querySelectorAll(INCREMENT_SELECTOR);
     this.counters = this.dropdownListElement.querySelectorAll(COUNTERS_SELECTOR);
   }
   //меняем текст поля
@@ -136,23 +143,25 @@ class Dropdown {
     } 
   }
 
-
+ 
 
   handelChangeCounter(delta) {
     return(event) => {
       
-      const parent = event.target.parentElement;
+      // const parent = event.target.parentElement;
+      const parent = event.target.closest(DROPDOWN_LIST_ITEM_SELECTOR);
       const decrement = parent.querySelector(DECREMENT_SELECTOR)
       const increment = parent.querySelector(INCREMENT_SELECTOR)
       this.enableElement(decrement)
       this.enableElement(increment)
+      
 
       //текущий каунтер и значение
       const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
       this.currentValue  = Number(currentCounter.innerText)
       const type = currentCounter.dataset.type;
       
-
+      
       //решаем прибавлять или убавлять значение
       if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)) {
         this.props.fields[type].count += delta;
@@ -162,27 +171,32 @@ class Dropdown {
         this.clearButtonsVisible();  
         if (delta !== 0) { // Проверяем, было ли изменено значение счетчика
           this.currentValue = Number(currentCounter.innerText); // Получаем текущее значение счетчика после изменения
-          console.log(this.currentValue);
+          
         }
+        this.countersControls();
       }
-      this.testMe()
-      
-      
     }
   }
 
-  
-  testMe() {
-    
-    if (this.currentValue === MAX_VALUE) {
-      this.disableElement(increment)
-      console.log('inc');
-    }
-    if (this.currentValue === MIN_VALUE) {
-      this.disableElement(this.decrement)
-      console.log('dec');
+  countersControls() {
+    this.dicrements.forEach(dicrem => {
+      const currentCounter = dicrem.nextElementSibling;
+      const type = currentCounter.dataset.type;
       
-    }
+      if (this.props.fields[type].count === MIN_VALUE) {
+        this.disableElement(dicrem);
+      } else {
+        this.enableElement(dicrem);
+      }
+
+      const increment = dicrem.nextElementSibling.nextElementSibling;
+      if (this.props.fields[type].count === MAX_VALUE) {
+        this.disableElement(increment);
+      } else {
+        this.enableElement(increment);
+      }
+    });
+
   }
 
   disableElement(element){
@@ -191,7 +205,9 @@ class Dropdown {
     }
   }
   enableElement(element){
-    element.classList.remove('disabled')
+    if(element) {
+      element.classList.remove('disabled')
+    }
   }
 
 
@@ -233,6 +249,7 @@ class Dropdown {
       DropdownsCounters.innerHTML = 0;
     })
     this.totalCount = 0;
+    this.countersControls()
     this.clearButtonsClick();
     this.clearButtonsVisible();
     this.changeFieldContent();
@@ -246,10 +263,3 @@ class Dropdown {
 
 
 export default Dropdown
-
-
-// const entries = Object.entries(fields).map(([key,value])=>
-//       [key, {...value, count: 0}]
-//     )
-//     this.fields = Object.fromEntries(entries)
-
