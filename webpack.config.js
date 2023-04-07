@@ -7,6 +7,33 @@ const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
 
 
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist'),
+  assets: 'assets/',
+};
+
+
+const PAGES_DIR = `${PATHS.src}/views/pages`;
+
+const getEntries = pages => {
+  const entries = {};
+  const htmlPages = [];
+
+  pages.forEach(name => {
+    entries[name] = `${PAGES_DIR}/${name}/index.js`;
+    htmlPages.push(
+      new HtmlWebpackPlugin({
+        filename: `${name}.html`,
+        template: `${PAGES_DIR}/${name}/${name}.pug`,
+        chunks: [name],
+      }),
+    );
+  });
+
+  return [entries, htmlPages];
+};
+
 module.exports = {
     mode,
     target,
