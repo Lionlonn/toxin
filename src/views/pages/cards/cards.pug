@@ -1,3 +1,6 @@
-extends ../../layout/main-page.pug
-block testing 
+extends layouts/ui-kit.pug
+
+block page
+    include components/datapicker/air-datapicker.pug
+    +datepicker
     .text Я дочерний файл
