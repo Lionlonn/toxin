@@ -40,7 +40,8 @@ module.exports = {
     devtool,
     devServer: {
         port: 3000,
-        open: true,
+        open: ['index.html', 'index2.html'],
+        // open: true,
         hot: true,
     },
     entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
@@ -60,6 +61,10 @@ module.exports = {
             template: path.join(__dirname, 'src', 'views/layout/main-page.pug'),
             filename: 'index.html',
         }),
+        new HtmlWebpackPlugin({
+          template: path.join(__dirname, 'src', 'views/layout/ui-kit-page.pug'),
+          filename: 'index2.html',
+      }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
