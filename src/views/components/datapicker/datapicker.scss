@@ -1,4 +1,4 @@
-.main-intro{
+.main-intro {
     max-width: 380px;
     height: 374px;
     background: #FFFFFF;
@@ -17,13 +17,13 @@
     padding: 40px 30px;
 }
 
-.number-title{
+.number-title {
     font-weight: 700;
     font-size: 28px;
     line-height: 29px;
 }
 
-.datepicker{
+.datepicker {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +32,7 @@
 
 
 
-.datepicker-input{
+.datepicker-input {
     border: 1px solid rgba(31, 32, 65, 0.25);
     border-radius: 4px;
     width: 150px;
@@ -42,20 +42,20 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    
+
 }
 
-.input__datepicker{
+.input__datepicker {
     position: relative;
 }
 
-.input__datepicker::after{
+.input__datepicker::after {
     content: "";
     display: inline-block;
     transform: rotate(45deg);
     height: 10px;
     width: 10px;
-   
+
     border-bottom: 3px solid rgba(31, 32, 65, 0.75);
     border-right: 3px solid rgba(31, 32, 65, 0.75);
 
@@ -66,28 +66,28 @@
     right: 10px;
 }
 
-.input__datepicker.animation-arrow::after{
+.input__datepicker.animation-arrow::after {
     margin-top: 5px;
     transform: rotate(-135deg);
 }
 
-input::placeholder{
+input::placeholder {
     text-indent: 0;
 }
 
 
 
 
-.datapicker__arrival{
+.datapicker__arrival {
     margin-bottom: 5px;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    
+
 }
 
-.datapicker__exit{
+.datapicker__exit {
     margin-bottom: 5px;
     font-weight: 700;
     font-size: 12px;
@@ -95,7 +95,7 @@ input::placeholder{
     text-transform: uppercase;
 }
 
-.datepicker-input::placeholder{
+.datepicker-input::placeholder {
     padding: 11px 32px 8px 15px;
     text-transform: uppercase;
 }
@@ -106,7 +106,7 @@ input::placeholder{
 
 .datepicker-wrapper {
     position: absolute;
-    display: none;
+    // display: none;
     height: 100%;
     left: 50%;
     max-width: 318px;
@@ -118,7 +118,7 @@ input::placeholder{
 
 .air-datepicker--opened {
     display: block;
-    
+
 }
 
 
@@ -135,9 +135,9 @@ input::placeholder{
 }
 
 // Repaint style
-.air-datepicker-body--cells.-days-{
+.air-datepicker-body--cells.-days- {
     grid-auto-rows: 40px;
-    
+
 }
 
 .air-datepicker-nav {
@@ -151,7 +151,8 @@ input::placeholder{
 }
 
 
-.air-datepicker--buttons, .air-datepicker--time{
+.air-datepicker--buttons,
+.air-datepicker--time {
     border-top: none;
 }
 
@@ -162,23 +163,25 @@ input::placeholder{
     line-height: 23px;
 }
 
-.air-datepicker-nav--title i{
+.air-datepicker-nav--title i {
     color: black;
     font-weight: 700;
     font-size: 19px;
     line-height: 23px;
 }
+
 .air-datepicker-body--day-name {
-    color:#BC9CFF;
-    
+    color: #BC9CFF;
+
 }
 
 
-.air-datepicker-cell.-current-{
+.air-datepicker-cell.-current- {
     color: #FFF;
     border-radius: 22px;
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 }
+
 .air-datepicker-cell.-selected-.-current- {
     color: #FFF;
     border-radius: 22px;
@@ -187,9 +190,9 @@ input::placeholder{
 }
 
 
-.air-datepicker-cell.-selected-{
+.air-datepicker-cell.-selected- {
     color: white;
-    border: none; 
+    border: none;
     width: 40px;
     border-radius: 22px;
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
@@ -218,25 +221,25 @@ input::placeholder{
     background-color: rgba(188, 156, 255, 0.25);
     border-radius: 0;
 
-    
+
 }
 
 
 
-.air-datepicker-cell.-in-range-:hover{
+.air-datepicker-cell.-in-range-:hover {
     background: rgba(188, 156, 255, 0.25);
-    
+
 }
 
-.air-datepicker-cell .-weekend- .-day- .focus.-in-range-:hover{
+.air-datepicker-cell .-weekend- .-day- .focus.-in-range-:hover {
     border-radius: 0;
 }
 
 
 
 .air-datepicker-cell.-range-from-:after {
-    background: -webkit-gradient(linear,left top,left bottom,from(rgba(188,156,255,.25)),to(rgba(139,164,249,.25)));
-    background: linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25));
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(188, 156, 255, .25)), to(rgba(139, 164, 249, .25)));
+    background: linear-gradient(180deg, rgba(188, 156, 255, .25), rgba(139, 164, 249, .25));
     content: "";
     height: 100%;
     position: absolute;
@@ -245,9 +248,9 @@ input::placeholder{
     z-index: -5;
 }
 
-.air-datepicker-cell.-range-to-:before{
-    background: -webkit-gradient(linear,left top,left bottom,from(rgba(188,156,255,.25)),to(rgba(139,164,249,.25)));
-    background: linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25));
+.air-datepicker-cell.-range-to-:before {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(188, 156, 255, .25)), to(rgba(139, 164, 249, .25)));
+    background: linear-gradient(180deg, rgba(188, 156, 255, .25), rgba(139, 164, 249, .25));
     content: "";
     height: 100%;
     position: absolute;
@@ -259,26 +262,27 @@ input::placeholder{
 
 // mouth
 
-.air-datepicker-body--cells.-months-{
+.air-datepicker-body--cells.-months- {
     justify-items: center;
 }
 
-.air-datepicker-cell.-month-, .air-datepicker-cell.-year- {
+.air-datepicker-cell.-month-,
+.air-datepicker-cell.-year- {
     height: 40px;
     width: 40px;
-    
+
 }
 
-.air-datepicker-cell.-range-to-.-range-from-{
+.air-datepicker-cell.-range-to-.-range-from- {
     border-radius: 50%;
-    
+
 }
 
-.air-datepicker-cell.-range-to-.-range-from-::after{
+.air-datepicker-cell.-range-to-.-range-from-::after {
     content: none;
 }
 
-.air-datepicker-cell.-range-to-.-range-from-::before{
+.air-datepicker-cell.-range-to-.-range-from-::before {
     content: none;
 }
 
@@ -289,6 +293,6 @@ input::placeholder{
 
 
 //Buttons 
-.air-datepicker-button{
+.air-datepicker-button {
     color: #BC9CFF;
 }
