@@ -1,29 +1,21 @@
-import Dropdown from '../dropdown_guests/Dropdown'
+import Dropdown from '../dropdown_guests/Dropdown';
 
-
-
-const props = {
-    
-    fields:{
+const dropdownOptions2 = {
+    dropdownSelector: '#dropdown-conveniences',
+    dropdownListSelector: '#testlist2',
+    fields: {
         bedrooms: {
-            separated_values: ['Спальня','Спальни','Спальн'],
+            separated_values: ['Спальня', 'Спальни', 'Спальн'],
         },
         beds: {
-            separated_values: ['Кровать','Кровати','Кроватей']
+            separated_values: ['Кровать', 'Кровати', 'Кроватей']
         },
         baths: {
-           separated_values: ['Ванная','Ванные','Ванн'],
+            separated_values: ['Ванная комната', 'Ванные комнаты', 'Ванных комнат'],
         }
-        
-    }
-    
-}
+    },
+    buttonsClearSelector: '#btnClearConveniencesId',
+};
 
-const field_selector = '#dropdown-conveniences';
-
-
-// new Dropdown(props, field_selector)
-
-
-// console.log(field_selector);
+const test2 = new Dropdown(dropdownOptions2);
 

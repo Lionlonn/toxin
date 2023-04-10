@@ -26,7 +26,8 @@
 .datepicker {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 20px;
     padding: 0 30px;
 }
 
@@ -106,14 +107,12 @@ input::placeholder {
 
 .datepicker-wrapper {
     position: absolute;
-    // display: none;
-    height: 100%;
-    left: 50%;
-    max-width: 318px;
+    display: none;
+    // height: 100%;
+    max-width: 320px;
     width: 100%;
     z-index: 100;
-    transform: translate(-50%);
-    top: 269px;
+    // transform: translate(-50%);
 }
 
 .air-datepicker--opened {
@@ -125,6 +124,7 @@ input::placeholder {
 .air-datepicker.-inline- {
     position: absolute;
     max-width: 318px;
+    top: 32px;
     width: 100%;
     overflow: hidden;
 }

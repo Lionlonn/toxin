@@ -58,7 +58,6 @@ document.addEventListener('click', (e) => {
 
 
 const datepick = new AirDatepicker(AIR_DATEPICKER_SELECTOR, {
-
     minDate: new Date(),
     inline: true,
     range: true,
@@ -88,7 +87,6 @@ const clearButton = document.querySelector('.air-datepicker-button');
 clearButton.addEventListener('click', () => {
     const firstDate = document.querySelector('#startDate').value = '';
     const lastDate = document.querySelector('#endDate').value = '';
-
 });
 
 

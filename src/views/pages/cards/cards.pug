@@ -2,5 +2,20 @@ extends layouts/ui-kit.pug
 
 block page
     include components/datapicker/air-datapicker.pug
-    +datepicker
-    .text Я дочерний файл
+    include components/dropdown_guests/guests-drop.pug
+    include components/conveniences/conveniences.pug
+    include components/buttons/button-max/button-max.pug
+
+    .container
+        .form-selection
+            .title-text
+                h1.selection-title Найдём номера под ваши пожелания
+            .selection-datepicker
+                +datepicker
+            .selection-dropdown
+                h6.guests Гости
+                +dropdown
+            .selection-button
+                +button-big
+        +drop-convenience
+        .text Я дочерний файл

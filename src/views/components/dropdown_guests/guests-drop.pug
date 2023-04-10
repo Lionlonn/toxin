@@ -1,32 +1,33 @@
-
-.dropdown
-    .dropdown__content#dropdown-guests(data-text = "Сколько гостей") Сколько гостей
-    ul.dropdown__list#dropdownList1
-        li.dropdown__list-item(data-value="adults")  Взрослый 
-            .details-counter.counter-wrapper
-                //- счетчик
-                .items__control(data-action="minus") -
-                .items__control(data-type="adults") 0
-                .items__control(data-action="plus") +
-                //- счетчик
-        li.dropdown__list-item(data-value="children")  Дети
-            .details-counter.counter-wrapper 
-                //- счетчик
-                .items__control(data-action="minus") -
-                .items__control(data-type="children") 0
-                .items__control(data-action="plus") +
-                //- счетчик
-        li.dropdown__list-item(data-value="infants")  Младенцы
-            .details-counter.counter-wrapper 
-                //- счетчик
-                .items__control(data-action="minus") -
-                .items__control(data-type="babies") 0
-                .items__control(data-action="plus") +
-                //- счетчик
-        .dropdown__buttons 
-            button.button-clear#btnClearGuestsId Очистить 
-            button.button-apply Применить
-    input.dropdown__input-hidden(type="text" name="select-category" value="")
-
-
-
+mixin dropdown()
+    .dropdown
+        .dropdown__content#dropdown-guests(data-text = "Сколько гостей") Сколько гостей
+        ul.dropdown__list#dropdownList1
+            li.dropdown__list-item(data-value="adults")  Взрослый 
+                .details-counter.counter-wrapper
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="adults") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            li.dropdown__list-item(data-value="children")  Дети
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="children") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            li.dropdown__list-item(data-value="infants")  Младенцы
+                .details-counter.counter-wrapper 
+                    //- счетчик
+                    .items__control(data-action="minus") -
+                    .items__control(data-type="babies") 0
+                    .items__control(data-action="plus") +
+                    //- счетчик
+            .dropdown__buttons 
+                button.button-clear#btnClearGuestsId Очистить 
+                button.button-apply Применить
+        input.dropdown__input-hidden(type="text" name="select-category" value="")
+    
+    
+    
+    

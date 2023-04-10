@@ -1,51 +1,51 @@
 const plural = require('plural-ru');
 
-const MAX_VALUE = 5
-const MIN_VALUE = 0
+const MAX_VALUE = 5;
+const MIN_VALUE = 0;
 
 const DECREMENT_SELECTOR = '[data-action="minus"]';
 const INCREMENT_SELECTOR = '[data-action="plus"]';
-const COUNTERS_SELECTOR = '[data-type]'; 
+const COUNTERS_SELECTOR = '[data-type]';
 
 
 
 // dropdown constants
 const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
 const DROPDOWN_GUESTS_ID = '#dropdown-guests';
-const DROPDOWN_CONVENIENCES_ID = '#dropdown-conveniences'
+const DROPDOWN_CONVENIENCES_ID = '#dropdown-conveniences';
 const DROPDOWN_LIST_SELECTOR = '.dropdown__list';
 const DROPDOWN_LIST_ITEM_SELECTOR = '.dropdown__list-item';
 const DROPDOWN_LIST_VISIBLE_SELECTOR = 'dropdown__list--visible';
-const DROPDOWN_CONTENT_ANIMATION_ARROW = 'animation-arrow'
+const DROPDOWN_CONTENT_ANIMATION_ARROW = 'animation-arrow';
 
 
 //Buttons constants
 const BUTTONS_CLEAR_SELECTOR = '.button-clear';
 const BUTTONS_APPLY_SELECTOR = '.button-apply';
-const BUTTONS_VISIBLE_SELECTOR = 'button-clear--visible'
+const BUTTONS_VISIBLE_SELECTOR = 'button-clear--visible';
 
-function pluralValue(count, values){
-  const [value1, value2, value3] = values
+function pluralValue(count, values) {
+  const [value1, value2, value3] = values;
 
-  return plural(count, `%d ${value1}`, `%d ${value2}`, `%d ${value3}`)
+  return plural(count, `%d ${value1}`, `%d ${value2}`, `%d ${value3}`);
 }
 
 
 class Dropdown {
 
   constructor(options) {
-    
-    
-    this.field = document.querySelector(options.dropdownSelector)
-    this.fildListener = document.querySelector(options.dropdownListSelector)
+
+
+    this.field = document.querySelector(options.dropdownSelector);
+    this.fildListener = document.querySelector(options.dropdownListSelector);
     const dropdownEntries = Object.entries(options.fields).map(dropdownArray => {
       const [key, value] = dropdownArray;
-      return [key, {...value, count: 0}]
-    })
+      return [key, { ...value, count: 0 }];
+    });
     this.props = {
-      shared_value: options.shared_value, 
-      fields:{...Object.fromEntries(dropdownEntries)}
-    }
+      shared_value: options.shared_value,
+      fields: { ...Object.fromEntries(dropdownEntries) }
+    };
     this.options = options;
     this.dicrements = [];
     this.increments = [];
@@ -53,48 +53,47 @@ class Dropdown {
     this.totalCount = 0;
     this.isOpen = false;
     this.init();
-    
+
   }
 
   init() {
     this.setDropdown();
     this.dropEvent();
-    this.clickOutside()
+    this.clickOutside();
     this.close();
     this.setControls();
     this.attachControlListeners();
     this.applyButtons();
     this.clearDropdown();
-    this.countersControls()
+    this.countersControls();
   }
   //берет дропдаун и лист и каунт
   setDropdown() {
     this.dropdownElement = document.querySelector(this.options.dropdownSelector);
     this.dropdownListElement = document.querySelector(this.options.dropdownListSelector);
     //buttons 
-    this.buttonsClearElement = document.querySelector(this.options.buttonsClearSelector)
-    
+    this.buttonsClearElement = document.querySelector(this.options.buttonsClearSelector);
+
   }
   // Добавление события
   dropEvent() {
     this.dropdownElement.addEventListener('click', this.toggle.bind(this));
     this.dropdownListElement.addEventListener('click', this.handelChangeCounter.bind(this));
-     
+
   }
   //открытие дропдауна
   toggle(event) {
-    
-    event.stopPropagation()
+
+    event.stopPropagation();
     this.isOpen = !this.isOpen;
     this.dropdownListElement.classList.toggle(DROPDOWN_LIST_VISIBLE_SELECTOR, this.isOpen);
-    this.dropdownListElement.addEventListener('click', (event) => { 
-      event.stopPropagation()
-    })
+    this.dropdownElement.classList.toggle(DROPDOWN_CONTENT_ANIMATION_ARROW);
+    this.dropdownListElement.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
 
-    
-    
   }
-  
+
   // закрытие дропдауна
   close() {
     this.isOpen = false;
@@ -111,7 +110,7 @@ class Dropdown {
       if (shouldCloseDropdown) {
         this.close();
       }
-    })
+    });
   }
   //получаем все плюсы, минусы, 
   setControls(event) {
@@ -121,68 +120,68 @@ class Dropdown {
   }
   //меняем текст поля
   changeFieldContent(type) {
-  
-    const field = this.props.fields[type]
-    const {shared_value} = this.props
-    const {separated_values} = this.props
-    
-    const separated_elements = Object.values(this.props.fields).filter((field)=>field.separated_values)
 
-    const separated_text = separated_elements.map((element) => element.count > 0 ?  pluralValue(element.count, element.separated_values) : '').join(' ')
+    const field = this.props.fields[type];
+    const { shared_value } = this.props;
+    const { separated_values } = this.props;
 
-    const text = `${shared_value ? pluralValue(this.totalCount, shared_value): ''} ${separated_text}`
+    const separated_elements = Object.values(this.props.fields).filter((field) => field.separated_values);
 
-    
+    const separated_text = separated_elements.map((element) => element.count > 0 ? pluralValue(element.count, element.separated_values) : '').join(' ');
+
+    const text = `${shared_value ? pluralValue(this.totalCount, shared_value) : ''} ${separated_text}`;
+
+
     const textField = this.field.dataset.text;
     this.str = this.field.textContent;
     this.field.innerText = this.totalCount > 0 ? text : textField;
 
     //Ограничение символов
-    if(this.str.length > 22) {
+    if (this.str.length > 22) {
       this.field.textContent = this.str.slice(0, 21) + '...';
-    } 
+    }
   }
 
- 
+
 
   handelChangeCounter(delta) {
-    return(event) => {
-      
+    return (event) => {
+
       // const parent = event.target.parentElement;
       const parent = event.target.closest(DROPDOWN_LIST_ITEM_SELECTOR);
-      const decrement = parent.querySelector(DECREMENT_SELECTOR)
-      const increment = parent.querySelector(INCREMENT_SELECTOR)
-      this.enableElement(decrement)
-      this.enableElement(increment)
-      
+      const decrement = parent.querySelector(DECREMENT_SELECTOR);
+      const increment = parent.querySelector(INCREMENT_SELECTOR);
+      this.enableElement(decrement);
+      this.enableElement(increment);
+
 
       //текущий каунтер и значение
-      const currentCounter = parent.querySelector(COUNTERS_SELECTOR)
-      this.currentValue  = Number(currentCounter.innerText)
+      const currentCounter = parent.querySelector(COUNTERS_SELECTOR);
+      this.currentValue = Number(currentCounter.innerText);
       const type = currentCounter.dataset.type;
-      
-      
+
+
       //решаем прибавлять или убавлять значение
       if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)) {
         this.props.fields[type].count += delta;
         this.totalCount += delta;
         currentCounter.innerText = this.props.fields[type].count;
         this.changeFieldContent(type);
-        this.clearButtonsVisible();  
+        this.clearButtonsVisible();
         if (delta !== 0) { // Проверяем, было ли изменено значение счетчика
           this.currentValue = Number(currentCounter.innerText); // Получаем текущее значение счетчика после изменения
-          
+
         }
         this.countersControls();
       }
-    }
+    };
   }
 
   countersControls() {
     this.dicrements.forEach(dicrem => {
       const currentCounter = dicrem.nextElementSibling;
       const type = currentCounter.dataset.type;
-      
+
       if (this.props.fields[type].count === MIN_VALUE) {
         this.disableElement(dicrem);
       } else {
@@ -199,40 +198,40 @@ class Dropdown {
 
   }
 
-  disableElement(element){
-    if(element) {
-      element.classList.add('disabled')
+  disableElement(element) {
+    if (element) {
+      element.classList.add('disabled');
     }
   }
-  enableElement(element){
-    if(element) {
-      element.classList.remove('disabled')
+  enableElement(element) {
+    if (element) {
+      element.classList.remove('disabled');
     }
   }
 
 
 
-  attachControlListeners(){
-    this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)))
-    this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)))
+  attachControlListeners() {
+    this.increments.forEach((increment) => increment.addEventListener('click', this.handelChangeCounter(1).bind(this)));
+    this.dicrements.forEach((dicrement) => dicrement.addEventListener('click', this.handelChangeCounter(-1).bind(this)));
 
   }
 
-  
+
   //BUTONS
   applyButtons() {
     const applyBtns = document.querySelectorAll(BUTTONS_APPLY_SELECTOR);
     applyBtns.forEach((applyRemoveVisible) => {
       applyRemoveVisible.addEventListener('click', () => {
-        this.close()
-      })
-    })
+        this.close();
+      });
+    });
   }
   clearButtonsVisible() {
-    if(this.totalCount > MIN_VALUE) {
-      this.buttonsClearElement.classList.add(BUTTONS_VISIBLE_SELECTOR)
+    if (this.totalCount > MIN_VALUE) {
+      this.buttonsClearElement.classList.add(BUTTONS_VISIBLE_SELECTOR);
     } else {
-      this.buttonsClearElement.classList.remove(BUTTONS_VISIBLE_SELECTOR)
+      this.buttonsClearElement.classList.remove(BUTTONS_VISIBLE_SELECTOR);
     }
   }
   clearButtonsClick() {
@@ -241,15 +240,15 @@ class Dropdown {
   clearDropdown() {
     Object.values(this.props.fields).forEach((clearField) => {
       clearField.count = 0;
-    })
-    this.field.innerText = ''
+    });
+    this.field.innerText = '';
     this.currentValue = 0;
     this.counters.innerHTML = 0;
     this.counters.forEach(DropdownsCounters => {
       DropdownsCounters.innerHTML = 0;
-    })
+    });
     this.totalCount = 0;
-    this.countersControls()
+    this.countersControls();
     this.clearButtonsClick();
     this.clearButtonsVisible();
     this.changeFieldContent();
@@ -262,4 +261,4 @@ class Dropdown {
 
 
 
-export default Dropdown
+export default Dropdown;
