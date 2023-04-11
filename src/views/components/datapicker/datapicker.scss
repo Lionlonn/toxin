@@ -26,9 +26,7 @@
 .datepicker {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     gap: 20px;
-    padding: 0 30px;
 }
 
 
@@ -296,3 +294,12 @@ input::placeholder {
 .air-datepicker-button {
     color: #BC9CFF;
 }
+
+
+// @media(max-width: 767px) {
+//     .datepicker {
+//         flex-direction: column;
+//     }
+// }
+
+
