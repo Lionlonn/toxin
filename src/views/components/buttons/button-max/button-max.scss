@@ -1,38 +1,36 @@
-.button-click__big {
+@mixin button-click_big {
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
     width: 320px;
     height: 44px;
-    border-radius: 22px;
-}
-
-
-.button-click__title {
     color: #FFFFFF;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
-    max-width: 320px;
-    height: 44px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-}
-
-.button-click__big:hover {
-    background: #c6b3f0;
-    transform: scale(0.9);
-}
-
-
-.button-click__big:active {
-    transform: scale(0.9);
-}
-
-.button-click__title:active {
-    color: #BC9CFF;
-    background: #FFF;
-    border: 1px solid #BC9CFF;
     border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+        background: #c6b3f0;
+        transform: scale(0.9);
+    }
+
+    &:active {
+        color: #BC9CFF;
+        background: #FFF;
+        border: 1px solid #BC9CFF;
+        border-radius: 22px;
+    }
+
+    &::before {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        max-width: 320px;
+        height: 44px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+    }
 }
