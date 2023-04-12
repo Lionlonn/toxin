@@ -1,4 +1,4 @@
-.email__input
-    h6.email__title Text Field
+mixin inputField(inputs)
     .email-block
-        input.email-input#email(type='email' placeholder="Email" pattern='.+@globex\.com' size='30' required='')
+        input.email-input#email(type=inputs.type placeholder=inputs.placeholder)
+        
