@@ -4,16 +4,10 @@ block page
     include components/datapicker/air-datapicker.pug
     include components/dropdown_guests/guests-drop.pug
     include components/conveniences/conveniences.pug
-
+    include components/booking-card/booking-card.pug
+    include components/arrival-card/arrival.pug
     
-    .form-selection
-        .title-text
-            h1.selection-title Найдём номера под ваши пожелания
-        .selection-datepicker
-            +datepicker
-        .selection-dropdown
-            h6.guests Гости
-            +dropdown
-        .button-number
+    +arrival-number
+    +booking
     
     

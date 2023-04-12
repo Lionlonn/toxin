@@ -1,0 +1,28 @@
+mixin booking()
+    .wrapper-booking 
+            .room-price 
+                p № 888
+                    span люкс
+                p.price 9 990₽ в сутки
+            .datepicker-booking
+                +datepicker
+            .dropdown-booking
+                h6.guests Гости
+                +dropdown
+            .booking-price 
+                .price-day 
+                    p 9 990₽ х 4 суток
+                    p 39 960₽
+                .service-fee
+                    p Сбор за услуги: скидка 2 179₽
+                        img(src=require("img/eclipse.svg"), alt="") 
+                    p 0₽
+                .service
+                    p Сбор за дополнительные услуги
+                        img(src=require("img/eclipse.svg"), alt="") 
+                    p 300₽
+            .result-price 
+                p Итого
+                span
+                p 38 081₽
+            .booking-button

@@ -1,8 +1,3 @@
-@import 'components/datapicker/datapicker.scss';
-@import 'components/dropdown_guests/guests-drop.scss';
-@import 'components/buttons/button-max/button-max.scss';
-@import 'root-style';
-
 .wrapper-booking {
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -97,9 +92,3 @@
         content: "Забронировать";
     }
 }
-
-// @media(max-width: 561px) {
-//     .wrapper-booking {
-//         grid-template-columns: 1fr;
-//     }
-// }
