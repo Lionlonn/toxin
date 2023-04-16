@@ -1,7 +1,7 @@
-mixin dropdown()
+mixin dropdown(content_id, list_id, btnClearGuestsId)
     .dropdown
-        .dropdown__content#dropdown-guests(data-text = "Сколько гостей") Сколько гостей
-        ul.dropdown__list#dropdownList1
+        .dropdown__content(id= content_id ,data-text = "Сколько гостей") Сколько гостей
+        ul.dropdown__list(id = list_id)
             li.dropdown__list-item(data-value="adults")  Взрослый 
                 .details-counter.counter-wrapper
                     //- счетчик
@@ -24,7 +24,7 @@ mixin dropdown()
                     .items__control(data-action="plus") +
                     //- счетчик
             .dropdown__buttons 
-                button.button-clear#btnClearGuestsId Очистить 
+                button.button-clear(id=btnClearGuestsId) Очистить 
                 button.button-apply Применить
         input.dropdown__input-hidden(type="text" name="select-category" value="")
     

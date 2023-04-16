@@ -1,0 +1,19 @@
+//- include components/toggle-button/toggle-button.pug
+//- include components/radio-checkbox/radio-checkbox.pug
+
+
+- const name = {type: "text", placeholder: "Имя"};
+- const surname = {type: "text", placeholder: "Фамилия"};
+- const dateOfBirth = {type: "text", placeholder: "ДД.ММ.ГГГГ"};
+- const email = {type: "email", placeholder: "Email"};
+- const pasword = {type: "password", placeholder: "Пароль"};
+
+mixin registration-card()
+    .wrapper-registration 
+        .registration-user
+            h1 Регистрация аккаунта
+            .person-name 
+                +inputField(name)
+                +inputField(surname)
+                //- +radio-check
+                
