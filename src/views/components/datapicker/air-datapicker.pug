@@ -1,5 +1,5 @@
-mixin datepicker()
-    .datepicker
+mixin datepicker({isInline = false} = {})
+    .datepicker(class=isInline ? 'datepicker_inline' : null)
         .datapicker-arrival 
             h6.datapicker__arrival ПРИБЫТИЕ
             .input__datepicker

@@ -5,7 +5,7 @@ mixin booking()
                     span люкс
                 p.price 9 990₽ в сутки
             .datepicker-booking
-                +datepicker
+                +datepicker({isInline: true})
             .dropdown-booking
                 h6.guests Гости
                 +dropdown('dropdown-booking', 'dropdown-list__booking', 'clear-booking')
