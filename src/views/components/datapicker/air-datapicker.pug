@@ -1,11 +1,12 @@
-mixin datepicker({isInline = false} = {})
-    .datepicker(class=isInline ? 'datepicker_inline' : null)
-        .datapicker-arrival 
-            h6.datapicker__arrival ПРИБЫТИЕ
-            .input__datepicker
-                input.datepicker-input#startDate(type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months')
-        .datapicker-arrival 
-            h6.datapicker__exit УБЫТИЕ
-            .input__datepicker
-                input.datepicker-input#endDate(type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months') 
-        .datepicker-wrapper
+mixin datepicker(index, firstDates, lastDates, wrapperId)
+    - const dateIndex = index.dateIndex;
+    .datepicker(id=`datepicker-${dateIndex}`)
+            .datapicker-arrival 
+                h6.datapicker__arrival ПРИБЫТИЕ
+                .input__datepicker
+                    input.datepicker-input(data-first-id=firstDates type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months')
+            .datapicker-arrival 
+                h6.datapicker__exit УБЫТИЕ
+                .input__datepicker
+                    input.datepicker-input(data-last-id=lastDates type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months') 
+            .datepicker-wrapper(data-wrapperId=wrapperId)

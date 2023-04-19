@@ -1,4 +1,5 @@
-
+- const firstD = { id: 'arrivalFerst' };
+- const lastD = { id: 'arrivalLast' };
 mixin arrival-number()
     .form-selection
     
@@ -7,8 +8,7 @@ mixin arrival-number()
                 h1.selection-title Найдём номера под ваши пожелания
     
             .selection-datepicker
-    
-                +datepicker({isInline: true})
+                +datepicker({dateIndex: 1}, firstD.id, lastD.id)
     
             .selection-dropdown
     

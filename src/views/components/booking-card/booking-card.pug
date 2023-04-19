@@ -1,3 +1,5 @@
+- const bookingFirstD = { id: 'bokkingFirst' };
+- const bookingLastD = { id: 'bookingLast' };
 mixin booking()
     .wrapper-booking 
             .room-price 
@@ -5,7 +7,7 @@ mixin booking()
                     span люкс
                 p.price 9 990₽ в сутки
             .datepicker-booking
-                +datepicker({isInline: true})
+                +datepicker({dateIndex: 2}, bookingFirstD.id, bookingLastD.id)
             .dropdown-booking
                 h6.guests Гости
                 +dropdown('dropdown-booking', 'dropdown-list__booking', 'clear-booking')
