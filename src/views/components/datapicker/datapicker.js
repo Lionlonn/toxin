@@ -16,6 +16,9 @@ class Datepicker {
         this.lastDates = lastDates;
         this.wrapperId = wrapperId;
         this.init();
+        
+        
+        // console.log(this.dateWrapper);
     }
     init() {
         this.dropPropagation();
@@ -26,9 +29,13 @@ class Datepicker {
     }
 
     constols() {
-        this.dropDatepicker = document.querySelector(DROP_DATAPICKER_SELECTOR);
-        this.dateWrapper = document.querySelectorAll(AIR_DATEPICKER_SELECTOR);
-        this.arrowInput = document.querySelectorAll(AIR_DATEPICKER_ARROW_SELECTOR);
+        this.dropDatepicker = document.querySelector(`#datepicker-${this.dateIndex}`);
+        this.dateWrapper = document.querySelectorAll(`#datepicker-${this.dateIndex} .datepicker-wrapper`);
+        this.arrowInput = document.querySelectorAll(`#datepicker-${this.dateIndex} .input__datepicker`);
+        // const inputFirst = document.querySelectorAll(`#datepicker-${this.dateIndex} [data-first-id]`)
+        // const inputLast = document.querySelectorAll(`#datepicker-${this.dateIndex} [data-last-id]`)
+        // console.log(inputFirst);
+        // console.log(inputLast);
     }
 
     dropPropagation() {
@@ -62,7 +69,7 @@ class Datepicker {
 
 
     changeFields(){
-        const fields = document.querySelectorAll(DATEPICKER_INPUT_SELECTOR);
+        const fields = document.querySelectorAll(AIR_DATEPICKER_ARROW_SELECTOR);
         fields.forEach(field => {
             field.addEventListener('click',  this.openDatepicker.bind(this));
         })
@@ -70,8 +77,6 @@ class Datepicker {
 
     datepickerOptions() {
         this.dateWrapper.forEach(calendar => {
-            const inputs = calendar.querySelectorAll(DATEPICKER_INPUT_SELECTOR);
-            const clearButton = calendar.querySelectorAll('.air-datepicker-button');
             const datepick = new AirDatepicker(calendar, {
                 minDate: new Date(),
                 inline: true,
@@ -84,13 +89,19 @@ class Datepicker {
         
         
                 onSelect(date) {
-                    const firstDate = document.querySelector(`#${this.firstDates}`);
-                    const lastDate = document.querySelector(`#${this.lastDates}`);
+                    const firstDate = document.querySelectorAll('[data-first-id]');
+                    const lastDate = document.querySelectorAll('[data-last-id]');
                     const { formattedDate } = date;
                     const [start, end] = formattedDate;
                     if (start && end) {
-                        firstDate.value = start;
-                        lastDate.value = end;
+                        firstDate.forEach(firstD => {
+                            firstD.value = start
+                        })
+                        lastDate.forEach(lastD => {
+                            lastD.value = end
+                        })
+                        // firstDate.value = start;
+                        // lastDate.value = end;
         
         
                     }
@@ -111,7 +122,9 @@ class Datepicker {
 }
 
 
-const datepick1 = new Datepicker({dateIndex: 1}, 'firstDate1', 'lastDate1', 'wrapperId1')
+const datepick1 = new Datepicker({dateIndex: 1, firstDates: 'arrivalFerst', lastDates: 'arrivalLast', wrapperId: 'wrapperIdOne'})
+const datepick2 = new Datepicker({dateIndex: 2, firstDates: 'firstDateTwo', lastDates: 'lastDatesTwo', wrapperId: 'wrapperIdTwo'})
+
 
 // export default Datepicker
 // const DATEPICKER_INPUT_SELECTOR = ".datepicker-input";

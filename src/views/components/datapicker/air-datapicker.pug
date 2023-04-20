@@ -1,4 +1,4 @@
-mixin datepicker(index, firstDates, lastDates, wrapperId)
+mixin datepicker(index, firstDates, lastDates)
     - const dateIndex = index.dateIndex;
     .datepicker(id=`datepicker-${dateIndex}`)
             .datapicker-arrival 
@@ -9,4 +9,4 @@ mixin datepicker(index, firstDates, lastDates, wrapperId)
                 h6.datapicker__exit УБЫТИЕ
                 .input__datepicker
                     input.datepicker-input(data-last-id=lastDates type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months') 
-            .datepicker-wrapper(data-wrapperId=wrapperId)
+            .datepicker-wrapper
