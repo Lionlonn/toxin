@@ -31,15 +31,17 @@ class Datepicker {
     constols() {
         this.dropDatepicker = document.querySelector(`#datepicker-${this.dateIndex}`);
         this.dateWrapper = document.querySelectorAll(`#datepicker-${this.dateIndex} .datepicker-wrapper`);
-
-        this.arrowInput = document.querySelectorAll(`#datepicker-${this.dateIndex} .input__datepicker`);
-        console.log(this.arrowInput);
+        this.arrowInput = document.querySelectorAll(`#datepicker-${this.dateIndex} .input__datepicker`);;
     }
 
     dropPropagation() {
-        // this.dateWrapper.addEventListener('click', (event) => {
-        //     event.stopPropagation();
-        // })
+        document.addEventListener('DOMContentLoaded', () => {
+            this.dateWrapper.forEach(clickPropagation => {
+                clickPropagation.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+            });
+        });
         document.addEventListener('click', this.handleDocunentClick.bind(this));
     }
 
@@ -57,7 +59,6 @@ class Datepicker {
         if (!isClickInside) {
             this.dateWrapper.forEach(calendar => {
                 calendar.classList.remove(AIR_DATEPICKER_VISIBLE_SELECTOR);
-                console.log('click');
             });
             this.arrowInput.forEach(arrowAnim => {
                 arrowAnim.classList.remove(ARROW_ANIMATION);
@@ -108,7 +109,6 @@ class Datepicker {
                 const firstDate = document.querySelector(`#datepicker-${this.dateIndex} [data-first-id]`).value = '';
                 const lastDate = document.querySelector(`#datepicker-${this.dateIndex} [data-last-id]`).value = '';
             });
-            console.log(clearBtn);
         });
     }
 }
