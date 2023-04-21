@@ -33,6 +33,7 @@ class Datepicker {
         this.dateWrapper = document.querySelectorAll(`#datepicker-${this.dateIndex} .datepicker-wrapper`);
 
         this.arrowInput = document.querySelectorAll(`#datepicker-${this.dateIndex} .input__datepicker`);
+        console.log(this.arrowInput);
     }
 
     dropPropagation() {
@@ -47,7 +48,7 @@ class Datepicker {
             dateOpen.classList.toggle(AIR_DATEPICKER_VISIBLE_SELECTOR);
         });
         this.arrowInput.forEach(arrowAnim => {
-            arrowAnim.classList.toggle(this.ARROW_ANIMATION);
+            arrowAnim.classList.toggle(ARROW_ANIMATION);
         });
     }
 
