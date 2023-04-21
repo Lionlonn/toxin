@@ -31,6 +31,7 @@ class Datepicker {
     constols() {
         this.dropDatepicker = document.querySelector(`#datepicker-${this.dateIndex}`);
         this.dateWrapper = document.querySelectorAll(`#datepicker-${this.dateIndex} .datepicker-wrapper`);
+
         this.arrowInput = document.querySelectorAll(`#datepicker-${this.dateIndex} .input__datepicker`);
     }
 
@@ -100,12 +101,14 @@ class Datepicker {
     }
 
     clearButton() {
-        const clearButton = document.querySelector('.air-datepicker-button');
-        //     clearButton.addEventListener('click', () => {
-        //     const firstDate = document.querySelector(`#${this.firstDates}`).value = '';
-        //     const lastDate = document.querySelector(`#${this.lastDates}`).value = '';
-        // });
-
+        document.addEventListener('DOMContentLoaded', () => {
+            const clearBtn = document.querySelector(`#wrapper-${this.dateIndex} .air-datepicker-button`);
+            clearBtn.addEventListener('click', () => {
+                const firstDate = document.querySelector(`#datepicker-${this.dateIndex} [data-first-id]`).value = '';
+                const lastDate = document.querySelector(`#datepicker-${this.dateIndex} [data-last-id]`).value = '';
+            });
+            console.log(clearBtn);
+        });
     }
 }
 
