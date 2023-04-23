@@ -1,10 +1,11 @@
 //- include components/toggle-button/toggle-button.pug
 //- include components/radio-checkbox/radio-checkbox.pug
+include components/radio-checkbox/radio-checkbox.pug
 
 
 - const name = {type: "text", placeholder: "Имя"};
 - const surname = {type: "text", placeholder: "Фамилия"};
-- const dateOfBirth = {type: "text", placeholder: "ДД.ММ.ГГГГ"};
+- const dateOfBirth = {id: "inputBirth",type: "text", placeholder: "ДД.ММ.ГГГГ"};
 - const email = {type: "email", placeholder: "Email"};
 - const pasword = {type: "password", placeholder: "Пароль"};
 
@@ -15,7 +16,9 @@ mixin registration-card()
             .person-name 
                 +inputField(name)
                 +inputField(surname)
-                +inputField(dateOfBirth)
+                .radio-floor
+                    +radio-floor
+                +inputField(dateOfBirth, true)
                 +inputField(email)
                 +inputField(pasword)
                 //- +radio-check

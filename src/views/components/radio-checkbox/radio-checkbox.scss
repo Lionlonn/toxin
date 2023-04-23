@@ -1,10 +1,10 @@
-.radio{
-    width: 190px;
-    margin: 20px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+// .radio{
+//     width: 190px;
+//     margin: 20px 100px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+// }
 
 
 .custom-radio {
@@ -17,6 +17,7 @@
     display: inline-flex;
     align-items: center;
     user-select: none;
+    margin: 0;
   }
   /* создание в label псевдоэлемента  before со следующими стилями */
   .custom-radio+label::before {

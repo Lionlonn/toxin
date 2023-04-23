@@ -1,0 +1,31 @@
+input {
+    width: 320px;
+    height: 44px;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    border-radius: 4px;
+    padding: 13px 0 13px 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.input-wrapper__bithd {
+    position: absolute;
+    display: none;
+    max-width: 320px;
+    width: 100%;
+    z-index: 100;
+}
+
+.input-wrapper__bithd .air-datepicker {
+    top: 0px;
+}
+
+.wrapper__bithd__opened {
+    display: block;
+}
+
+.air-datepicker {
+    width: 320px;
+    display: block;
+}

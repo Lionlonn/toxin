@@ -106,11 +106,9 @@ input::placeholder {
 .datepicker-wrapper {
     position: absolute;
     display: none;
-    // height: 100%;
     max-width: 320px;
     width: 100%;
     z-index: 100;
-    // transform: translate(-50%);
 }
 
 .air-datepicker--opened {
@@ -301,5 +299,3 @@ input::placeholder {
 //         flex-direction: column;
 //     }
 // }
-
-

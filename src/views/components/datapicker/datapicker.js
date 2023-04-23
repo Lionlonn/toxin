@@ -10,15 +10,11 @@ const ARROW_ANIMATION = 'animation-arrow';
 
 
 class Datepicker {
-    constructor(index, firstDates, lastDates, wrapperId) {
+    constructor(index, firstDates, lastDates) {
         this.dateIndex = index.dateIndex;
         this.firstDates = firstDates;
         this.lastDates = lastDates;
-        this.wrapperId = wrapperId;
         this.init();
-
-
-        // console.log(this.dateWrapper);
     }
     init() {
         this.dropPropagation();
@@ -114,5 +110,5 @@ class Datepicker {
 }
 
 
-const datepick1 = new Datepicker({ dateIndex: 1, firstDates: 'arrivalFerst', lastDates: 'arrivalLast', wrapperId: 'wrapperIdOne' });
-const datepick2 = new Datepicker({ dateIndex: 2, firstDates: 'firstDateTwo', lastDates: 'lastDatesTwo', wrapperId: 'wrapperIdTwo' });
+const datepick1 = new Datepicker({ dateIndex: 1, firstDates: 'arrivalFerst', lastDates: 'arrivalLast'});
+const datepick2 = new Datepicker({ dateIndex: 2, firstDates: 'firstDateTwo', lastDates: 'lastDatesTwo' });
