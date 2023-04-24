@@ -1,35 +1,45 @@
-.button-click__min{
-    margin: 20px 100px;
+@mixin button-click__min {
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
     width: 87px;
     height: 34px;
     border-radius: 22px;
-}
-.button-click__mini{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #FFFFFF;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
     width: 87px;
     height: 34px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.button-click__min:hover{
-    background: #c6b3f0;
-}
+    &:hover {
+        background: #c6b3f0;
+    }
 
 
-.button-click__min:active{
-    transform: scale(0.9);
-    
-}
+    &:active {
+        transform: scale(0.9);
 
-.button-click__mini:active{
-    color: #BC9CFF;
-    background: #FFF;
-    border: 1px solid #BC9CFF;
-    border-radius: 22px;
+    }
+
+    &:active {
+        color: #BC9CFF;
+        background: #FFF;
+        border: 2px solid #BC9CFF;
+        border-radius: 22px;
+    }
+
+    &::before {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        max-width: 320px;
+        height: 44px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+    }
 }

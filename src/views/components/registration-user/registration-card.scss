@@ -1,5 +1,6 @@
 @import 'components/toggle-button/toggle-button.scss';
 @import 'components/radio-checkbox/radio-checkbox.scss';
+@import 'components/buttons/button-min/button-min.scss';
 
 .wrapper-registration {
     max-width: 380px;
@@ -15,9 +16,68 @@
     margin: 0 auto;
 }
 
+.registration-user h1 {
+    font-size: 1.8em;
+}
+
+.person-name {
+    margin-bottom: 20px;
+}
+
+.person-name .field-block {
+    margin-bottom: 10px;
+}
+
+.person-date_bithd {
+    margin-bottom: 20px;
+}
+
+.person-data .field-block {
+    margin-bottom: 10px;
+}
+
+
 .radio-floor {
     display: flex;
     gap: 20px;
-    margin: 10px 0px 20px 0;
+}
 
+.registration-user h6 {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 1em;
+    line-height: 15px;
+}
+
+.person-data {
+    margin-bottom: 20px;
+}
+
+.person-data_toggle {
+    display: flex;
+    align-items: center;
+}
+
+.button-registation__user {
+    margin-bottom: 30px;
+    @include button-click_big;
+
+    &::before {
+        content: "Перейти к оплате";
+    }
+}
+
+.button-user__enter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.button-enter {
+    @include button-click__min;
+
+    &::before {
+        content: "Войти";
+    }
 }

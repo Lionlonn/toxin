@@ -1,5 +1,6 @@
-//- include components/toggle-button/toggle-button.pug
-//- include components/radio-checkbox/radio-checkbox.pug
+include components/toggle-button/toggle-button.pug
+include components/buttons/button-max/button-max.pug
+include components/buttons/button-min/button-min.pug
 include components/radio-checkbox/radio-checkbox.pug
 
 
@@ -18,8 +19,16 @@ mixin registration-card()
                 +inputField(surname)
                 .radio-floor
                     +radio-floor
+            .person-date_bithd
+                h6 Дата рождения
                 +inputField(dateOfBirth, true)
+            .person-data
+                h6 Данные для входа в сервис
                 +inputField(email)
                 +inputField(pasword)
-                //- +radio-check
-                
+                .person-data_toggle
+                    +toggle
+            .button-registation__user
+            .button-user__enter
+                | Уже есть аккаунт на Toxin
+                .button-enter
