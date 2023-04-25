@@ -1,0 +1,55 @@
+.number-hostel {
+    max-width: 324px;
+    height: 220px;
+    border: 1px solid burlywood;
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.swiper-button-next {
+    color: #FFFF;
+    font-size: 2rem;
+}
+
+.swiper-button-prev {
+    color: #FFFF;
+    font-size: 2rem;
+}
+
+.swiper-button-next:after {
+    font-size: 1.5rem;
+}
+
+.swiper-button-prev:after {
+    font-size: 1.5rem;
+}
+
+
+.swiper-pagination-bullet-active {
+    background: #FFFF;
+    border: 1px solid #FFFF;
+}
+
+.swiper-pagination-bullet {
+    background: none;
+    border: 1px solid #FFFF;
+    color: black;
+}

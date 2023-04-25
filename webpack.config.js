@@ -50,10 +50,6 @@ module.exports = {
   entry: {
     ...entries
   },
-  // entry: [
-  //   '@babel/polyfill',
-  //  path.resolve(__dirname, 'src', 'index.js')
-  // ],
   resolve: {
     alias: {
       'root-style': path.resolve(__dirname, 'src/index.scss'),
@@ -159,12 +155,3 @@ module.exports = {
     ]
   }
 };
-
-//   new HtmlWebpackPlugin({
-      //       template: path.join(__dirname, 'src', 'views/layout/main-page.pug'),
-      //       filename: 'index.html',
-      //   }),
-      //   new HtmlWebpackPlugin({
-      //     template: path.join(__dirname, 'src', 'views/layout/ui-kit-page.pug'),
-      //     filename: 'index2.html',
-      // }),
