@@ -3,6 +3,7 @@ import 'components/datapicker/datapicker.js';
 import 'components/dropdown_guests/Dropdown.js';
 import 'components/dropdown_guests/index.js';
 import 'components/inputs_fields/input_date.js'
+import 'components/datepicker-card/date-card.js'
 
 
 import './cards.scss';
