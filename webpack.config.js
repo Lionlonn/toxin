@@ -17,6 +17,8 @@ const PATHS = {
 
 const PAGES_DIR = `${PATHS.src}/views/pages`;
 
+
+
 const getEntries = pages => {
   const entries = {};
   const htmlPages = [];
@@ -60,6 +62,7 @@ module.exports = {
     }
   },
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: '[name].[contenthash].js',
@@ -109,33 +112,10 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75
-              }
-
-            },
-          }
-        ],
         type: 'asset/resource',
+        generator: {
+          filename: `${PATHS.assets}img/[name][ext]`,
+        },
       },
       {
         test: /\.m?js$/i,

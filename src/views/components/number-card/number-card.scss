@@ -42,14 +42,19 @@
     font-size: 1.5rem;
 }
 
-
-.swiper-pagination-bullet-active {
-    background: #FFFF;
-    border: 1px solid #FFFF;
+.swiper-pagination {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .swiper-pagination-bullet {
     background: none;
+    border: 1px solid #FFFF;
+    opacity: 100%;
+}
+
+.swiper-pagination-bullet-active {
+    background: #FFFF;
     border: 1px solid #FFFF;
     color: black;
 }
