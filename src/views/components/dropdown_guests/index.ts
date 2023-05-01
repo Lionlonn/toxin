@@ -1,7 +1,6 @@
 import Dropdown from './Dropdown';
 
 
-
 const dropdownOptions1 = {
     dropdownSelector: '#dropdown-guests',
     dropdownListSelector: '#dropdownList1',

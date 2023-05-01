@@ -56,6 +56,7 @@ module.exports = {
     alias: {
       'root-style': path.resolve(__dirname, 'src/index.scss'),
       components: path.resolve(__dirname, 'src/views/components/'),
+      data: path.resolve(__dirname, 'src/data'),
       layouts: path.resolve(__dirname, 'src/views/layouts/'),
       libs: path.resolve(__dirname, 'src/libs'),
       assets: path.resolve(__dirname, 'src/assets'),
@@ -118,14 +119,9 @@ module.exports = {
         },
       },
       {
-        test: /\.m?js$/i,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        test: /\.(t|j)s$/i,
+        use: ['ts-loader'],
+        exclude: '/node_modules/', 
       },
       {
         test: /\.pug$/,

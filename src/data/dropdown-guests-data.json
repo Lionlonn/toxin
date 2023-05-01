@@ -1,0 +1,7 @@
+{
+    "clear": [
+        { "title": "Взрослые", "name": "adults", "count": 0 },
+        { "title": "Дети", "name": "children", "count": 0 },
+        { "title": "Младенцы", "name": "babies", "count": 0 }
+    ]
+}

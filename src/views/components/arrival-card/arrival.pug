@@ -1,6 +1,9 @@
 - const firstD = { id: 'arrivalFerst' };
 - const lastD = { id: 'arrivalLast' };
 mixin arrival-number()
+    - 
+        const { clear: dropdownGuestsData } =
+            require('data/dropdown-guests-data')
     .form-selection
     
             .title-text
@@ -8,11 +11,17 @@ mixin arrival-number()
                 h1.selection-title Найдём номера под ваши пожелания
     
             .selection-datepicker
-                +datepicker({dateIndex: 1}, firstD.id, lastD.id)
+                //- +datepicker({dateIndex: 1}, firstD.id, lastD.id)
     
             .selection-dropdown
     
                 h6.guests Гости
     
-                +dropdown('dropdown-guests', 'dropdownList1', 'clear-id')
+                //- +dropdown('dropdown-guests', 'dropdownList1', 'clear-id')
+                +dropdown({
+                    label: 'Гости',
+                    type: 'guest',
+                    data: dropdownGuestsData
+                })
+
             .button-number
