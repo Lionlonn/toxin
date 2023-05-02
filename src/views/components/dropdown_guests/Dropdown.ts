@@ -37,12 +37,12 @@ type DropdownFields = Record<string, {
     label: string;
     value: string;
     count: number;
-    separated_values?: string|string[];
+    separated_values?: string | string[];
 }>;
 
 interface DropdownOptions {
-    shared_value: string|string[];
-    separated_values?: string|string[];
+    shared_value: string | string[];
+    separated_values?: string | string[];
     dropdownSelector: string;
     dropdownListSelector: string;
     fields: DropdownFields;
@@ -50,8 +50,8 @@ interface DropdownOptions {
 }
 
 interface DropdownProps {
-    shared_value: string|string[];
-    separated_values?: string|string[];
+    shared_value: string | string[];
+    separated_values?: string | string[];
     fields: DropdownFields;
 }
 
@@ -66,10 +66,12 @@ class Dropdown {
     private increments: HTMLElement[] = [];
     private counters: HTMLElement[] = [];
     private totalCount: number = 0;
+    private currentValue: number | undefined;
     private isOpen: boolean = false;
     private dropdownElement: HTMLElement | null | undefined;
     private dropdownListElement: HTMLElement | null | undefined;
     private buttonsClearElement: HTMLElement | null | undefined;
+    private str: string | undefined;
 
     constructor(options: DropdownOptions) {
 
@@ -117,7 +119,7 @@ class Dropdown {
     // Добавление события
     dropEvent() {
         this.dropdownElement?.addEventListener('click', this.toggle.bind(this));
-        this.dropdownListElement?.addEventListener('click', this.handelChangeCounter.bind(this));
+        this.dropdownListElement?.addEventListener('click',(event: MouseEvent) => this.handelChangeCounter.bind(this));
 
     }
     //открытие дропдауна
@@ -158,91 +160,100 @@ class Dropdown {
         this.counters = Array.from(this.dropdownListElement?.querySelectorAll(COUNTERS_SELECTOR) ?? []);
     }
     //меняем текст поля
-    changeFieldContent(type:string) {
+    changeFieldContent(type: string) {
 
         const field = this.props.fields[type];
         const { shared_value } = this.props;
         const { separated_values } = this.props;
-        
+
         const separated_elements = Object.values(this.props.fields).filter((field) => field.separated_values);
 
-       
+
         const separated_text = separated_elements.map((element) => element.count > 0 && Array.isArray(element.separated_values) ? pluralValue(element.count, element.separated_values) : '').join(' ');
         const text = `${shared_value && Array.isArray(shared_value) ? pluralValue(this.totalCount, shared_value) : ''} ${separated_text}`;
 
 
-        const textField = this.field.dataset.text;
-        this.str = this.field.textContent;
-        this.field.innerText = this.totalCount > 0 ? text : textField;
+        const textField = this.field?.dataset.text;
+        this.str = this.field?.textContent as string;
+
+        if(this.field !== null) {
+            this.field.innerText = this.totalCount > 0 ? text : textField as string;
+        }
 
         //Ограничение символов
-        if (this.str.length > 22) {
+        if (this.str.length > 22 && this.field !== null) {
             this.field.textContent = this.str.slice(0, 21) + '...';
         }
     }
 
 
 
-    handelChangeCounter(delta) {
-        return (event) => {
-
-            // const parent = event.target.parentElement;
-            const parent = event.target.closest(DROPDOWN_LIST_ITEM_SELECTOR);
-            const decrement = parent.querySelector(DECREMENT_SELECTOR);
-            const increment = parent.querySelector(INCREMENT_SELECTOR);
+    handelChangeCounter(delta:number) {
+        return (event:MouseEvent) => {
+            // if(event.target) {
+                
+            // }
+            const parent = (event.target as Element).closest(DROPDOWN_LIST_ITEM_SELECTOR);
+            const decrement = parent?.querySelector(DECREMENT_SELECTOR);
+            const increment = parent?.querySelector(INCREMENT_SELECTOR);
+            if(decrement)
             this.enableElement(decrement);
+            if(increment)
             this.enableElement(increment);
 
-
             //текущий каунтер и значение
-            const currentCounter = parent.querySelector(COUNTERS_SELECTOR);
+            const currentCounter = parent?.querySelector(COUNTERS_SELECTOR) as HTMLElement;
             this.currentValue = Number(currentCounter.innerText);
             const type = currentCounter.dataset.type;
 
-
-            //решаем прибавлять или убавлять значение
-            if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)) {
-                this.props.fields[type].count += delta;
-                this.totalCount += delta;
-                currentCounter.innerText = this.props.fields[type].count;
-                this.changeFieldContent(type);
-                this.clearButtonsVisible();
-                if (delta !== 0) { // Проверяем, было ли изменено значение счетчика
-                    this.currentValue = Number(currentCounter.innerText); // Получаем текущее значение счетчика после изменения
-
+            if (typeof type === 'string') {
+                if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)){
+                    this.props.fields[type].count += delta;
+                    this.totalCount += delta;
+                    currentCounter.innerText = this.props.fields[type].count.toString();
+                    this.changeFieldContent(type);
+                    this.clearButtonsVisible();
+                    if (delta !== 0) { 
+                        this.currentValue = Number(currentCounter.innerText); 
+                    }
+                    this.countersControls();
                 }
-                this.countersControls();
             }
+            //решаем прибавлять или убавлять значение
+           
         };
     }
 
     countersControls() {
         this.dicrements.forEach(dicrem => {
-            const currentCounter = dicrem.nextElementSibling;
+            const currentCounter = dicrem.nextElementSibling as HTMLElement;
             const type = currentCounter.dataset.type;
-
-            if (this.props.fields[type].count === MIN_VALUE) {
-                this.disableElement(dicrem);
-            } else {
-                this.enableElement(dicrem);
-            }
-
-            const increment = dicrem.nextElementSibling.nextElementSibling;
-            if (this.props.fields[type].count === MAX_VALUE) {
-                this.disableElement(increment);
-            } else {
-                this.enableElement(increment);
+            if (typeof type === 'string') {
+                if (this.props.fields[type].count === MIN_VALUE) {
+                    this.disableElement(dicrem);
+                } else {
+                    this.enableElement(dicrem);
+                }
+    
+                const increment = dicrem.nextElementSibling?.nextElementSibling;
+                if (this.props.fields[type].count === MAX_VALUE) {
+                    if(increment)
+                    this.disableElement(increment);
+                } else {
+                    if(increment)
+                    this.enableElement(increment);
+                }
             }
         });
 
     }
 
-    disableElement(element) {
+    disableElement(element:Element) {
         if (element) {
             element.classList.add('disabled');
         }
     }
-    enableElement(element) {
+    enableElement(element:Element) {
         if (element) {
             element.classList.remove('disabled');
         }
@@ -268,29 +279,33 @@ class Dropdown {
     }
     clearButtonsVisible() {
         if (this.totalCount > MIN_VALUE) {
-            this.buttonsClearElement.classList.add(BUTTONS_VISIBLE_SELECTOR);
+            this.buttonsClearElement?.classList.add(BUTTONS_VISIBLE_SELECTOR);
         } else {
-            this.buttonsClearElement.classList.remove(BUTTONS_VISIBLE_SELECTOR);
+            this.buttonsClearElement?.classList.remove(BUTTONS_VISIBLE_SELECTOR);
         }
     }
     clearButtonsClick() {
-        this.buttonsClearElement.addEventListener('click', this.clearDropdown.bind(this));
+        this.buttonsClearElement?.addEventListener('click', this.clearDropdown.bind(this));
     }
     clearDropdown() {
         Object.values(this.props.fields).forEach((clearField) => {
             clearField.count = 0;
         });
+        if (this.field)
         this.field.innerText = '';
         this.currentValue = 0;
-        this.counters.innerHTML = 0;
+        // this.counters.innerHTML = 0;
+        this.counters.forEach((element:HTMLElement) => {
+            element.innerHTML = '0'; 
+        })
         this.counters.forEach(DropdownsCounters => {
-            DropdownsCounters.innerHTML = 0;
+            DropdownsCounters.innerHTML = '0';
         });
         this.totalCount = 0;
         this.countersControls();
         this.clearButtonsClick();
         this.clearButtonsVisible();
-        this.changeFieldContent();
+        // this.changeFieldContent();
     }
 
 }
