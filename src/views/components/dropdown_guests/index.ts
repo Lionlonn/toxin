@@ -33,7 +33,7 @@ const dropdownOptions3 = {
 
 
 
-const myDropdown1 = new Dropdown(dropdownOptions1);
-const myDropdown2 = new Dropdown(dropdownOptions3);
+// const myDropdown1 = new Dropdown(dropdownOptions1);
+// const myDropdown2 = new Dropdown(dropdownOptions3);
 
 

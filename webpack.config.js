@@ -24,7 +24,7 @@ const getEntries = pages => {
   const htmlPages = [];
 
   pages.forEach(name => {
-    entries[name] = `${PAGES_DIR}/${name}/index.js`;
+    entries[name] = `${PAGES_DIR}/${name}/index.ts`;
     htmlPages.push(
       new HtmlWebpackPlugin({
         filename: `${name}.html`,
@@ -60,7 +60,8 @@ module.exports = {
       layouts: path.resolve(__dirname, 'src/views/layouts/'),
       libs: path.resolve(__dirname, 'src/libs'),
       assets: path.resolve(__dirname, 'src/assets'),
-    }
+    },
+    extensions: [ '.ts', '.js' ]
   },
   output: {
     publicPath: '/',
