@@ -43,6 +43,7 @@ module.exports = {
   mode,
   target,
   devtool,
+  // devtool: 'inline-source-map',
   devServer: {
     port: 3000,
     open: ['index.html'],
@@ -61,7 +62,7 @@ module.exports = {
       libs: path.resolve(__dirname, 'src/libs'),
       assets: path.resolve(__dirname, 'src/assets'),
     },
-    extensions: [ '.ts', '.js' ]
+    extensions: ['.ts', '.js', '.css', '.scss'],
   },
   output: {
     publicPath: '/',
@@ -75,12 +76,14 @@ module.exports = {
     maxEntrypointSize: 1000000,
     maxAssetSize: 1000000
   },
+  
   plugins: [
     ...htmlPages,
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
   ],
+
   module: {
     rules: [
       {
@@ -105,6 +108,38 @@ module.exports = {
           'sass-loader'
         ],
       },
+      // {
+      //   test: /\.(sa|sc|c)ss$/i,
+      //   use: [
+      //     devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+      //     "css-loader",
+      //     "postcss-loader",
+      //     "sass-loader",
+      //   ],
+      // },
+      // {
+      //   test: /\.(c|sa|sc)ss$/i,
+      //   use: [
+      //     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     // {
+      //     //   loader: 'file-loader',
+      //     //   options: {
+      //     //     // outputPath: "css/",
+      //     //     name: "[name].[contenthash].css"
+      //     //   }
+      //     // },
+      //     {
+      //       loader: "sass-loader",
+      //       options: {
+      //         sourceMap: true,
+      //         sassOptions: {
+      //           outputStyle: "compressed",
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.woff2?$/i,
         type: 'asset/resource',
@@ -122,7 +157,7 @@ module.exports = {
       {
         test: /\.(t|j)s$/i,
         use: ['ts-loader'],
-        exclude: '/node_modules/', 
+        exclude: '/node_modules/',
       },
       {
         test: /\.pug$/,
@@ -130,5 +165,5 @@ module.exports = {
       },
 
     ]
-  }
+  },
 };

@@ -1,4 +1,5 @@
-const plural = require('plural-ru');
+// const plural = require('plural-ru');
+import plural from 'plural-ru'
 
 const MAX_VALUE = 5;
 const MIN_VALUE = 0;
