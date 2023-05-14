@@ -10,6 +10,7 @@ const COUNTERS_SELECTOR = '[data-type]';
 
 
 
+
 // dropdown constants
 const DROPDOwN_CONTENT_SELECTOR = '.dropdown__content';
 const DROPDOWN_GUESTS_ID = '#dropdown-guests';
@@ -25,8 +26,6 @@ const BUTTONS_CLEAR_SELECTOR = '.button-clear';
 const BUTTONS_APPLY_SELECTOR = '.button-apply';
 const BUTTONS_VISIBLE_SELECTOR = 'button-clear--visible';
 
-console.log('test');
-
 
 function pluralValue(count: number, values: string[]): string {
     const [value1, value2, value3] = values;
@@ -35,14 +34,13 @@ function pluralValue(count: number, values: string[]): string {
 }
 
 type DropdownFields = Record<string, {
-    label: string;
-    value: string;
+    // label: string;
+    // value: string;
     count: number;
     separated_values?: string | string[];
 }>;
-
 interface DropdownOptions {
-    shared_value: string | string[];
+    shared_value?: string | string[];
     separated_values?: string | string[];
     dropdownSelector: string;
     dropdownListSelector: string;
@@ -51,7 +49,7 @@ interface DropdownOptions {
 }
 
 interface DropdownProps {
-    shared_value: string | string[];
+    shared_value?: string | string[];
     separated_values?: string | string[];
     fields: DropdownFields;
 }
@@ -59,7 +57,7 @@ interface DropdownProps {
 
 
 class Dropdown {
-    private field: HTMLElement | null;
+    private field: HTMLDivElement | null;
     private fildListener: HTMLElement | null;
     private props: DropdownProps;
     private options: DropdownOptions;
@@ -73,11 +71,13 @@ class Dropdown {
     private dropdownListElement: HTMLElement | null | undefined;
     private buttonsClearElement: HTMLElement | null | undefined;
     private str: string | undefined;
-
+    
     constructor(options: DropdownOptions) {
-
-
+        
         this.field = document.querySelector(options.dropdownSelector);
+        console.log(this.field);
+        
+        
         this.fildListener = document.querySelector(options.dropdownListSelector);
         const dropdownEntries = Object.entries(options.fields).map(dropdownArray => {
             const [key, value] = dropdownArray;
@@ -85,9 +85,9 @@ class Dropdown {
         });
         this.props = {
             shared_value: options.shared_value,
-            // separated_values: options.separated_values,
             fields: { ...Object.fromEntries(dropdownEntries) }
         };
+        
         this.options = options;
         this.dicrements = [];
         this.increments = [];
@@ -106,8 +106,10 @@ class Dropdown {
         this.setControls();
         this.attachControlListeners();
         this.applyButtons();
-        this.clearDropdown();
+        this.clearButtonsClick();
+        // this.clearDropdown();
         this.countersControls();
+
     }
     //берет дропдаун и лист и каунт
     setDropdown() {
@@ -115,12 +117,13 @@ class Dropdown {
         this.dropdownListElement = document.querySelector<HTMLElement>(this.options.dropdownListSelector);
         //buttons
         this.buttonsClearElement = document.querySelector<HTMLElement>(this.options.buttonsClearSelector);
+        
 
     }
     // Добавление события
     dropEvent() {
         this.dropdownElement?.addEventListener('click', this.toggle.bind(this));
-        this.dropdownListElement?.addEventListener('click',(event: MouseEvent) => this.handelChangeCounter.bind(this));
+        this.dropdownListElement?.addEventListener('click', (event: MouseEvent) => this.handelChangeCounter.bind(this));
 
     }
     //открытие дропдауна
@@ -164,20 +167,27 @@ class Dropdown {
     changeFieldContent(type: string) {
 
         const field = this.props.fields[type];
+        
         const { shared_value } = this.props;
         const { separated_values } = this.props;
-
+        
         const separated_elements = Object.values(this.props.fields).filter((field) => field.separated_values);
+        
+        
 
 
         const separated_text = separated_elements.map((element) => element.count > 0 && Array.isArray(element.separated_values) ? pluralValue(element.count, element.separated_values) : '').join(' ');
+        
+        
         const text = `${shared_value && Array.isArray(shared_value) ? pluralValue(this.totalCount, shared_value) : ''} ${separated_text}`;
+        
+        
 
 
         const textField = this.field?.dataset.text;
         this.str = this.field?.textContent as string;
 
-        if(this.field !== null) {
+        if (this.field !== null) {
             this.field.innerText = this.totalCount > 0 ? text : textField as string;
         }
 
@@ -189,18 +199,18 @@ class Dropdown {
 
 
 
-    handelChangeCounter(delta:number) {
-        return (event:MouseEvent) => {
+    handelChangeCounter(delta: number) {
+        return (event: MouseEvent) => {
             // if(event.target) {
-                
+
             // }
             const parent = (event.target as Element).closest(DROPDOWN_LIST_ITEM_SELECTOR);
             const decrement = parent?.querySelector(DECREMENT_SELECTOR);
             const increment = parent?.querySelector(INCREMENT_SELECTOR);
-            if(decrement)
-            this.enableElement(decrement);
-            if(increment)
-            this.enableElement(increment);
+            if (decrement)
+                this.enableElement(decrement);
+            if (increment)
+                this.enableElement(increment);
 
             //текущий каунтер и значение
             const currentCounter = parent?.querySelector(COUNTERS_SELECTOR) as HTMLElement;
@@ -208,20 +218,20 @@ class Dropdown {
             const type = currentCounter.dataset.type;
 
             if (typeof type === 'string') {
-                if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)){
+                if (this.props.fields[type] && (delta > 0 && this.currentValue < MAX_VALUE || delta < 0 && this.currentValue !== MIN_VALUE)) {
                     this.props.fields[type].count += delta;
                     this.totalCount += delta;
                     currentCounter.innerText = this.props.fields[type].count.toString();
                     this.changeFieldContent(type);
                     this.clearButtonsVisible();
-                    if (delta !== 0) { 
-                        this.currentValue = Number(currentCounter.innerText); 
+                    if (delta !== 0) {
+                        this.currentValue = Number(currentCounter.innerText);
                     }
                     this.countersControls();
                 }
             }
             //решаем прибавлять или убавлять значение
-           
+
         };
     }
 
@@ -235,26 +245,26 @@ class Dropdown {
                 } else {
                     this.enableElement(dicrem);
                 }
-    
+
                 const increment = dicrem.nextElementSibling?.nextElementSibling;
                 if (this.props.fields[type].count === MAX_VALUE) {
-                    if(increment)
-                    this.disableElement(increment);
+                    if (increment)
+                        this.disableElement(increment);
                 } else {
-                    if(increment)
-                    this.enableElement(increment);
+                    if (increment)
+                        this.enableElement(increment);
                 }
             }
         });
 
     }
 
-    disableElement(element:Element) {
+    disableElement(element: Element) {
         if (element) {
             element.classList.add('disabled');
         }
     }
-    enableElement(element:Element) {
+    enableElement(element: Element) {
         if (element) {
             element.classList.remove('disabled');
         }
@@ -293,11 +303,11 @@ class Dropdown {
             clearField.count = 0;
         });
         if (this.field)
-        this.field.innerText = '';
+            this.field.innerHTML = 'Сколько гостей';
         this.currentValue = 0;
         // this.counters.innerHTML = 0;
-        this.counters.forEach((element:HTMLElement) => {
-            element.innerHTML = '0'; 
+        this.counters.forEach((element: HTMLElement) => {
+            element.innerHTML = '0';
         })
         this.counters.forEach(DropdownsCounters => {
             DropdownsCounters.innerHTML = '0';

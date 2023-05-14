@@ -6,9 +6,14 @@ const dropdownOptions1 = {
     dropdownListSelector: '#dropdownList1',
     shared_value: ['Гость', 'Гостя', 'Гостей'],
     fields: {
-        adults: {},
-        children: {},
+        adults: {
+            count: 0,
+        },
+        children: {
+            count: 0,
+        },
         babies: {
+            count: 0,
             separated_values: ['Младенец', 'Младанца', 'Мледанцев'],
         }
     },
@@ -19,9 +24,14 @@ const dropdownOptions3 = {
     dropdownListSelector: '#dropdown-list__booking',
     shared_value: ['Гость', 'Гостя', 'Гостей'],
     fields: {
-        adults: {},
-        children: {},
+        adults: {
+            count: 0,
+        },
+        children: {
+            count: 0,
+        },
         babies: {
+            count: 0,
             separated_values: ['Младенец', 'Младанца', 'Мледанцев'],
         }
     },
@@ -29,11 +39,7 @@ const dropdownOptions3 = {
 };
 
 
-
-
-
-
-// const myDropdown1 = new Dropdown(dropdownOptions1);
-// const myDropdown2 = new Dropdown(dropdownOptions3);
+const myDropdown1 = new Dropdown(dropdownOptions1);
+const myDropdown2 = new Dropdown(dropdownOptions3);
 
 

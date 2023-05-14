@@ -24,11 +24,13 @@
 
 }
 
-
+// .dropdown__content::before {
+//   content: "Сколько гостей";
+// }
 
 .dropdown__content::after {
   content: "";
-  display: inline-block;
+  // display: inline-block;
   transform: rotate(45deg);
   height: 10px;
   width: 10px;
