@@ -75,9 +75,6 @@ class Dropdown {
     constructor(options: DropdownOptions) {
         
         this.field = document.querySelector(options.dropdownSelector);
-        console.log(this.field);
-        
-        
         this.fildListener = document.querySelector(options.dropdownListSelector);
         const dropdownEntries = Object.entries(options.fields).map(dropdownArray => {
             const [key, value] = dropdownArray;

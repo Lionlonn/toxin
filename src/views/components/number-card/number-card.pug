@@ -28,31 +28,3 @@ mixin number-card()
                 .rating-number
                     b 65 
                     span Отзывов
-mixin number-card__v2()
-    .number-hostel 
-        .swiper.mySwiper
-            .swiper-wrapper
-                .swiper-slide
-                    img(src=require("./img/number-hostel-2.svg"), alt="3")
-                .swiper-slide 
-                    img(src=require("./img/number-hostel-2.svg"), alt="3")
-                .swiper-slide 
-                    img(src=require("./img/number-hostel-2.svg"), alt="3")
-                .swiper-slide 
-                    img(src=require("./img/number-hostel-2.svg"), alt="4")
-            .swiper-button-next 
-            .swiper-button-prev
-            .swiper-pagination
-        .info-hostel 
-            .price-hostel
-                .number 
-                    b  № 888
-                .number-price 
-                    b 9 990₽ 
-                    span в сутки
-            .hostel-border
-            .rating-hostel 
-                +rating(2, 3)
-                .rating-number
-                    b 135 
-                    span Отзывов

@@ -49,6 +49,7 @@
     "air-datepicker": "^3.3.3",
     "node-sass": "^8.0.0",
     "plural-ru": "^2.0.2",
-    "script-runner": "^0.1.8"
+    "script-runner": "^0.1.8",
+    "swiper": "^9.3.1"
   }
 }
