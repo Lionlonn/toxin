@@ -11,3 +11,16 @@ const swiper = new Swiper(".mySwiper", {
     mousewheel: true,
     keyboard: true,
 });
+
+// const roomData = require('data/number-card-data/number-card-data.json')
+// class testRoom {
+//     private key: string | null;
+//     constructor() {
+//         for (this.key in roomData) {
+//             console.log(roomData[this.key]);
+            
+//         }
+//     }
+// }
+
+// new testRoom

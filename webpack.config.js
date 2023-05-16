@@ -55,6 +55,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      data: path.resolve(__dirname, 'src/data'),
       'root-style': path.resolve(__dirname, 'src/index.scss'),
       components: path.resolve(__dirname, 'src/views/components/'),
       data: path.resolve(__dirname, 'src/data'),
@@ -108,38 +109,7 @@ module.exports = {
           'sass-loader'
         ],
       },
-      // {
-      //   test: /\.(sa|sc|c)ss$/i,
-      //   use: [
-      //     devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-      //     "css-loader",
-      //     "postcss-loader",
-      //     "sass-loader",
-      //   ],
-      // },
-      // {
-      //   test: /\.(c|sa|sc)ss$/i,
-      //   use: [
-      //     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      //     'css-loader',
-      //     // {
-      //     //   loader: 'file-loader',
-      //     //   options: {
-      //     //     // outputPath: "css/",
-      //     //     name: "[name].[contenthash].css"
-      //     //   }
-      //     // },
-      //     {
-      //       loader: "sass-loader",
-      //       options: {
-      //         sourceMap: true,
-      //         sassOptions: {
-      //           outputStyle: "compressed",
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
+      
       {
         test: /\.woff2?$/i,
         type: 'asset/resource',

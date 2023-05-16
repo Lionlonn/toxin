@@ -11,10 +11,12 @@ block page
     include components/authorization-card/authorization.pug
     include components/datepicker-card/date-card.pug
     include components/number-card/number-card.pug
+    include components/card-room-info/card-room-info.pug
 
     //- - const dropdownData = require('data/dropdown-guests-data.json')
     //- - const { data: TesDropdwon} = require('data/dropdown-guests-data.json')
     //- - const dropdownData = require('data/dropdown-guests-data.json')
+    - const { data: roomsData } = require('data/number-card-data/number-card-data.json')
 
     .container
         .cards
@@ -23,6 +25,9 @@ block page
             +registration-card
             +authorization
             +calendarBlock
-            +number-card
-    
+            each roomData, key in roomsData 
+                if key <= 1
+                    .cards-room
+                        +room-hostel-card(roomData)
+            
     

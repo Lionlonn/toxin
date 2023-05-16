@@ -1,0 +1,15 @@
+mixin card-room-info(props = {})
+    - 
+        const {
+            numberCard = "",
+            isLuxury = "",
+            price = ""
+        } = props
+        
+    .card-room-info
+        .number-symbol № 
+        .nubmer-hoste.numberCard= numberCard
+        if isLuxury
+            .luxyry люкс
+        .card-room-price #{price.toLocaleString()} ₽
+        .card-room-days в сутки
