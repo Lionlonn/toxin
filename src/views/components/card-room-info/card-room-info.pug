@@ -3,13 +3,23 @@ mixin card-room-info(props = {})
         const {
             numberCard = "",
             isLuxury = "",
-            price = ""
+            price = "",
+            rating = "",
+            feedback = "",
         } = props
-        
     .card-room-info
-        .number-symbol № 
-        .nubmer-hoste.numberCard= numberCard
-        if isLuxury
-            .luxyry люкс
-        .card-room-price #{price.toLocaleString()} ₽
-        .card-room-days в сутки
+        .room-info
+            .card-room-info__number
+                .number-symbol № 
+                .nubmer-hoste.numberCard= numberCard
+                if isLuxury
+                    .luxyry люкс
+            .card-room-info__price
+                .card-room-price #{price.toLocaleString()} ₽
+                .card-room-days в сутки
+        .card-room-info__border
+        .room-info__rating
+            +rating({id:`${numberCard}-rate`, rate: `${rating}`})
+            .feedbaco-room=feedback
+                |  Отзывов
+                

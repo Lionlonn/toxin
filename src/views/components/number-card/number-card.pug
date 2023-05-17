@@ -38,6 +38,7 @@ mixin room-hostel-card(props = {})
             images = [],
             isLuxury = false,
             price = 0,
+            rating = "",
             feedback = ""
 
         } = props
@@ -46,9 +47,10 @@ mixin room-hostel-card(props = {})
             .swiper-wrapper
                 each image in images
                     .swiper-slide 
-                        img(src=`img/${image}.svg`, alt="")
+                        img(src=require(`./img/${image}.svg`), alt="")
             .swiper-button-next 
             .swiper-button-prev
             .swiper-pagination
         .swiper-info 
-            +card-room-info({numberCard, isLuxury, price})
+            +card-room-info(props)
+
