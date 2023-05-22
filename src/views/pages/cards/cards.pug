@@ -14,16 +14,19 @@ block page
     include components/card-room-info/card-room-info.pug
     
     - const { data: roomsData } = require('data/number-card-data/number-card-data.json')
-
-    .container
-        .cards
-            +arrival-number
-            +booking
-            +registration-card
-            +authorization
-            +calendarBlock
-            each roomData, key in roomsData 
-                if key <= 1
-                    .cards-room
-                        +room-hostel-card(roomData)
     
+    .cards-wrapper
+        .card-container
+            .cards
+                .cards-columns
+                    +arrival-number
+                    +registration-card
+                .cards-columns
+                    +booking
+                    +authorization
+                .cards-columns
+                    +calendarBlock
+                    each roomData, key in roomsData 
+                        if key <= 1
+                            .cards-room
+                                +room-hostel-card(roomData)

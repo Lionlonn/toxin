@@ -1,4 +1,7 @@
 .calendar .air-datepicker{
-    position: relative;
-    
+    position: inherit;
+}
+
+.air-datepicker.-inline- {
+    max-width: 320px;
 }

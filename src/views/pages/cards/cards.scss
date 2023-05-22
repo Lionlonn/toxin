@@ -10,17 +10,33 @@
 @import 'components/number-card/number-card.scss';
 @import 'root-style';
 
+body { 
+    background: #E5E5E5;
+}
+
+.card-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .cards {
+    margin: 140px 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    justify-content: center;
+    align-items: start;
+    grid-template-columns: 380px 380px 320px;
     grid-row-gap: 40px;
+    column-gap: 40px;
     padding: 0 15px;
+}
+.cards-columns  {
+    display: grid;
+    gap: 40px;
 }
 
 .form-selection {
-    margin-top: 20px;
-    width: 380px;
-    height: 374px;
+    width: 100%;
+    // height: 100%;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
@@ -29,7 +45,7 @@
 }
 
 .title-text {
-    max-width: 320px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -39,14 +55,14 @@
     line-height: 29px;
 }
 
-.selection-datepicker {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+// .selection-datepicker {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
 
 .selection-dropdown {
-    max-width: 320px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 20px;
 }
@@ -60,7 +76,7 @@
 }
 
 .selection-button {
-    // max-width: 320px;
+    width: 100%;
     margin: 31px auto 0 auto;
 }
 
@@ -70,5 +86,29 @@
 
     &::before {
         content: "Подобрать номер";
+    }
+}
+.cards-columns .cards-room .swiper-slide {
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px){
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+// @media screen and (max-width: 768px){
+//     .cards {
+//         display: flex;
+//         flex-direction: column;
+        
+//     }
+// }
+
+@media screen and (max-width: 768px){
+    .cards {
+        grid-template-columns: 1fr;
     }
 }

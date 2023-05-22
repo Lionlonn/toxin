@@ -1,6 +1,6 @@
 @import 'components/card-room-info/card-room-info.scss';
 .custom-radio {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     opacity: 0;
   }
