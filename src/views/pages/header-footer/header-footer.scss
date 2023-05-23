@@ -1,5 +1,14 @@
-// .tesssssssss {
-//     width: 300px;
-//     height: 300px;
-//     background: black;
-// }
+@import 'components/header/header.scss';
+@import 'components/footer/footer.scss';
+
+.headers-footers {
+    margin: 120px 0;
+}
+
+.headers {
+    margin-bottom: 40px;
+}
+
+.header-user__standart {
+    margin-bottom: 40px
+}

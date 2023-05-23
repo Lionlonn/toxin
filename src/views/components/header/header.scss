@@ -1,0 +1,81 @@
+@import 'components/buttons/button-min/button-min.scss';
+@import 'components/buttons/button-max/button-max.scss';
+@import 'root-style';
+
+.header {
+    height: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+}
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-menu ul{
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+
+}
+.nav-menu ul li {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.border-veritical {
+    height: 30px;
+    border: 1px solid rgba(31, 32, 65, 0.1);
+}
+
+
+
+.user-open {
+    @include button-click__min;
+    
+
+    &::before {
+        content: "Войти";
+        width: 87px;
+        height: 34px
+    }
+}
+
+
+
+.user-registration {
+    @include button-click_big;
+    height: 34px;
+    width: 196px;
+    &::before {
+        content: "Зарегистрироваться";
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .user-registration{
+        width: 160px;
+        &::before {
+            font-size: 0.7rem;
+        }
+    }
+}

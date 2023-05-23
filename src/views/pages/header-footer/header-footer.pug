@@ -1,8 +1,15 @@
-extends layouts/main.pug
+extends layouts/ui-kit.pug
 
 block page 
-    include ../../components/header/header.pug
+  include components/header/header.pug
+  include components/footer/footer.pug
 
-    .tesssssssss
-    .header-footer
-      +header
+  .headers-footers
+      .headers
+        .headers
+          .header-user__standart
+            +header()
+          .header-user__authorized
+            +header({user: true})
+      .footer 
+        +footer
