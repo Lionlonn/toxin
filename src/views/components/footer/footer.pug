@@ -1,2 +1,50 @@
-mixin footer()
-    .footer 
+include components/inputs_fields/inputs.pug
+
+mixin footer() 
+    - const navigation = ["О нас", "Новости", "Служба поддержки", "Услуги"];
+    - const aboutUs = ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"];
+    - const serviceSupport = ["Соглашения", "Сообщества", "Связь с нами"];
+    
+    - const email = {type: "email", placeholder: "Email"};
+    .footer
+        .footer-container 
+            .footer-wrapper 
+                .footer-brief-info 
+                    .footer-brief__logo
+                        a(href="#")
+                            img(src=require("components/header/img/logo.svg"), alt="Logo")
+                    .footer-brief__text 
+                        p Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+                .footer-nav
+                    .footer-nav__navigatoon 
+                        h6 Навигация
+                        each nav in navigation
+                            li 
+                                a(href="#")=nav 
+                    .footer-nav__about-us
+                        h6 О нас
+                        each about_us in aboutUs
+                            li 
+                                a(href="#")=about_us
+                    .footer-nav__support
+                        h6 Служба поддержки
+                        each sup in serviceSupport
+                            li 
+                                a(href="#")=sup
+                    .footer-nav__subscription
+                        h6 Подписка
+                        .footer-nav__subscription__text
+                            span Получайте специальные предложения и новости сервиса
+                        +inputField(email, false, true)
+    .sub-footer 
+        .sub-container
+            .sub-footer-wrapper 
+                .sub-footer__text 
+                    p Copyright © 2018 Toxin отель. Все права защищены.
+                .sub-footer__social
+                    a(href="#")
+                        img(src=require("img/facebook.svg"), alt="") 
+                    a(href="#")
+                        img(src=require("img/instagram.svg"), alt="") 
+                    a(href="#")
+                        img(src=require("img/twitter.svg"), alt="") 

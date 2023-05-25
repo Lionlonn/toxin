@@ -3,8 +3,10 @@ extends layouts/ui-kit.pug
 block page 
   include components/header/header.pug
   include components/footer/footer.pug
-
+  include components/rights-reserved/rights-reserved.pug
+  
   .headers-footers
+    .wrapper
       .headers
         .headers
           .header-user__standart
@@ -13,3 +15,5 @@ block page
             +header({user: true})
       .footer 
         +footer
+      .rights-reserved
+        +rights-reserved

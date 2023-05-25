@@ -1,7 +1,11 @@
 @import 'components/header/header.scss';
 @import 'components/footer/footer.scss';
+@import 'components/rights-reserved/rights-reserved.scss';
 
-.headers-footers {
+body{
+    background: #E5E5E5;
+}
+.wrapper {
     margin: 120px 0;
 }
 
@@ -11,4 +15,8 @@
 
 .header-user__standart {
     margin-bottom: 40px
+}
+
+.footer {
+    margin-bottom: 40px;
 }

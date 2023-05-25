@@ -1,0 +1,76 @@
+@import 'components/inputs_fields/inputs.scss';
+
+.footer {
+    background: #FFFFFF;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+    margin-bottom: 1px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.footer-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 100px 100px 100px 0;
+}
+
+.footer-brief-info {
+    max-width: 260px;
+}
+
+.footer-brief__logo{
+    margin-bottom: 20px;
+}
+
+
+.footer-nav {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+.footer-nav li a {
+    color: rgba(31, 32, 65, 0.5);
+    gap: 10px;
+}
+
+.footer-nav h6 {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.footer-nav__subscription__text {
+    max-width: 260px;
+    margin-bottom: 20px;
+}
+.sub-footer {
+    height: 77px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+}
+
+.sub-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.sub-footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 77px;
+}
+
+
+.sub-footer__social {
+    display: flex;
+    gap: 20px;
+}

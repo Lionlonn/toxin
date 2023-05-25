@@ -1,5 +1,7 @@
-mixin inputField(inputs, showWrapper)
+mixin inputField(inputs, showWrapper, arrow)
     .field-block
         input.field-input(id=inputs.id type=inputs.type placeholder=inputs.placeholder)
+        if arrow 
+            input(type ="submit" class="button" value=" ")
         if showWrapper
             .input-wrapper__bithd
