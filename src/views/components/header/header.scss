@@ -16,24 +16,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 70px;
 }
 .nav-menu ul{
     list-style-type: none;
     display: flex;
     gap: 20px;
-
+    cursor: pointer;
 }
 .nav-menu ul li {
     display: flex;
     align-items: center;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
     white-space: nowrap;
 }
 
+
 a{
     text-decoration: none;
+}
+
+.menu-item{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(31, 32, 65, 0.5);
+}
+
+.menu-list li:first-child .menu-item{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(31, 32, 65, 0.75);
 }
 
 .nav-menu {
@@ -45,6 +58,42 @@ a{
 .border-veritical {
     height: 30px;
     border: 1px solid rgba(31, 32, 65, 0.1);
+}
+.nav-arrow {
+    position: relative;
+    width: 15px;
+}
+
+/// style nav-dropdown
+.nav-arrow::after {
+    content: "";
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 5px;
+    width: 5px;
+    cursor: pointer;
+    border-bottom: 3px solid rgba(31, 32, 65, 0.5);;
+    border-right: 3px solid rgba(31, 32, 65, 0.5);;
+
+    pointer-events: none;
+
+    position: absolute;
+    top: -4px;
+    right: 3px;
+}
+
+.nav-arrow.animation-arrow::after {
+    margin-top: 5px;
+    transform: rotate(-135deg);
+}
+
+/////// end
+
+.user-authorized{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(31, 32, 65, 0.5);
 }
 
 

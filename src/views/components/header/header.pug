@@ -12,12 +12,21 @@ mixin header(props={})
                         img(src=require("img/logo.svg"), alt="Logo") 
                 .nav-menu
                     ul.menu-list 
-                        each i in menu 
-                            li
-                                a(href="#")=i
+                        li 
+                            a.menu-item(href="#") О нас
+                        li 
+                            a.menu-item(href="#") Услуги
+                            .nav-arrow
+                        li 
+                            a.menu-item(href="#") Вакансии
+                        li 
+                            a.menu-item(href="#") Новости
+                        li 
+                            a.menu-item(href="#") Соглашения
+                            .nav-arrow
                     if user == true
                         .border-veritical
-                        a(href="#") Юлий Цезарь 
+                        a.user-authorized(href="#") Юлий Цезарь 
                     else
                         a.user-open(href="form-elements.html") 
                         a.user-registration(href="#")
