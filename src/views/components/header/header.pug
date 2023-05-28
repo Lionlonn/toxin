@@ -1,16 +1,16 @@
 mixin header(props={})
     -
         const {
-            user = false
+            user = false,
+            btnId = ""
         }=props
-        let menu = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
     .header 
         .header-container
             .header-wrapper 
                 .nav-logo 
                     a(href="#")
                         img(src=require("img/logo.svg"), alt="Logo")
-                button.header-burger__btn
+                button.header-burger__btn(id=btnId)
                     span 
                     span 
                     span 

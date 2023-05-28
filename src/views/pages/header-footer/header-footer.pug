@@ -10,10 +10,10 @@ block page
       .headers
         .headers
           .header-user__standart
-            +header()
-          //- .header-user__authorized
-          //-   +header({user: true})
-      //- .footer 
-      //-   +footer
-      //- .rights-reserved
-      //-   +rights-reserved
+            +header({btnId:"header-1"})
+          .header-user__authorized
+            +header({user: true, btnId:"header-2"})
+      .footer 
+        +footer
+      .rights-reserved
+        +rights-reserved

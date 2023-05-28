@@ -47,7 +47,6 @@ module.exports = {
   devServer: {
     port: 3000,
     open: ['index.html'],
-    // open: true,
     hot: true,
   },
   entry: {
