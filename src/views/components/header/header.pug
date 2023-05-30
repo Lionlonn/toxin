@@ -1,16 +1,21 @@
-mixin header(props={})
+mixin header(props = {})
+
     -
         const {
-            user = false,
-            btnId = ""
-        }=props
+            user = "",
+            servies = "",
+            agreements = "",
+            btnId = "",
+            account = ""
+        } = props
+
     .header 
         .header-container
             .header-wrapper 
                 .nav-logo 
                     a(href="#")
                         img(src=require("img/logo.svg"), alt="Logo")
-                button.header-burger__btn(id=btnId)
+                button.header-burger__btn(id=`${btnId}`)
                     span 
                     span 
                     span 
@@ -21,6 +26,7 @@ mixin header(props={})
                         li 
                             a.menu-item(href="#") Услуги
                             .nav-arrow
+                            .menu-servies=servies
                         li 
                             a.menu-item(href="#") Вакансии
                         li 
@@ -28,9 +34,9 @@ mixin header(props={})
                         li 
                             a.menu-item(href="#") Соглашения
                             .nav-arrow
-                    if user == true
+                    if user
                         .border-veritical
-                        a.user-authorized(href="#") Юлий Цезарь 
+                        a.user-authorized(href="#")=account 
                     else
                         a.user-open(href="form-elements.html") 
                         a.user-registration(href="#")

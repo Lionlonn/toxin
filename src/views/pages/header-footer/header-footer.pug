@@ -5,14 +5,15 @@ block page
   include components/footer/footer.pug
   include components/rights-reserved/rights-reserved.pug
   
+  - const { data: headersdata } = require("data/header-menu/header-menu.json")
+
   .headers-footers
     .wrapper
       .headers
         .headers
-          .header-user__standart
-            +header({btnId:"header-1"})
-          .header-user__authorized
-            +header({user: true, btnId:"header-2"})
+          .header-user
+            each dataHeader in headersdata
+              +header(dataHeader)
       .footer 
         +footer
       .rights-reserved
