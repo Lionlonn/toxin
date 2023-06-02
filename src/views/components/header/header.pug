@@ -3,8 +3,8 @@ mixin header(props = {})
     -
         const {
             user = "",
-            servies = "",
-            agreements = "",
+            servies = [],
+            agreements = [],
             btnId = "",
             account = ""
         } = props
@@ -24,16 +24,25 @@ mixin header(props = {})
                         li 
                             a.menu-item(href="#") О нас
                         li 
-                            a.menu-item(href="#") Услуги
-                            .nav-arrow
-                            .menu-servies=servies
+                            .link-drop
+                                a.menu-item(href="#") Услуги
+                                .nav-arrow
+                            .menu-drop(id=`${btnId}-servies`)
+                                each n in servies
+                                    .sub-menu
+                                        a(href="#")=n 
                         li 
                             a.menu-item(href="#") Вакансии
                         li 
                             a.menu-item(href="#") Новости
                         li 
-                            a.menu-item(href="#") Соглашения
-                            .nav-arrow
+                            .link-drop 
+                                a.menu-item(href="#") Соглашения
+                                .nav-arrow
+                            .menu-drop(id=`${btnId}-agreements`)
+                                each n in agreements
+                                    .sub-menu
+                                        a(href="#")=n 
                     if user
                         .border-veritical
                         a.user-authorized(href="#")=account 

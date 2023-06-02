@@ -29,13 +29,13 @@
     width: 30px;
     height: 30px;
     border: none;
-    background-color: aqua;
+    background: #FFFFFF;
 }
 .header-burger__btn span {
     position: absolute;
     width: 25px;
     height: 3px;
-    background-color: black;
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
     left: 2.5px;
     transition: transform .5s;
 }
@@ -73,6 +73,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.link-drop {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -108,8 +114,6 @@ a{
     position: relative;
     width: 15px;
 }
-
-/// style nav-dropdown
 .nav-arrow::after {
     content: "";
     display: inline-block;
@@ -131,10 +135,23 @@ a{
     margin-top: 5px;
     transform: rotate(-135deg);
 }
+.menu-servies {
+    display: none;
+}
 
+.menu-drop {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+    a {
+        color: rgba(31, 32, 65, 0.5);
+    }
+}
 
-
-/////// end
+.menu-drop-visible {
+    display: block;
+}
 
 .user-authorized{
     font-weight: 400;
@@ -143,9 +160,24 @@ a{
     color: rgba(31, 32, 65, 0.5);
 }
 
+.link-drop {
+    position: relative;
+}
 
-
-
+.menu-drop {
+    position: absolute;
+    top: 55px;
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    z-index: 15;
+    .sub-menu {
+        margin-bottom: 10px
+    }
+    .sub-menu:last-child {
+        margin: 0
+    }
+}
 .user-open {
     @include button-click__min;
     
@@ -198,13 +230,35 @@ a{
     }
 
     .menu-list {
-        display: block;
+        // display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .link-drop {
+        position: static;
+    }
+    
+    .menu-drop {
+        position: static;
+
+        padding: 0;
+        background: none;
+        box-shadow: none;
     }
     .menu-item {
         color: rgba(31, 32, 65, 0.5);
         display: block;
         padding: 10px 0px;
+        
     }
+
+    
+
+    .menu-list li:last-child .sub-menu:last-child{
+        margin-bottom: 10px;
+    }
+
     .header.open .nav-menu {
         display: block;
     }
