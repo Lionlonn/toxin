@@ -1,0 +1,54 @@
+@import 'components/header/header.scss';
+@import 'components/datapicker/datapicker.scss';
+@import 'components/dropdown_guests/guests-drop.scss';
+@import 'components/buttons/button-max/button-max.scss';
+@import 'components/arrival-card/arrival.scss';
+@import 'components/inputs_fields/inputs.scss';
+@import 'components/footer/footer.scss';
+@import 'root-style';
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.main-landing {
+    background-image: url('../../../img/back-toxin.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.main-arrival {
+    display: grid;
+    grid-template-columns: 380px;
+}
+
+
+.main-sub__text {
+    
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 320px;
+   
+}
+
+.main-sub__text p {
+    max-width: 290px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.75);
+    text-align: right;
+    padding-bottom: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .main-arrival {
+        grid-template-columns: 1fr;
+    }
+}

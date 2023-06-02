@@ -1,0 +1,24 @@
+extends layouts/main.pug
+
+block page
+    include components/header/header.pug
+    include components/arrival-card/arrival.pug
+    include components/datapicker/air-datapicker.pug
+    include components/dropdown_guests/guests-drop.pug
+    include components/footer/footer.pug
+
+    - const { data: headersdata } = require("data/header-menu/header-menu.json")
+    
+    langing
+        .header 
+            each dataHeader, index in headersdata
+                if index <1
+                    +header(dataHeader)
+        .main-landing
+            .main-container
+                .main-arrival 
+                    +arrival-number
+                .main-sub__text
+                    p Лучшие номера для вашей работы, отдыха и просто вдохновения
+            .footer 
+                +footer
