@@ -41,9 +41,12 @@
     margin: 31px auto 0 auto;
 }
 
+
 .button-number {
     margin-top: 31px;
     @include button-click_big;
+
+    
 
     &::before {
         content: "Подобрать номер";

@@ -45,8 +45,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@types/moment": "^2.13.0",
     "@webdiscus/pug-loader": "^2.10.4",
     "air-datepicker": "^3.3.3",
+    "moment": "^2.29.4",
     "node-sass": "^8.0.0",
     "plural-ru": "^2.0.2",
     "script-runner": "^0.1.8",

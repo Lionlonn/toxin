@@ -1,0 +1,13 @@
+extends layouts/main.pug
+
+block page
+    include components/header/header.pug
+    include components/datepicker-card/date-card.pug
+
+    - const { data: headersdata } = require("data/header-menu/header-menu.json")
+
+    .header 
+            each dataHeader, index in headersdata
+                if index <1
+                    +header(dataHeader)
+            +calendarBlock

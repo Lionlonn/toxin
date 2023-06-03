@@ -1,3 +1,5 @@
+@import 'components/datapicker/datapicker.scss';
+
 .calendar .air-datepicker{
     position: inherit;
 }
@@ -5,3 +7,23 @@
 .air-datepicker.-inline- {
     max-width: 320px;
 }
+
+.calendar {
+    display: none;
+}
+
+
+.calendar--visible {
+    display: block;
+}
+
+
+.datepicker-block {
+    background: #FFFFFF;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    border-radius: 4px;
+    width: 266px;
+    height: 44px;
+    padding: 15px;
+}
+
