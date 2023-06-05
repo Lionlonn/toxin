@@ -4,12 +4,13 @@
     position: inherit;
 }
 
-.air-datepicker.-inline- {
-    max-width: 320px;
-}
+// .air-datepicker.-inline- {
+//     max-width: 320px;
+// }
 
 .calendar {
     display: none;
+    max-width: 266px;
 }
 
 
@@ -17,6 +18,9 @@
     display: block;
 }
 
+#style-calendar{
+    max-width: 320px;
+}
 
 .datepicker-block {
     background: #FFFFFF;
