@@ -4,13 +4,11 @@
     position: inherit;
 }
 
-// .air-datepicker.-inline- {
-//     max-width: 320px;
-// }
-
 .calendar {
     display: none;
-    max-width: 266px;
+    width: 266px;
+    position: absolute;
+    top: 152px;
 }
 
 
@@ -28,6 +26,8 @@
     border-radius: 4px;
     width: 266px;
     height: 44px;
+    position: relative;
     padding: 15px;
+    outline: none;
 }
 

@@ -16,7 +16,7 @@ class CalendarBlock {
 
     init() {
         this.selectors()
-        console.log(this.calendarSelector);
+
         if (this.inputDatepicker) {
             this.open()
             this.datepickerOptions()
@@ -24,6 +24,7 @@ class CalendarBlock {
         if (!this.inputDatepicker) {
             this.datepickerEmpty();
         }
+        this.handleDocumentClick();
     }
 
     selectors() {
@@ -36,7 +37,18 @@ class CalendarBlock {
             this.inputDatepicker.addEventListener('click', () => {
                 this.calendarSelector.classList.toggle('calendar--visible')
             })
-        }  
+        }
+    }
+
+    handleDocumentClick() {
+        document.addEventListener('click', (event) => {
+            const isClickInside = this.inputDatepicker.contains(event.target as Node);
+            const isClickCalendar = this.calendarSelector.contains(event.target as Node);
+            if (!isClickInside && !isClickCalendar) {
+                this.calendarSelector.classList.remove('calendar--visible')
+            }
+
+        })
     }
     datepickerOptions() {
         if (this.inputDatepicker) {
@@ -44,9 +56,12 @@ class CalendarBlock {
                 range: true,
                 multipleDatesSeparator: ' - ',
                 buttons: ['clear', {
-                    content: "Применить"
+                    content: "Применить",
+                    onClick: () => {
+                        this.calendarSelector.classList.remove('calendar--visible')
+                    }
                 }],
-    
+
                 onSelect: (date) => {
                     const { formattedDate } = date;
                     const datesArray = Array.isArray(formattedDate) ? formattedDate : [formattedDate];
@@ -59,7 +74,10 @@ class CalendarBlock {
     datepickerEmpty() {
         const calendar = new AirDatepicker(this.calendarSelector as HTMLElement, {
             buttons: ['clear', {
-                content: "Применить"
+                content: "Применить",
+                onClick: () => {
+                    console.log("aply");
+                },
             }],
         });
     }

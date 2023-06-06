@@ -4,3 +4,9 @@
 @import 'components/checkbox/checkbox.scss';
 @import 'components/rich-checkbox/rich-checkbox.scss';
 @import 'components/conveniences/conveniences.scss';
+
+
+.aside-wrapper {
+    display: grid;
+    gap: 30px;
+}
