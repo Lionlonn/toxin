@@ -1,4 +1,3 @@
 import "components/header/header-burger.ts"
-import 'components/datepicker-card/date-card.ts'
-
+import "components/nav-side__card/nav-side.ts"
 import './search-room.scss'

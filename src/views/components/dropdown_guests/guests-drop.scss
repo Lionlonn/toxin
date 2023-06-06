@@ -11,9 +11,9 @@
   position: relative;
   display: flex;
   width: 100%;
-  // max-width: 320px;
   text-align: left;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 15px;
   background-color: #fff;
   border: 1px solid rgba(31, 32, 65, 0.5);
@@ -54,7 +54,7 @@
   display: none;
   position: absolute;
   left: 0;
-  top: 43px;
+  top: 63px;
   margin: 0;
   padding: 0;
 

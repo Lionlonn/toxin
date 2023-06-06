@@ -3,6 +3,7 @@
 mixin arrival-number()
 
     - const dropdownData = require('data/dropdown-guests-data.json')
+    - const arrivalDrop = {content_id:'dropdown-guests', list_id:'dropdownList1', btnClearGuestsId:'clear-id',label:"Гости"}
 
     .form-selection
     
@@ -14,8 +15,5 @@ mixin arrival-number()
                 +datepicker({dateIndex: 1}, firstD.id, lastD.id)
     
             .selection-dropdown
-    
-                h6.guests Гости
-    
-                +dropdown('dropdown-guests', 'dropdownList1', 'clear-id')
+                +dropdown(arrivalDrop)
             a.button-number(href="search-room.html") 

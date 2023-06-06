@@ -1,19 +1,24 @@
-.checkbox 
-    .check-box__ul
-        input#breakfast.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='breakfast') Завтрак
-    .check-box__ul
-        input#desk.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='desk') Письменный стол
-    .check-box__ul
-        input#feeding-chair.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='feeding-chair') Стул для кормления
-    .check-box__ul    
-        input#crib.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='crib') Кроватка
-    .check-box__ul
-        input#tv.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='tv') Телевизор
-    .check-box__ul
-        input#shampoo.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='shampoo') Шампунь
+mixin checkbox-expandable(label)
+    .checkbox 
+        .checkbox-title 
+            h6.label#checkboxArrow=label
+            img.arrow-check(src=require("image/arrow.svg"), alt="")
+        .checkbox-list
+            .check-box__ul
+                input#breakfast.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='breakfast') Завтрак
+            .check-box__ul
+                input#desk.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='desk') Письменный стол
+            .check-box__ul
+                input#feeding-chair.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='feeding-chair') Стул для кормления
+            .check-box__ul    
+                input#crib.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='crib') Кроватка
+            .check-box__ul
+                input#tv.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='tv') Телевизор
+            .check-box__ul
+                input#shampoo.custom-checkbox(type='checkbox' name='happy' value='yes')
+                label.checbox-title(for='shampoo') Шампунь

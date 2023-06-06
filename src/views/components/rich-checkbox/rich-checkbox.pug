@@ -1,20 +1,16 @@
-.rich-checkbox
-    .rich-box__hallway
-        input#hallway.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='hallway')
-            span.head Широкий коридор
-            br
-            span Ширина коридоров в номере
-            br 
-            | не менее 91 см.
-
-    
-        input#assistant.custom-checkbox(type='checkbox' name='happy' value='yes')
-        label.checbox-title(for='assistant')
-            span.head Помощник для инвалидов
-            br
-            span На 1 этаже вас встретит специалист
-            br 
-            | и проводит до номера.
+mixin rich-checkbox(label)
+    .rich-checkbox
+        h6.label=label
+        .rich-box__hallway
+            input#hallway.custom-checkbox(type='checkbox' name='happy' value='yes')
+            label.checbox-title(for='hallway')
+                span.head Широкий коридор
+                br
+                span Ширина коридоров в номере не менее 91 см.
+            input#assistant.custom-checkbox(type='checkbox' name='happy' value='yes')
+            label.checbox-title(for='assistant')
+                span.head Помощник для инвалидов
+                br
+                span На 1 этаже вас встретит специалист и проводит до номера.
     
             

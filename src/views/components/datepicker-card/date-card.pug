@@ -1,7 +1,13 @@
-mixin calendarBlock(showInput = false)
-        if showInput
-            .calendar-block
-                input.datepicker-block(type="text" placeholder="дд.мм") 
-                .calendar
-        else
-            .calendar.calendar--visible(id="style-calendar")
+mixin calendarBlock(props = {})
+    -
+        const {
+            showInput = "",
+            label = "",
+        }=props
+    if showInput
+        .calendar-block
+            h6.label=label
+            input.datepicker-block(type="text" placeholder="дд.мм") 
+            .calendar
+    else
+        .calendar.calendar--visible(id="style-calendar")

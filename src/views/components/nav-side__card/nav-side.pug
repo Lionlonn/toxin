@@ -1,0 +1,17 @@
+mixin nav-aside()
+    include components/datepicker-card/date-card.pug
+    include components/dropdown_guests/guests-drop.pug
+    include components/checkbox-buttons/checkbox-buttons.pug
+    include components/rich-checkbox/rich-checkbox.pug
+    include components/conveniences/conveniences.pug
+    include components/checkbox/checkbox.pug
+
+    - const searchDrop = {content_id:'dropdown-guests', list_id:'dropdownList1', btnClearGuestsId:'clear-id', label: "Гости"}
+
+    .aside-wrapper 
+        +calendarBlock({showInput: true, label: "даты пребывания в отеле"})
+        +dropdown(searchDrop)
+        +rules-checkbox("правила дома")
+        +rich-checkbox("доступность")
+        +drop-convenience
+        +checkbox-expandable("дополнительные удобства")

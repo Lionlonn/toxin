@@ -2,5 +2,21 @@
 
 @import 'components/header/header.scss';
 @import 'components/buttons/button-max/button-max.scss';
-@import 'components/datepicker-card/date-card.scss';
+// @import 'components/datepicker-card/date-card.scss';
+// @import 'components/dropdown_guests/guests-drop.scss';
+@import 'components/nav-side__card/nav-side.scss';
 @import 'root-style';
+
+
+.search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+.nav-aside {
+    padding-top: 50px;
+    // padding: 50px 60px 0 0;
+    width: 266px;
+}

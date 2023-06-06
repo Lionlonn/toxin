@@ -2,7 +2,7 @@ extends layouts/main.pug
 
 block page
     include components/header/header.pug
-    include components/datepicker-card/date-card.pug
+    include components/nav-side__card/nav-side.pug
 
     - const { data: headersdata } = require("data/header-menu/header-menu.json")
 
@@ -10,7 +10,8 @@ block page
             each dataHeader, index in headersdata
                 if index <1
                     +header(dataHeader)
-    .search-main 
-        .search-wrapper 
-            
-            //- +calendarBlock(true)
+    .search-main
+        .search-container
+            .search-wrapper 
+                .nav-aside 
+                    +nav-aside

@@ -1,5 +1,13 @@
-mixin dropdown(content_id, list_id, btnClearGuestsId)
+mixin dropdown(props = {})
+    -
+        const {
+            content_id = "",
+            list_id = "",
+            btnClearGuestsId = "",
+            label = ""
+        }=props
     .dropdown
+        h6.label=label
         .dropdown__content(id= content_id, data-text = "Сколько гостей") Сколько гостей
         ul.dropdown__list(id = list_id)
             li.dropdown__list-item(data-value="adults")  Взрослый 
@@ -27,35 +35,4 @@ mixin dropdown(content_id, list_id, btnClearGuestsId)
                 button.button-clear(id=btnClearGuestsId) Очистить 
                 button.button-apply Применить
         input.dropdown__input-hidden(type="text" name="select-category" value="")
-
-//- mixin dropdown(props = {})
-//-     - 
-//-         const {
-//-             label = '',
-//-             subLabel = '',
-//-             type = 'guest',
-//-             data = {},
-//-             state = ''
-//-         } = props
-    
-//-     .dropdown
-//-         .dropdownLabels
-//-             h3.dropdownLabel= label
-//-             if subLabel 
-//-                 h3.dropdown__sub-label= subLabel
-//-             .dropdown__field 
-//-                 .dropdown__text-field.js-dropdown__text-field 
-//-                 .dropdown__arrow
-//-             .dropdown__list.js-dropdown__list 
-//-                 each listItem in data 
-//-                     - const { name, title, count } = listItem 
-//-                     .dropdown__list-item.js-dropdown__list-item(data-name=name)
-//-                         .dropdown__list-item-title.js-dropdown__list-item-title= title
-//-                         .dropdown__list-item-tools.js-dropdown__list-item-tools
-//-                             .dropdown__list-item-decrement.js-dropdown__list-item-decrement -
-//-                             .dropdown__list-counter.js-dropdown__list-counter= count 
-//-                             .dropdown__list-item-increment.js-dropdown__list-item-increment +
-//-                     .dropdown__buttons 
-//-                         button.button-clear(id=btnClearGuestsId) Очистить 
-//-                         button.button-apply Применить
     

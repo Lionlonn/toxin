@@ -1,5 +1,6 @@
 - const bookingFirstD = { id: 'bokkingFirst' };
 - const bookingLastD = { id: 'bookingLast' };
+- const bookingDrop = {content_id:'dropdown-booking', list_id:'dropdown-list__booking', btnClearGuestsId:'clear-booking', label:"Гости"};
 mixin booking()
     .wrapper-booking 
             .room-price 
@@ -9,8 +10,7 @@ mixin booking()
             .datepicker-booking
                 +datepicker({dateIndex: 2}, bookingFirstD.id, bookingLastD.id)
             .dropdown-booking
-                h6.guests Гости
-                +dropdown('dropdown-booking', 'dropdown-list__booking', 'clear-booking')
+                +dropdown(bookingDrop)
             .booking-price 
                 .price-day 
                     p 9 990₽ х 4 суток

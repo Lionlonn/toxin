@@ -1,16 +1,28 @@
 .checkbox{
-    margin-top: 50px;
-    margin-left: 100px;
-    width: 266px;
 }
 .custom-checkbox {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
+.checkbox-title {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.arrow-check {
+  position: absolute;
+  top: 4px;
+  right: 34px;
+}
+
+.arrow-check--anim {
+  transform: rotate(180deg);
+}
+
 .custom-checkbox+label {
   display: inline-flex;
-  align-items: center;
   user-select: none;
 }
 .custom-checkbox+label::before {
@@ -59,4 +71,12 @@
     font-size: 14px;
     line-height: 18px;
     color: rgba(31, 32, 65, 0.5);
+}
+
+.checkbox-list {
+  display: none;
+}
+
+.checkbox-list--visible {
+  display: block;
 }
