@@ -1,5 +1,6 @@
 {   
-    "data": [
+    "data": 
+    [
         {
             "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
             "isLuxury": false,
@@ -22,7 +23,7 @@
             "numberCard": "345",
             "price": 6700,
             "rating": "5",
-            "feedback": "12"
+            "feedback": "2"
         },
         {
             "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
@@ -30,7 +31,73 @@
             "numberCard": "59",
             "price": 13400,
             "rating": "4",
+            "feedback": "4"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "88",
+            "price": 7200,
+            "rating": "4",
+            "feedback": "145"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "75",
+            "price": 9900,
+            "rating": "3",
+            "feedback": "14"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "34",
+            "price": 6700,
+            "rating": "2",
+            "feedback": "12"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": true,
+            "numberCard": "595",
+            "price": 15400,
+            "rating": "4",
+            "feedback": "5"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "488",
+            "price": 7900,
+            "rating": "4",
+            "feedback": "145"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "735",
+            "price": 9900,
+            "rating": "2",
+            "feedback": "14"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": false,
+            "numberCard": "45",
+            "price": 7500,
+            "rating": "5",
+            "feedback": "122"
+        },
+        {
+            "images": ["number-hostel-1", "number-hostel-2", "number-hostel-1", "number-hostel-1", "number-hostel-1"],
+            "isLuxury": true,
+            "numberCard": "39",
+            "price": 11400,
+            "rating": "4",
             "feedback": "5"
         }
     ]
+    
+    
 }

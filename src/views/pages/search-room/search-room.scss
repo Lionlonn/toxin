@@ -5,6 +5,8 @@
 // @import 'components/datepicker-card/date-card.scss';
 // @import 'components/dropdown_guests/guests-drop.scss';
 @import 'components/nav-side__card/nav-side.scss';
+
+@import 'components/main-side-card/main-side-card.scss';
 @import 'root-style';
 
 
@@ -19,4 +21,9 @@
     padding-top: 50px;
     // padding: 50px 60px 0 0;
     width: 266px;
+}
+
+.search-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
 }
