@@ -4,6 +4,7 @@ block page
     include components/header/header.pug
     include components/nav-side__card/nav-side.pug
     include components/main-side-card/main-side-card.pug
+    include components/footer/footer.pug
 
     - const { data: headersdata } = require("data/header-menu/header-menu.json")
 
@@ -18,4 +19,7 @@ block page
                     +nav-aside
                 .main-number__hostel
                     +main-side-card
+        footer
+            .footer-line
+            +footer
     script(src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js")

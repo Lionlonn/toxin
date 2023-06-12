@@ -5,15 +5,15 @@
 // @import 'components/datepicker-card/date-card.scss';
 // @import 'components/dropdown_guests/guests-drop.scss';
 @import 'components/nav-side__card/nav-side.scss';
-
 @import 'components/main-side-card/main-side-card.scss';
+@import 'components/footer/footer.scss';
 @import 'root-style';
 
 
 .search-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    
 }
 
 
@@ -26,4 +26,17 @@
 .search-wrapper {
     display: grid;
     grid-template-columns: 320px 1fr;
+    padding: 0 15px;
+    
 }
+
+@media (max-width:720px) {
+    .search-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+// @media (max-width:1280px) {
+//     .search-wrapper {
+//         grid-template-columns: 1fr;
+//     }
+// }

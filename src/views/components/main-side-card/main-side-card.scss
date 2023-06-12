@@ -11,18 +11,26 @@
 
 .main-side__number {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-gap: 20px;
 }
 
 .pagination {
+    margin-top: 40px;
+}
+.pagingaton-number {
     display: flex;
     justify-content: center;
 }
 
+.pagination-sub{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 70px 0;
+}
 .pagination ul {
     display: flex;
-    gap: 20px;
+    
 }
 
 
@@ -45,6 +53,8 @@
 .pagination ul .btn {
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
     border-radius: 22px;
+    width: 40px;
+    height: 40px;
 }
 
 .pagination ul li.active,
@@ -53,3 +63,21 @@
     color: #FFF;
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
 } 
+
+.next div{
+    width: 40px;
+    height: 40px;
+    background-image: url('./img/arrow-pag.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.prev div{
+    width: 40px;
+    height: 40px;
+    background-image: url('./img/arrow-pag.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    rotate: 180deg;
+}

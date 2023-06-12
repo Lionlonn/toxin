@@ -1,4 +1,5 @@
 include components/number-card/number-card.pug
+
 mixin main-side-card()
     - const { data: roomsData } = require('data/number-card-data/number-card-data.json')
 
@@ -9,22 +10,7 @@ mixin main-side-card()
                 if key < 12
                     +room-hostel-card(roomData)
         .pagination
-            ul.pag-ul
-                //- li.btn.prev
-                //-     span.fas.fa-angle-left Prev
-                //- li.numb.active
-                //-     span 1
-                //- li.numb
-                //-     span 2
-                //- li.dots
-                //-     span ...
-                //- li.numb
-                //-     span 4
-                //- li.numb
-                //-     span 5
-                //- li.dots
-                //-     span ...
-                //- li.numb 
-                //-     span 7
-                //- li.btn.next
-                //-     span.fas.fa-angle-right Next
+            .pagingaton-number
+                ul.pag-ul
+            .pagination-sub
+                p 1 – 12 из 100+ вариантов аренды
