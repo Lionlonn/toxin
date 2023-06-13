@@ -10,3 +10,10 @@
     display: grid;
     gap: 30px;
 }
+
+
+@media (max-width: 625px) {
+    .nav-aside {
+        justify-self: center;
+    }
+}

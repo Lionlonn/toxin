@@ -17,6 +17,10 @@
 }
 
 
+.number-hostel {
+    width: 100%;
+}
+
 .nav-aside {
     padding-top: 50px;
     // padding: 50px 60px 0 0;
@@ -30,13 +34,15 @@
     
 }
 
-@media (max-width:720px) {
+@media (max-width:625px) {
     .search-wrapper {
         grid-template-columns: 1fr;
     }
 }
-// @media (max-width:1280px) {
-//     .search-wrapper {
-//         grid-template-columns: 1fr;
-//     }
-// }
+
+
+@media (max-width:625px) {
+    .nav-aside {
+        width: 100%;
+    }
+}
