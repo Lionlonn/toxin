@@ -1,5 +1,9 @@
-.like-btn
-    input#like-button.like-button(type='checkbox')
-    label.count(for='like-button') 2
-    
-
+mixin like-btn(props={})
+    - 
+        const {
+            supporLike = "",
+            id = ""
+        }=props
+    .like-btn
+        input(type='checkbox' class="like-button" id=`${id}`)
+        label.count(for='like-button' id=`${id}`) #{supporLike.toLocaleString()}

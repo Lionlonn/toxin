@@ -1,0 +1,10 @@
+extends layouts/main.pug
+
+block page 
+    include components/user-feedback/feedback.pug
+    - const { user: userData } = require("data/user-feedback/user.json")
+
+    .feedback-user 
+        each user, index in userData
+            if index < 2
+                +user-feedback(user)

@@ -1,7 +1,8 @@
+@import 'components/like-button/like-button.scss';
 .feedback {
-    margin: 20px 100px;
     display: flex;
-    width: 711px;
+    align-items: center;
+    max-width: 712px;
     grid-gap: 10px;
 }
 

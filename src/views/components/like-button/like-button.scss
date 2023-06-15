@@ -1,10 +1,9 @@
 .like-btn{
-    // margin: 20px 100px;
+    position: relative;
     
 }
 
 .like-button {
-    position: relative;
     display: inline-block;
     width: 40px;
     height: 20px;
@@ -25,10 +24,14 @@
     background-position: 8px;
 }
 
+.like-button--active{
+    border: 1px solid #BC9CFF;
+}
+
 .count{
-    position: relative;
-    top: 1.5px;
-    left: -15px;
+    position: absolute;
+    top: 4px;
+    left: 25px;
     cursor: pointer;
     color: rgba(31, 32, 65, 0.25);
     font-weight: 400;
@@ -36,11 +39,6 @@
     line-height: 12px;
     user-select: none;
 }
-
-
-// .count:active {
-//     color:red;
-// }
 
 .active{
     color: #BC9CFF;
