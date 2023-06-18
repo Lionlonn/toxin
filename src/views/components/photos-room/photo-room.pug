@@ -1,0 +1,10 @@
+mixin photo(props={})
+    -
+        const {
+            roomImage = ''
+        }=props
+    
+    .room-backround
+        each image in roomImage
+            .testov
+                img(src=require(`./img/${image}.svg`), alt="")

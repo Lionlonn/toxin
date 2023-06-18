@@ -1,2 +1,13 @@
 @import 'components/user-feedback/feedback.scss';
+@import 'components/header/header.scss';
 @import 'components/like-button/like-button.scss';
+@import 'components/photos-room/photo-room.scss';
+@import 'components/canvas/canvas.scss';
+@import 'root-style';
+
+
+.container-room {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}

@@ -1,10 +1,25 @@
 extends layouts/main.pug
 
 block page 
+    include components/header/header.pug
     include components/user-feedback/feedback.pug
-    - const { user: userData } = require("data/user-feedback/user.json")
+    include components/photos-room/photo-room.pug
+    include components/canvas/canvas.pug
 
-    .feedback-user 
-        each user, index in userData
-            if index < 2
-                +user-feedback(user)
+    - const { user: userData } = require("data/user-feedback/user.json")
+    - const { data: headersdata } = require("data/header-menu/header-menu.json")
+    - const { photo: roomPhotos} = require('data/room-photos/photo.json')
+
+    .header 
+        each dataHeader, index in headersdata
+            if index <1
+                +header(dataHeader)
+    .main-backround
+        each roomPhoto in roomPhotos
+                +photo(roomPhoto)
+    .container-room
+        +canvas-room
+    //- .feedback-user 
+    //-     each user, index in userData
+    //-         if index < 2
+    //-             +user-feedback(user)
