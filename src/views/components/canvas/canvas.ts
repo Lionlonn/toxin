@@ -33,6 +33,7 @@ const chartOptions = {
         boxWidth: 15,
         boxHeight: 15,
         borderRadius: 2,
+        usePointStyle: true
       }
     },
     
