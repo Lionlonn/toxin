@@ -1,0 +1,27 @@
+@import 'components/header/header.scss';
+@import 'components/registration-user/registration-card.scss';
+@import 'components/footer/footer.scss';
+@import 'root-style';
+
+.main-registration {
+    background-image: url('./img/reg-back.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+
+.registration {
+    display: grid;
+    grid-template-columns: 380px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+}
+
+@media (max-width:425px) {
+    .registration {
+        grid-template-columns: 1fr;
+    }
+}

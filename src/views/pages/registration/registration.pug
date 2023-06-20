@@ -1,0 +1,18 @@
+extends layouts/main.pug
+
+block page 
+    include components/header/header.pug
+    include components/registration-user/registration-card.pug
+    include components/footer/footer.pug
+
+    - const { data: headersdata } = require("data/header-menu/header-menu.json")
+
+    .header 
+        each dataHeader, index in headersdata
+            if index <1
+                +header(dataHeader)
+    .main-registration
+        .registration 
+            +registration-card
+        .footer 
+            +footer

@@ -1,0 +1,19 @@
+extends layouts/main.pug
+
+block page 
+    include components/header/header.pug
+    include components/authorization-card/authorization.pug
+    include components/inputs_fields/inputs.pug
+    include components/footer/footer.pug
+
+    - const { data: headersdata } = require("data/header-menu/header-menu.json")
+
+    .header 
+        each dataHeader, index in headersdata
+            if index <1
+                +header(dataHeader)
+    .main-sign
+        .sign 
+            +authorization()
+        .footer 
+            +footer

@@ -1,0 +1,25 @@
+@import 'components/header/header.scss';
+@import 'components/authorization-card/authorization.scss';
+@import 'components/footer/footer.scss';
+@import 'root-style';
+
+.main-sign {
+    background-image: url('../registration/img/reg-back.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.sign {
+    display: grid;
+    grid-template-columns: 380px;
+    align-items: center;
+    justify-content: center;
+    padding: 172px 15px;
+}
+
+@media (max-width: 425px) {
+    .sign {
+        grid-template-columns: 1fr;
+    }
+}
