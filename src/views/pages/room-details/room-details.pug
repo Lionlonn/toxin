@@ -28,11 +28,13 @@ block page
             .main-info__user
                 .info-user 
                     .info-number
+                        h3.label Сведения о номере
                         each comfort in roomComfort
                             +comfort-user(comfort)
                     .canvas-room 
                         +canvas-room
                 .feedback-user 
+                    h3.label Отзывы посетителей номера
                     each user, index in userData
                         if index < 2
                             +user-feedback(user)

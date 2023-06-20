@@ -15,16 +15,25 @@ const oliData = {
 };
 
 const chartOptions = {
+  responsive: false,
   rotation: 180,
   cutout: "85%",
+  padding: {
+    top: 100
+  },
   plugins: {
     title: {
-      display: false,
+      display: true,
       text: "Впечатления от номера",
+      position: "top" as const,
+      align: "start" as const,
+      font: {
+        size: 16
+      }
     },
     legend: {
       position: "right" as const,
-      align: "center" as const,
+      align: "end" as const,
       textAlign: "center",
       labels: {
         font: {
@@ -35,8 +44,8 @@ const chartOptions = {
         boxHeight: 10,
         borderRadius: 2,
         usePointStyle: true,
-        
       }
+
     },
     
   },
@@ -51,5 +60,6 @@ const chartOptions = {
 const donutChart = new Chart(canvasChart, {
   type: "doughnut",
   data: oliData,
-  options: chartOptions
+  options: chartOptions,
 });
+
