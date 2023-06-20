@@ -1,6 +1,8 @@
 - const bookingFirstD = { id: 'bokkingFirst' };
 - const bookingLastD = { id: 'bookingLast' };
 - const bookingDrop = {content_id:'dropdown-booking', list_id:'dropdown-list__booking', btnClearGuestsId:'clear-booking', label:"Гости"};
+include components/datapicker/air-datapicker.pug
+include components/dropdown_guests/guests-drop.pug
 mixin booking()
     .wrapper-booking 
             .room-price 

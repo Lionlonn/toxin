@@ -1,7 +1,17 @@
-.bullet-list 
-    ul.conditions
-        li.conditions__list Нельзя с питомцами
-        li.conditions__list Без вечеринок и мероприятий
-        li.conditions__list Время прибытия — после 13:00,
-            br
-            | а выезд до 12:00
+
+
+mixin bullet-list(cancellation)
+    .bullet-room 
+        .bullet-rules 
+            h6.label Правила
+            ul.conditions
+                li.conditions__list Нельзя с питомцами
+                li.conditions__list Без вечеринок и мероприятий
+                li.conditions__list Время прибытия — после 13:00,
+                    br
+                    | а выезд до 12:00
+        .bullet-canc
+            if cancellation
+                h6.label Отмена
+                .cancellation 
+                    span Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.

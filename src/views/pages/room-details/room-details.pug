@@ -5,10 +5,16 @@ block page
     include components/user-feedback/feedback.pug
     include components/photos-room/photo-room.pug
     include components/canvas/canvas.pug
+    include components/comfort/comfort.pug
+    include components/bullet-list/bullet-list.pug
+    include components/booking-card/booking-card.pug
+    include components/footer/footer.pug
+    
 
     - const { user: userData } = require("data/user-feedback/user.json")
     - const { data: headersdata } = require("data/header-menu/header-menu.json")
     - const { photo: roomPhotos} = require('data/room-photos/photo.json')
+    - const { comfort: roomComfort} = require('data/comfort-number/comfort.json')
 
     .header 
         each dataHeader, index in headersdata
@@ -18,8 +24,20 @@ block page
         each roomPhoto in roomPhotos
                 +photo(roomPhoto)
     .container-room
-        +canvas-room
-    //- .feedback-user 
-    //-     each user, index in userData
-    //-         if index < 2
-    //-             +user-feedback(user)
+        .main-room
+            .main-info__user
+                .info-user 
+                    .info-number
+                        each comfort in roomComfort
+                            +comfort-user(comfort)
+                    .canvas-room 
+                        +canvas-room
+                .feedback-user 
+                    each user, index in userData
+                        if index < 2
+                            +user-feedback(user)
+                .cancellation-rules
+                    +bullet-list({cancellation:true})
+            .main-info-date
+                +booking
+    +footer

@@ -25,15 +25,17 @@ const chartOptions = {
     legend: {
       position: "right" as const,
       align: "center" as const,
+      textAlign: "center",
       labels: {
         font: {
           size: 14
         },
         color: 'rgba(31, 32, 65, 0.75)',
-        boxWidth: 15,
-        boxHeight: 15,
+        boxWidth: 10,
+        boxHeight: 10,
         borderRadius: 2,
-        usePointStyle: true
+        usePointStyle: true,
+        
       }
     },
     

@@ -4,6 +4,7 @@
     align-items: center;
     max-width: 712px;
     grid-gap: 10px;
+    margin-bottom: 25px;
 }
 
 .feedback img{
@@ -36,7 +37,7 @@
 }
 
 .user-feedback span{
-    width: 653px;
+    max-width: 650px;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;

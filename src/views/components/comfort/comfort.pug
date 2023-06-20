@@ -1,15 +1,15 @@
-.comfort-user 
-    .comfort-user__sound
-        img(src=require ('./img/insert_emoticon.png'), alt="logo-comfort")
-        .comfort-text 
-            h6.comfort__title Комфорт
-            span Шумопоглощающие стены
-    .border-user
-    
-    .comfort-user__sound
-        img(src=require ('./img/location_city.png'), alt="logo-comfort")
-        .comfort-text 
-            h6.comfort__title Комфорт
-            span Окно в каждой из спален
-    
-    .border-user
+mixin comfort-user(props={})
+    -
+        const {
+            image= "",
+            subLabel="",
+            text=""
+        }=props
+    .comfort
+        .comfort-user 
+            img(src=require(`./img/${image}.png`), alt="")
+            .comfort-text 
+                h6.comfort-title=subLabel
+                span=text
+        .border-user
+        

@@ -3,11 +3,49 @@
 @import 'components/like-button/like-button.scss';
 @import 'components/photos-room/photo-room.scss';
 @import 'components/canvas/canvas.scss';
+@import 'components/comfort/comfort.scss';
+@import 'components/bullet-list/bullet-list.scss';
+@import 'components/booking-card/booking-card.scss';
+@import 'components/footer/footer.scss';
 @import 'root-style';
 
+.main-backround {
+    margin-bottom: 70px;
+}
 
 .container-room {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+.main-room {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+}
+
+.info-user {
+    display: grid;
+    grid-template-columns: 280px 280px;
+    gap: 70px;
+}
+
+.bullet-room  {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (max-width: 1024px) {
+    .main-room {
+        grid-template-columns: 1fr;
+    }
+    .info-user {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .bullet-room {
+        margin-bottom: 25px;
+    }
 }

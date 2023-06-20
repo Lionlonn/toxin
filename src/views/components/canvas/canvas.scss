@@ -1,5 +1,11 @@
 .chart {
-    max-width: 330px;
-    height: 330px;
+    max-width: 320px;
+    height: 320px;
 }
 
+@media (max-width: 465px) {
+    .chart {
+        max-width: 300px;
+        height: 300px;
+    }
+}
