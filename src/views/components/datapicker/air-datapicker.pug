@@ -1,12 +1,12 @@
-mixin datepicker(index, firstDates, lastDates)
+mixin datepicker(index, firstDates, lastDates, labelOne, labelTwo)
     - const dateIndex = index.dateIndex;
     .datepicker(id=`datepicker-${dateIndex}`)
             .datapicker-arrival 
-                h6.datapicker__arrival ПРИБЫТИЕ
+                h6.datapicker__arrival=labelOne
                 .input__datepicker
                     input.datepicker-input(data-first-id=firstDates type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months')
             .datapicker-arrival 
-                h6.datapicker__exit ВЫЕЗД
+                h6.datapicker__exit=labelTwo
                 .input__datepicker
                     input.datepicker-input(data-last-id=lastDates type='text' placeholder="дд.мм.гг" data-position='top right' data-min-view='months') 
             .datepicker-wrapper(id=`wrapper-${dateIndex}`)

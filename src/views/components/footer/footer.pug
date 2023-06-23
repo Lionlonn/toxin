@@ -18,24 +18,27 @@ mixin footer()
                 .footer-nav
                     .footer-nav__navigatoon 
                         h6 Навигация
-                        each nav in navigation
-                            li 
-                                a(href="#")=nav 
+                        ul.footer-nav__list
+                            each nav in navigation
+                                li 
+                                    a(href="#")=nav 
                     .footer-nav__about-us
                         h6 О нас
-                        each about_us in aboutUs
-                            li 
-                                a(href="#")=about_us
+                        ul.footer-nav__list
+                            each about_us in aboutUs
+                                li 
+                                    a(href="#")=about_us
                     .footer-nav__support
                         h6 Служба поддержки
-                        each sup in serviceSupport
-                            li 
-                                a(href="#")=sup
+                        ul.footer-nav__list
+                            each sup in serviceSupport
+                                li 
+                                    a(href="#")=sup
                     .footer-nav__subscription
                         h6 Подписка
                         .footer-nav__subscription__text
                             span Получайте специальные предложения и новости сервиса
-                        +inputField(email, false, true)
+                        +inputField(email, false, "", true)
         .footer-line
         .sub-footer 
             .sub-container

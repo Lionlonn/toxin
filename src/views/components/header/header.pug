@@ -13,7 +13,7 @@ mixin header(props = {})
         .header-container
             .header-wrapper 
                 .nav-logo 
-                    a(href="#")
+                    a(href="landing.html")
                         img(src=require("img/logo.svg"), alt="Logo")
                 button.header-burger__btn(id=`${btnId}`)
                     span 
@@ -47,5 +47,5 @@ mixin header(props = {})
                         .border-veritical
                         a.user-authorized(href="#")=account 
                     else
-                        a.user-open(href="form-elements.html") 
-                        a.user-registration(href="#")
+                        a.user-open(href="sign-page.html") 
+                        a.user-registration(href="registration.html")

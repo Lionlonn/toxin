@@ -12,7 +12,7 @@ mixin arrival-number()
                 h1.selection-title Найдём номера под ваши пожелания
     
             .selection-datepicker
-                +datepicker({dateIndex: 1}, firstD.id, lastD.id)
+                +datepicker({dateIndex: 1}, firstD.id, lastD.id, "Прибытие", "Выезд")
     
             .selection-dropdown
                 +dropdown(arrivalDrop)

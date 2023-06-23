@@ -1,6 +1,7 @@
 @import 'components/toggle-button/toggle-button.scss';
 @import 'components/radio-checkbox/radio-checkbox.scss';
 @import 'components/buttons/button-min/button-min.scss';
+@import 'components/datapicker/datapicker.scss';
 
 .wrapper-registration {
     width: 100%;
@@ -65,7 +66,7 @@
     @include button-click_big;
 
     &::before {
-        content: "Перейти к оплате";
+        content: "Зарегистрироваться";
     }
 }
 

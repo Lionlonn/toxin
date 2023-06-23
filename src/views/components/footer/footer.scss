@@ -30,14 +30,22 @@
 
 
 .footer-nav {
-    list-style-type: none;
+    
     display: grid;
     grid-template-columns: 140px 140px 140px 1fr;
     gap: 40px;
 }
+.footer-nav__list {
+    list-style-type: none;
+}
+.footer-nav__list li {
+    margin-bottom: 20px;
+}
+.footer-nav__list li:last-child {
+    margin-bottom: 0;
+}
 .footer-nav li a {
     color: rgba(31, 32, 65, 0.5);
-    gap: 10px;
 }
 
 .footer-nav h6 {
@@ -51,7 +59,7 @@
 
 .footer-nav__subscription__text {
     max-width: 260px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .footer-line {

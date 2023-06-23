@@ -1,2 +1,18 @@
+@import 'components/inputs_fields/inputs.scss';
+@import 'components/dropdown_guests/guests-drop.scss';
+@import 'components/datapicker/datapicker.scss';
+@import 'components/datepicker-card/date-card.scss';
+@import 'components/conveniences/conveniences.scss';
 @import 'root-style';
 
+.container-elements {
+   max-width: 1200px;
+   margin: 50px auto;
+   padding: 0 15px;
+}
+
+
+.elements {
+   display: grid;
+   grid-template-columns: 380px;
+}

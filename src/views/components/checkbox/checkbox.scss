@@ -81,3 +81,10 @@
 .checkbox-list--visible {
   display: block;
 }
+
+
+@media (min-width: 1024px) {
+  .checkbox-list--visible {
+    margin-bottom: 20px;
+  }
+}

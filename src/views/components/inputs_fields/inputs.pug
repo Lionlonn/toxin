@@ -1,6 +1,10 @@
-mixin inputField(inputs, showWrapper, arrow)
+mixin inputField(inputs, showWrapper, label, arrow, subLabel)
     .field-block
-        input.field-input(id=inputs.id type=inputs.type placeholder=inputs.placeholder)
+        .field-title 
+            h6.label=label
+            if subLabel
+                h6.subLabel=subLabel
+        input.field-input(id=inputs.id type=inputs.type placeholder=inputs.placeholder data-focus=inputs.focus)
         if arrow 
             input(type ="submit" class="button" value=" ")
         if showWrapper

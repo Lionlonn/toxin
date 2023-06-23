@@ -8,7 +8,8 @@ mixin main-side-card()
         .main-side__number
             each roomData, key in roomsData
                 if key < 12
-                    +room-hostel-card(roomData)
+                    a(href="room-details.html")
+                        +room-hostel-card(roomData) 
         .pagination
             .pagingaton-number
                 ul.pag-ul

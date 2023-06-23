@@ -1,3 +1,30 @@
 extends layouts/ui-kit.pug
-block page 
-    .button-test dsdsd
+
+block page
+    include components/inputs_fields/inputs.pug
+    include components/dropdown_guests/guests-drop.pug
+    include components/datapicker/air-datapicker.pug
+    include components/datepicker-card/date-card.pug
+    include components/conveniences/conveniences.pug
+
+    - const email = {type: "email", placeholder: "Email"};
+    - const text = {type: "text", placeholder: "This is pretty awesome", focus: true};
+    - const dateOfBirth = {id: "inputBirth",type: "text", placeholder: "ДД.ММ.ГГГГ"};
+    - const arrivalDrop = {content_id:'dropdown-guests', list_id:'dropdownList1', btnClearGuestsId:'clear-id',label:"Dropdown"}
+    - const firstD = { id: 'arrivalFerst' };
+    - const lastD = { id: 'arrivalLast' };
+    - const convLabel = { label: "dropdown"}
+    
+    .elements-wrapper
+        .container-elements 
+            .elements
+                .block-1
+                    +inputField(email, false, "Text Field", false, "Default")
+                    +inputField(text, false, "Text Field", false, "Hover / Focus")
+                    
+                    +dropdown(arrivalDrop)
+                    +inputField(dateOfBirth, false, "masked text field", false,)
+                    +datepicker({dateIndex: 1}, firstD.id, lastD.id, "date Dropdown", "date Dropdown")
+                    +calendarBlock({showInput: true, label: "filter date dropdown"})
+                    +inputField(email, false, "subscription text field", true)
+                    +drop-convenience(convLabel)

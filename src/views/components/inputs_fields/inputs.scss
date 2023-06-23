@@ -14,6 +14,26 @@ input {
     display: block;
 }
 
+.field-input:hover,
+.field-input:focus {
+    border: 1px solid rgba(31, 32, 65, 0.5);
+}
+
+.field-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .subLabel {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        color: rgba(31, 32, 65, 0.5);
+    }
+}
+
 
 .input-wrapper__bithd {
     position: absolute;
@@ -44,8 +64,9 @@ input {
     background-repeat: no-repeat;
     width:44px; 
     right: 0;
-    top: 0;
+    top: 20px;
     height:44px; 
     border:0;
     cursor:pointer;
 }
+
